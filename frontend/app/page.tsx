@@ -1,7 +1,6 @@
-import Image from 'next/image'
-import styles from './page.module.scss'
+import Image from 'next/image';
+import styles from './page.module.scss';
 
 export default function Home() {
-  return (<h1>Home page</h1>
-  )
+	return <h1>Home</h1>;
 }

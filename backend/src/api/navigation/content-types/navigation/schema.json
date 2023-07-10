@@ -4,27 +4,29 @@
   "info": {
     "singularName": "navigation",
     "pluralName": "navigations",
-    "displayName": "Navigation"
+    "displayName": "Navigation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "NavigationButtons": {
+    "navigationButtons": {
       "type": "component",
       "repeatable": true,
       "component": "nav-button.nav-button",
       "required": true
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
-    "emailAdress": {
+    "emailAddress": {
       "type": "string"
     },
     "phoneNumber": {

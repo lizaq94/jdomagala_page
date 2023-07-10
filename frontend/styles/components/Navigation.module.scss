@@ -1,0 +1,33 @@
+.navigation {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.navigation_additional_info {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin: 10px 0;
+	font-family: 'Ubuntu', sans-serif;
+}
+.navigation_email {
+	margin-right: 20px;
+}
+.navigation_phone {
+}
+.navigation_wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navigation_logo {
+	position: relative;
+	height: 80px;
+	width: 142px;
+}
+.navigations_buttons {
+	display: flex;
+}

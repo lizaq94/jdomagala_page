@@ -4,6 +4,7 @@
 	width: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
+	font-family: $primaryFontFamily;
 }
 
 .navigation_additional_info {
@@ -11,7 +12,8 @@
 	justify-content: flex-end;
 	align-items: center;
 	margin: 10px 0;
-	font-family: 'Ubuntu', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
 }
 .navigation_email {
 	margin-right: 20px;

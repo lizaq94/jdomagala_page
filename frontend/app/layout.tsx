@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body className={inter.className}>
 				<ApolloProvider>
-					<Navigation />
+					{/*<Navigation />*/}
 					<Home />
 				</ApolloProvider>
 			</body>

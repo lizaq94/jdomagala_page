@@ -5,7 +5,8 @@ import { ReactNode } from 'react';
 import { navigationQuery } from '@/graphql/queries/NavigationQuery';
 import Image from 'next/image';
 import styles from '@styles/components/Navigation.module.scss';
-import NavigationButtons from '@/components/NavigationButton/NavigationButton';
+import { IImage } from '@/types/ImageType';
+import Button from '@/components/Button/Button';
 
 interface IProps {
 	children: ReactNode;
@@ -15,13 +16,7 @@ interface INavigationData {
 	navigation: {
 		data: {
 			attributes: {
-				logo: {
-					data: {
-						attributes: {
-							url: string;
-						};
-					};
-				};
+				logo: IImage;
 				navigationButtons: { content: string; link: string }[];
 				emailAddress: string;
 				phoneNumber: string;
@@ -47,7 +42,7 @@ const Navigation = () => {
 				</div>
 				<div className={styles.navigations_buttons}>
 					{navigationButtons.map(({ content, link }, index) => (
-						<NavigationButtons content={content} link={link} key={index} />
+						<Button content={content} url={link} hoverEffect outline={index + 1 === navigationButtons.length} />
 					))}
 				</div>
 			</div>

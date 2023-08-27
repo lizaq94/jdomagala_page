@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-width: 1200px;
+	max-width: $containerMaxWidth;
 	margin: 0 auto;
 	font-family: $primaryFontFamily;
 }
@@ -11,7 +11,7 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin: 10px 0;
+	margin: 10px 0 15px;
 	font-weight: 300;
 	font-size: 12px;
 }
@@ -28,7 +28,8 @@
 .navigation_logo {
 	position: relative;
 	height: 80px;
-	width: 142px;
+	width: 270px;
+	z-index: 1;
 }
 .navigations_buttons {
 	display: flex;

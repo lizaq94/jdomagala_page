@@ -1,0 +1,9 @@
+@mixin mediaQuery($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media #{inspect(map-get($breakpoints, $breakpoint))} {
+			@content;
+		}
+	} @else {
+		@warn "Invalid breakpoint: #{$breakpoint}. Available breakpoint is #{$breakpoints}.";
+	}
+}

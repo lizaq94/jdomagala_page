@@ -1,4 +1,8 @@
 'use client';
+import WhatWeDoSection from "@/sections/WhatWeDoSection";
+
 export default function Home() {
-	return <div></div>;
+	return <div>
+		<WhatWeDoSection/>
+	</div>;
 }

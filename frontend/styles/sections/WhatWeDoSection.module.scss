@@ -1,0 +1,14 @@
+.wrapper {
+	@include sectionWrapper;
+}
+
+.title {
+	@include sectionTitle;
+}
+
+.blocks_wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}

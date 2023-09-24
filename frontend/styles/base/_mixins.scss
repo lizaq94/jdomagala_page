@@ -1,3 +1,17 @@
+@mixin sectionWrapper {
+	width: 100%;
+	max-width: 1200px;
+	margin: 32px auto 0;
+}
+
+@mixin sectionTitle {
+	width: 100%;
+	margin-bottom: 40px;
+	font-family: $secondFontFamily;
+	font-size: 64px;
+	font-weight: 400;
+	text-align: center;
+}
 @mixin mediaQuery($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		@media #{inspect(map-get($breakpoints, $breakpoint))} {

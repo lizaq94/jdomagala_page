@@ -1,4 +1,4 @@
-.navigation {
+.wrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -7,7 +7,7 @@
 	font-family: $primaryFontFamily;
 }
 
-.navigation_additional_info {
+.additional_info {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -15,22 +15,26 @@
 	font-weight: 300;
 	font-size: 12px;
 }
-.navigation_email {
+.email {
 	margin-right: 20px;
 }
-.navigation_phone {
+.phone {
 }
-.navigation_wrapper {
+.logoAndButtons_wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
-.navigation_logo {
+.logo {
 	position: relative;
 	height: 80px;
 	width: 270px;
 	z-index: 1;
 }
-.navigations_buttons {
+.buttons {
 	display: flex;
+
+	a:last-child {
+		margin-right: 0;
+	}
 }

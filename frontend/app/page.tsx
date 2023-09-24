@@ -1,19 +1,26 @@
 'use client';
-import HeroSection from '@/section/HeroSection';
+import HeroSection from '@/sections/HeroSection';
 import Navigation from '@/components/Navigation/Navigation';
 import styles from '@/styles/components/page.module.scss';
 import { useSuspenseQuery } from '@apollo/client';
 import { heroSectionQuery } from '@/graphql/queries/HeroSectionQuery';
 import { IHeroSectionData } from '@/types/HeroSectionData';
-import { getImageUrl } from '@/utils/utils';
+import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
+import WhatWeDoSection from '@/sections/WhatWeDoSection';
 export default function Home() {
-	const { data } = useSuspenseQuery<IHeroSectionData>(heroSectionQuery);
-	const heroSectionImageUrl = getImageUrl(data.heroSection.data.attributes.backgroundImage.data.attributes.url);
+	const heroSectionResponse = extractDataFromApiResponse<IHeroSectionData>(useSuspenseQuery(heroSectionQuery));
+
+	const backgroundImage = heroSectionResponse?.backgroundImage;
+
+	const heroSectionImageUrl = !!backgroundImage ? getImageUrl(backgroundImage) : '';
 
 	return (
-		<div className={styles.navigationAndHeroSectionWrapper} style={{ backgroundImage: `url(${heroSectionImageUrl})` }}>
-			<Navigation />
-			<HeroSection heroSectionData={data} />;
-		</div>
+		<>
+			<div className={styles.navigationAndHeroSectionWrapper} style={{ backgroundImage: `url(${heroSectionImageUrl})` }}>
+				<Navigation />
+				{!!heroSectionResponse && <HeroSection heroSectionData={heroSectionResponse} />}
+			</div>
+			<WhatWeDoSection />
+		</>
 	);
 }

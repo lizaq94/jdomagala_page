@@ -1,13 +1,7 @@
-import { IImage } from './ImageType';
+import { IImageData } from './ImageType';
 
 export interface IHeroSectionData {
-	heroSection: {
-		data: {
-			attributes: {
-				title: string;
-				description: string;
-				backgroundImage: IImage;
-			};
-		};
-	};
+	title: string;
+	description: string;
+	backgroundImage: IImageData;
 }

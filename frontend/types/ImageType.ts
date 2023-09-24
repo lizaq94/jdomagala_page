@@ -1,7 +1,10 @@
-export interface IImage {
+export interface IImageData {
 	data: {
-		attributes: {
-			url: string;
-		};
+		attributes: IImageAttributes;
 	};
+}
+
+export interface IImageAttributes {
+	url: string;
+	alternativeText: string;
 }

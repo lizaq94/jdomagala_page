@@ -5,8 +5,8 @@ export const whatWeDoSectionQuery = gql`
 		whatWeDoSection {
 			data {
 				attributes {
-					title
-					blocks {
+					sectionTitle
+					whatWeDoBlocks {
 						title
 						icon {
 							data {
@@ -17,7 +17,7 @@ export const whatWeDoSectionQuery = gql`
 						}
 						shortDescription
 						longDescription
-						buttonText
+						textForButton
 					}
 				}
 			}

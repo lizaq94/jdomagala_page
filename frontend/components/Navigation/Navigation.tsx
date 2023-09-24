@@ -5,42 +5,32 @@ import { ReactNode } from 'react';
 import { navigationQuery } from '@/graphql/queries/NavigationQuery';
 import Image from 'next/image';
 import styles from '@styles/components/Navigation.module.scss';
-import { IImage } from '@/types/ImageType';
 import Button from '@/components/Button/Button';
+import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
+import { INavigationData } from '@/types/NavigationData';
 
 interface IProps {
 	children: ReactNode;
 }
 
-interface INavigationData {
-	navigation: {
-		data: {
-			attributes: {
-				logo: IImage;
-				navigationButtons: { content: string; link: string }[];
-				emailAddress: string;
-				phoneNumber: string;
-			};
-		};
-	};
-}
 const Navigation = () => {
-	const {
-		data: { navigation },
-	} = useSuspenseQuery<INavigationData>(navigationQuery);
-	const { logo, navigationButtons, emailAddress, phoneNumber } = navigation.data.attributes;
-	const logoUrl = `http://localhost:1337${logo.data.attributes.url}`;
+	const response = extractDataFromApiResponse<INavigationData>(useSuspenseQuery(navigationQuery));
+
+	if (!response) return null;
+
+	const { logo, navigationButtons, emailAddress, phoneNumber } = response;
+	const logoUrl = getImageUrl(logo);
 	return (
-		<div className={styles.navigation}>
-			<div className={styles.navigation_additional_info}>
-				<div className={styles.navigation_email}>{emailAddress}</div>
-				<div className={styles.navigation_phone}>{phoneNumber}</div>
+		<div className={styles.wrapper}>
+			<div className={styles.additional_info}>
+				<div className={styles.email}>{emailAddress}</div>
+				<div className={styles.phone}>{phoneNumber}</div>
 			</div>
-			<div className={styles.navigation_wrapper}>
-				<div className={styles.navigation_logo}>
+			<div className={styles.logoAndButtons_wrapper}>
+				<div className={styles.logo}>
 					<Image loader={({ src }) => src} src={logoUrl} alt="" fill={true} />
 				</div>
-				<div className={styles.navigations_buttons}>
+				<div className={styles.buttons}>
 					{navigationButtons.map(({ content, link }, index) => (
 						<Button content={content} url={link} hoverEffect outline={index + 1 === navigationButtons.length} />
 					))}

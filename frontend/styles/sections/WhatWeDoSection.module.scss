@@ -1,11 +1,3 @@
-.wrapper {
-	@include sectionWrapper;
-}
-
-.title {
-	@include sectionTitle;
-}
-
 .blocks_wrapper {
 	display: flex;
 	align-items: center;

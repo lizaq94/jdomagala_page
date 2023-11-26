@@ -1,3 +1,5 @@
+import Heading from '@/components/Heading/Heading';
+import Section from '@/components/Section/Section';
 import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
 import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
 import { useSuspenseQuery } from '@apollo/client';
@@ -34,9 +36,10 @@ const WhatWeDoSection = (): JSX.Element => {
 		data: { whatWeDoSection },
 	} = useSuspenseQuery<IWhatWeDoSection>(whatWeDoSectionQuery);
 	const iconUrl = `http://localhost:1337${whatWeDoSection.data.attributes.blocks[0].icon.data.attributes.url}`;
+
 	return (
-		<div className={styles.wrapper}>
-			<h2 className={styles.title}>{whatWeDoSection.data.attributes.title}</h2>
+		<Section>
+			<Heading>{whatWeDoSection.data.attributes.title}</Heading>
 			<div className={styles.blocks_wrapper}>
 				<WhatWeDoBlock
 					title="Lorem ipsum dolores "
@@ -44,30 +47,9 @@ const WhatWeDoSection = (): JSX.Element => {
 					shortDescription="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 					longDescription="aaaaa"
 					buttonText="Read more"
-				/>{' '}
-				<WhatWeDoBlock
-					title="Lorem ipsum dolores "
-					icon={iconUrl}
-					shortDescription="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-					longDescription=""
-					buttonText="Read more"
-				/>{' '}
-				<WhatWeDoBlock
-					title="Lorem ipsum dolores "
-					icon={iconUrl}
-					shortDescription="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-					longDescription=""
-					buttonText="Read more"
-				/>{' '}
-				<WhatWeDoBlock
-					title="Lorem ipsum dolores "
-					icon={iconUrl}
-					shortDescription="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-					longDescription=""
-					buttonText="Read more"
 				/>
 			</div>
-		</div>
+		</Section>
 	);
 };
 

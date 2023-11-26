@@ -13,9 +13,14 @@ body {
 body {
 	color: white;
 	background-color: $backgroundColor;
+	font-family: $primaryFontFamily;
 }
 
 a {
 	color: white;
 	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
 }

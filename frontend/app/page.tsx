@@ -1,8 +1,12 @@
 'use client';
-import WhatWeDoSection from "@/sections/WhatWeDoSection";
+import WhatWeDoSection from '@/sections/WhatWeDoSection';
+import WhyWeSection from '@/sections/WhyWeSection';
 
 export default function Home() {
-	return <div>
-		<WhatWeDoSection/>
-	</div>;
+	return (
+		<div>
+			<WhatWeDoSection />
+			<WhyWeSection />
+		</div>
+	);
 }

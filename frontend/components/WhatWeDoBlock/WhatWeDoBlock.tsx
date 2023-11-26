@@ -1,5 +1,5 @@
 import Popup from '@/components/Popup/Popup';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styles from '@styles/components/WhatWeDoBlock.module.scss';
 
@@ -26,9 +26,9 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 				<h3 className={styles.title}>{title}</h3>
 				<p className={styles.shortDescription}>{shortDescription}</p>
 				{!!longDescription && (
-					<button className={styles.button} onClick={onOpenButton}>
+					<motion.button whileHover={{ y: '-2px' }} className={styles.button} onClick={onOpenButton}>
 						{buttonText}
-					</button>
+					</motion.button>
 				)}
 			</div>
 			<AnimatePresence>{isPopupOpen && <Popup content={longDescription} onCloseButton={onCloseButton} />}</AnimatePresence>

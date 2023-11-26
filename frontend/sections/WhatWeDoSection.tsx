@@ -1,10 +1,10 @@
+import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
 import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
 import { useSuspenseQuery } from '@apollo/client';
 import React from 'react';
-import styles from '@styles//sections/WhatWeDoSection.module.scss';
 
 interface IWhatWeDoBlock {
 	title: string;
@@ -40,7 +40,7 @@ const WhatWeDoSection = (): JSX.Element => {
 	return (
 		<Section>
 			<Heading>{whatWeDoSection.data.attributes.title}</Heading>
-			<div className={styles.blocks_wrapper}>
+			<FlexBlocks>
 				<WhatWeDoBlock
 					title="Lorem ipsum dolores "
 					icon={iconUrl}
@@ -48,7 +48,7 @@ const WhatWeDoSection = (): JSX.Element => {
 					longDescription="aaaaa"
 					buttonText="Read more"
 				/>
-			</div>
+			</FlexBlocks>
 		</Section>
 	);
 };

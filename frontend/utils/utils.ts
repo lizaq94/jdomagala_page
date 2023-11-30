@@ -8,7 +8,7 @@ export const getImageUrl = (imageData: IImageData): string => {
 
 	if (!image) return '';
 
-	return `http://localhost:1337${image.url}`;
+	return `${process.env.NEXT_PUBLIC_STRAPI_URL}${image.url}`;
 };
 
 export const extractDataFromApiResponse = <T>(response: StrapiData<T>): T | null => {

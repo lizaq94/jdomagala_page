@@ -20,6 +20,7 @@ const Navigation = () => {
 
 	const { logo, navigationButtons, emailAddress, phoneNumber } = response;
 	const logoUrl = getImageUrl(logo);
+	console.log('Kamil logoUrl', logoUrl);
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.additional_info}>

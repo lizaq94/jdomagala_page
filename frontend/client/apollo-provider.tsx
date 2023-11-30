@@ -5,7 +5,7 @@ import { ApolloNextAppProvider, NextSSRInMemoryCache, SSRMultipartLink } from '@
 
 function makeClient() {
 	const httpLink = new HttpLink({
-		uri: process.env.NEXT_PUBLIC_STRAPI_URL,
+		uri: `${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`,
 	});
 
 	return new ApolloClient({

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '@styles/components/Popup.module.scss';
+import { X } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
 
 interface IProps {
 	content: string;
@@ -7,13 +9,27 @@ interface IProps {
 }
 
 const Popup = ({ content, onCloseButton }: IProps): JSX.Element => {
+	const backgroundAnimation = {
+		visible: { opacity: 1 },
+		hidden: { opacity: 0 },
+	};
+
+	const popupAnimation = {
+		visible: { opacity: 1, scale: 1 },
+		hidden: { opacity: 0, scale: 0.5 },
+	};
+
+	console.log('Kamil content', content);
+
 	return (
-		<div className={styles.background}>
-			<div className={styles.content_wrapper}>
-				<span className={styles.close_button} onClick={onCloseButton} />
+		<motion.div variants={backgroundAnimation} initial="hidden" animate="visible" exit="hidden" className={styles.background}>
+			<motion.div variants={popupAnimation} initial="hidden" animate="visible" exit="hidden" className={styles.content_wrapper}>
+				<span className={styles.close_button} onClick={onCloseButton}>
+					<X size={22} />
+				</span>
 				<div className={styles.content}>{content}</div>
-			</div>
-		</div>
+			</motion.div>
+		</motion.div>
 	);
 };
 

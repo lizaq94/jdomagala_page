@@ -12,6 +12,14 @@
 	font-weight: 400;
 	text-align: center;
 }
+
+@mixin flexBlocksWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
 @mixin mediaQuery($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		@media #{inspect(map-get($breakpoints, $breakpoint))} {

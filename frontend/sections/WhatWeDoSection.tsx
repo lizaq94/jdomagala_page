@@ -1,3 +1,6 @@
+import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
+import Heading from '@/components/Heading/Heading';
+import Section from '@/components/Section/Section';
 import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
 import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
 import { useSuspenseQuery } from '@apollo/client';
@@ -27,25 +30,25 @@ const WhatWeDoSection = (): JSX.Element | null => {
 	const { sectionTitle, whatWeDoBlocks } = response;
 
 	return (
-		<div className={styles.wrapper}>
-			<h2 className={styles.title}>{sectionTitle}</h2>
-			<div className={styles.blocks_wrapper}>
-				{whatWeDoBlocks?.map((block, index) => {
-					const { title, icon, shortDescription, longDescription, textForButton } = block;
+		<Section>
+			<Heading>{sectionTitle}</Heading>
+			<FlexBlocks>
+                {whatWeDoBlocks?.map((block, index) => {
+                    const { title, icon, shortDescription, longDescription, textForButton } = block;
 
-					return (
-						<WhatWeDoBlock
-							title={title}
-							icon={getImageUrl(icon)}
-							shortDescription={shortDescription}
-							longDescription={longDescription}
-							buttonText={textForButton}
-							key={index}
-						/>
-					);
-				})}
-			</div>
-		</div>
+                    return (
+                        <WhatWeDoBlock
+                            title={title}
+                            icon={getImageUrl(icon)}
+                            shortDescription={shortDescription}
+                            longDescription={longDescription}
+                            buttonText={textForButton}
+                            key={index}
+                        />
+                    );
+                })}
+			</FlexBlocks>
+		</Section>
 	);
 };
 

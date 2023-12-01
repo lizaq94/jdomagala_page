@@ -18,7 +18,7 @@
     "whatWeDoBlocks": {
       "type": "component",
       "repeatable": true,
-      "component": "read-more-block.read-more-block"
+      "component": "blocks.read-more-block"
     }
   }
 }

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import styles from '@styles/components/Popup.module.scss';
 import { X } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import Markdown from 'react-markdown';
 
 interface IProps {
 	content: string;
@@ -27,7 +28,9 @@ const Popup = ({ content, onCloseButton }: IProps): JSX.Element => {
 				<span className={styles.close_button} onClick={onCloseButton}>
 					<X size={22} />
 				</span>
-				<div className={styles.content}>{content}</div>
+				<div className={styles.content}>
+					<Markdown>{content}</Markdown>
+				</div>
 			</motion.div>
 		</motion.div>
 	);

@@ -1,3 +1,5 @@
+'use client';
+
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';

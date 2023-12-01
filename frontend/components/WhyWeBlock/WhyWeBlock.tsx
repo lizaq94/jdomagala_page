@@ -15,9 +15,11 @@ const WhyWeBlock = ({ title, icon, description }: IProps): JSX.Element => {
 				Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 				Phasellus ac condimentum velit. Nunc pulvinar cursus viverr
 			</p>
-			<span className={styles.icon}>
-				<img src={icon} alt="" />
-			</span>
+			{!!icon && (
+				<span className={styles.icon}>
+					<img src={icon} alt="" />
+				</span>
+			)}
 		</div>
 	);
 };

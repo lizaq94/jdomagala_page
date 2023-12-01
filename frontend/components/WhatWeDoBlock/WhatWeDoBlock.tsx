@@ -20,9 +20,11 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 	return (
 		<>
 			<div className={styles.wrapper}>
-				<span className={styles.icon}>
-					<img src={icon} alt="" />
-				</span>
+				{!!icon && (
+					<span className={styles.icon}>
+						<img src={icon} alt="" />
+					</span>
+				)}
 				<h3 className={styles.title}>{title}</h3>
 				<p className={styles.shortDescription}>{shortDescription}</p>
 				{!!longDescription && (

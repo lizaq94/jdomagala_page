@@ -1,29 +1,39 @@
+'use client';
+
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import WhyWeBlock from '@/components/WhyWeBlock/WhyWeBlock';
+import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
+import { whyWeSectionQuery } from '@/graphql/queries/WhyWeSectionQuery';
+import { IImageData } from '@/types/ImageType';
+import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
+import { useSuspenseQuery } from '@apollo/client';
 import React from 'react';
+interface IReasonBlock {
+	title: string;
+	description: string;
+	icon: IImageData;
+}
 
-const WhyWeSection = (): JSX.Element => {
+interface IWhyWeSection {
+	sectionTitle: string;
+	reasons: IReasonBlock[];
+}
+const WhyWeSection = (): JSX.Element | null => {
+	const response = extractDataFromApiResponse<IWhyWeSection>(useSuspenseQuery(whyWeSectionQuery));
+
+	if (!response) return null;
+
+	const { sectionTitle, reasons } = response;
+
 	return (
 		<Section>
 			<Heading>{'Why we?'}</Heading>
 			<FlexBlocks>
-				<WhyWeBlock
-					title="Reason 1"
-					icon=""
-					description="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac condimentum velit. Nunc pulvinar cursus viverr"
-				/>
-				<WhyWeBlock
-					title="Reason 1"
-					icon=""
-					description="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac condimentum velit. Nunc pulvinar cursus viverr"
-				/>
-				<WhyWeBlock
-					title="Reason 1"
-					icon=""
-					description="Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac condimentum velit. Nunc pulvinar cursus viverr"
-				/>
+				{reasons.map((reason, index) => (
+					<WhyWeBlock title={sectionTitle} icon={getImageUrl(reason.icon)} description={reason.description} key={index} />
+				))}
 			</FlexBlocks>
 		</Section>
 	);

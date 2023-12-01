@@ -20,8 +20,6 @@ const Popup = ({ content, onCloseButton }: IProps): JSX.Element => {
 		hidden: { opacity: 0, scale: 0.5 },
 	};
 
-	console.log('Kamil content', content);
-
 	return (
 		<motion.div variants={backgroundAnimation} initial="hidden" animate="visible" exit="hidden" className={styles.background}>
 			<motion.div variants={popupAnimation} initial="hidden" animate="visible" exit="hidden" className={styles.content_wrapper}>

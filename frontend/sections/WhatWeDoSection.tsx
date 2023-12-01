@@ -5,7 +5,6 @@ import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
 import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
 import { useSuspenseQuery } from '@apollo/client';
 import React from 'react';
-import styles from '@styles//sections/WhatWeDoSection.module.scss';
 import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
 import { IImageData } from '@/types/ImageType';
 
@@ -33,20 +32,20 @@ const WhatWeDoSection = (): JSX.Element | null => {
 		<Section>
 			<Heading>{sectionTitle}</Heading>
 			<FlexBlocks>
-                {whatWeDoBlocks?.map((block, index) => {
-                    const { title, icon, shortDescription, longDescription, textForButton } = block;
+				{whatWeDoBlocks?.map((block, index) => {
+					const { title, icon, shortDescription, longDescription, textForButton } = block;
 
-                    return (
-                        <WhatWeDoBlock
-                            title={title}
-                            icon={getImageUrl(icon)}
-                            shortDescription={shortDescription}
-                            longDescription={longDescription}
-                            buttonText={textForButton}
-                            key={index}
-                        />
-                    );
-                })}
+					return (
+						<WhatWeDoBlock
+							title={title}
+							icon={getImageUrl(icon)}
+							shortDescription={shortDescription}
+							longDescription={longDescription}
+							buttonText={textForButton}
+							key={index}
+						/>
+					);
+				})}
 			</FlexBlocks>
 		</Section>
 	);

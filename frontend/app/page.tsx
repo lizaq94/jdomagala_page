@@ -7,6 +7,7 @@ import { heroSectionQuery } from '@/graphql/queries/HeroSectionQuery';
 import { IHeroSectionData } from '@/types/HeroSectionData';
 import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
 import WhatWeDoSection from '@/sections/WhatWeDoSection';
+import WhyWeSection from '@/sections/WhyWeSection';
 export default function Home() {
 	const heroSectionResponse = extractDataFromApiResponse<IHeroSectionData>(useSuspenseQuery(heroSectionQuery));
 
@@ -21,6 +22,7 @@ export default function Home() {
 				{!!heroSectionResponse && <HeroSection heroSectionData={heroSectionResponse} />}
 			</div>
 			<WhatWeDoSection />
+			<WhyWeSection />
 		</>
 	);
 }

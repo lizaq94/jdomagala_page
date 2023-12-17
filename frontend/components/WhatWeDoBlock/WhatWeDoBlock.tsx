@@ -1,7 +1,7 @@
 import Popup from '@/components/Popup/Popup';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
-import styles from '@styles/components/WhatWeDoBlock.module.scss';
+import styles from '@styles/sections/WhatWeDoBlock.module.scss';
 
 interface IProps {
 	title: string;

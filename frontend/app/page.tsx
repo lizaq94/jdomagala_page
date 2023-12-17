@@ -1,4 +1,5 @@
 'use client';
+import AchievementSection from '@/sections/AchievementSection';
 import HeroSection from '@/sections/HeroSection';
 import Navigation from '@/components/Navigation/Navigation';
 import styles from '@/styles/components/page.module.scss';
@@ -23,6 +24,7 @@ export default function Home() {
 			</div>
 			<WhatWeDoSection />
 			<WhyWeSection />
+			<AchievementSection />
 		</>
 	);
 }

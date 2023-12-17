@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@styles/components/WhyWeBlock.module.scss';
+import styles from '@styles/sections/WhyWeBlock.module.scss';
 
 interface IProps {
 	title: string;

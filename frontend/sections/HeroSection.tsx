@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/Button/Button';
-import styles from '@styles/components/HeroSection.module.scss';
+import styles from '@styles/sections/HeroSection.module.scss';
 import { IHeroSectionData } from '@/types/HeroSectionData';
 
 interface IProps {

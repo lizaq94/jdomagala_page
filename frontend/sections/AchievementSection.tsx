@@ -5,23 +5,40 @@ import React from 'react';
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Section from '@/components/Section/Section';
 import styles from '@/styles/sections/AchievementSection.module.scss';
+import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
+import { useSuspenseQuery } from '@apollo/client';
+import { achievementSectionQuery } from '@/graphql/queries/AchievmentSectionQuery';
+import { IImageData } from '@/types/ImageType';
+
+interface ICounter {
+	id: string;
+	count: number;
+	description: string;
+}
+
+interface IAchievementSection {
+	background: IImageData;
+	counters: ICounter[];
+}
 const AchievementSection = (): JSX.Element | null => {
-	const response = true;
+	const response = extractDataFromApiResponse<IAchievementSection>(useSuspenseQuery(achievementSectionQuery));
 
 	if (!response) return null;
 
-	// const { sectionTitle, reasons } = response;
+	const { background, counters } = response;
 
 	return (
 		<Section>
 			<div
 				className={styles.wrapper}
 				style={{
-					background: `url("https://images.squarespace-cdn.com/content/v1/5e26c352156a467eb9ddf40f/29165110-669f-4982-a100-e8278ac5a936/BoM+Pic.png?format=1500w")`,
+					backgroundImage: `url(${getImageUrl(background)})`,
 				}}
 			>
 				<FlexBlocks>
-					<AnimatedCounter to={125} description="some text for " />
+					{counters.map((counter) => (
+						<AnimatedCounter to={counter.count} description={counter.description} key={counter.id} />
+					))}
 				</FlexBlocks>
 			</div>
 		</Section>

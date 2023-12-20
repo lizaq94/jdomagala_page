@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_counter_blocks",
+  "info": {
+    "displayName": "CounterBlock"
+  },
+  "options": {},
+  "attributes": {
+    "count": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -13,6 +13,7 @@ export const getImageUrl = (imageData: IImageData): string => {
 
 export const extractDataFromApiResponse = <T>(response: StrapiData<T>): T | null => {
 	const keys = Object.keys(response.data);
+
 	if (keys.length === 1) {
 		const [key] = keys;
 		const responseData = response.data[key];

@@ -2,6 +2,7 @@
 import AchievementSection from '@/sections/AchievementSection';
 import HeroSection from '@/sections/HeroSection';
 import Navigation from '@/components/Navigation/Navigation';
+import ProjectsSection from '@/sections/ProjectsSection';
 import styles from '@/styles/components/page.module.scss';
 import { useSuspenseQuery } from '@apollo/client';
 import { heroSectionQuery } from '@/graphql/queries/HeroSectionQuery';
@@ -25,6 +26,7 @@ export default function Home() {
 			<WhatWeDoSection />
 			<WhyWeSection />
 			<AchievementSection />
+			<ProjectsSection />
 		</>
 	);
 }

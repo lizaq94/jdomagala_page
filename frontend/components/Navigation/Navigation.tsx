@@ -33,7 +33,7 @@ const Navigation = () => {
 				</div>
 				<div className={styles.buttons}>
 					{navigationButtons.map(({ content, link }, index) => (
-						<Button content={content} url={link} hoverEffect outline={index + 1 === navigationButtons.length} />
+						<Button key={index} content={content} url={link} hoverEffect outline={index + 1 === navigationButtons.length} />
 					))}
 				</div>
 			</div>

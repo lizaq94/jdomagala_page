@@ -1,5 +1,6 @@
 'use client';
 
+import DesktopNavigation from '@/components/Navigation/DesktopNavigation';
 import { useSuspenseQuery } from '@apollo/client';
 import { ReactNode } from 'react';
 import { navigationQuery } from '@/graphql/queries/NavigationQuery';
@@ -31,11 +32,7 @@ const Navigation = () => {
 				<div className={styles.logo}>
 					<Image loader={({ src }) => src} src={logoUrl} alt="" fill={true} />
 				</div>
-				<div className={styles.buttons}>
-					{navigationButtons.map(({ content, link }, index) => (
-						<Button key={index} content={content} url={link} hoverEffect outline={index + 1 === navigationButtons.length} />
-					))}
-				</div>
+				<DesktopNavigation buttons={navigationButtons} />
 			</div>
 		</div>
 	);

@@ -1,8 +1,13 @@
 import { IImageData } from './ImageType';
 
+export interface NavigationButton {
+	content: string;
+	link: string;
+}
+
 export interface INavigationData {
 	logo: IImageData;
-	navigationButtons: { content: string; link: string }[];
+	navigationButtons: NavigationButton[];
 	emailAddress: string;
 	phoneNumber: string;
 }

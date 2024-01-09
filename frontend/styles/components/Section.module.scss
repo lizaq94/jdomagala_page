@@ -1,3 +1,11 @@
 .wrapper {
 	@include sectionWrapper;
 }
+
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}

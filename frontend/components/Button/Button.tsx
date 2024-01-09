@@ -14,7 +14,7 @@ const Button = ({ content, url, outline, hoverEffect }: IProps): JSX.Element => 
 			{content}
 		</Link>
 	) : (
-		<div className={classNames}>{content}</div>
+		<button className={classNames}>{content}</button>
 	);
 };
 

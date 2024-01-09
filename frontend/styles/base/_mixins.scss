@@ -1,12 +1,12 @@
 @mixin sectionWrapper {
 	width: 100%;
 	max-width: 1200px;
-	margin: 32px auto 0;
+	margin: 70px auto 0;
 }
 
 @mixin sectionTitle {
 	width: 100%;
-	margin-bottom: 40px;
+	margin-bottom: 70px;
 	font-family: $secondFontFamily;
 	font-size: 50px;
 	line-height: 48px;

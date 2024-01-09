@@ -1,8 +1,14 @@
-import React from 'react';
 import styles from '@styles//components/Section.module.scss';
+import React, { ReactNode } from 'react';
 
-const Section = ({ children } :React.PropsWithChildren): JSX.Element => {
-	return <section className={styles.wrapper}>{children}</section>;
+interface IProps {
+	children: ReactNode;
+	center?: boolean;
+}
+
+const Section = ({ children, center }: IProps) => {
+	const classes = `${styles.wrapper} ${center ? styles.center : ''}`;
+	return <section className={classes}>{children}</section>;
 };
 
 export default Section;

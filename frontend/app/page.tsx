@@ -11,18 +11,9 @@ import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
 import WhatWeDoSection from '@/sections/WhatWeDoSection';
 import WhyWeSection from '@/sections/WhyWeSection';
 export default function Home() {
-	const heroSectionResponse = extractDataFromApiResponse<IHeroSectionData>(useSuspenseQuery(heroSectionQuery));
-
-	const backgroundImage = heroSectionResponse?.backgroundImage;
-
-	const heroSectionImageUrl = !!backgroundImage ? getImageUrl(backgroundImage) : '';
-
 	return (
 		<>
-			<div className={styles.navigationAndHeroSectionWrapper} style={{ backgroundImage: `url(${heroSectionImageUrl})` }}>
-				<Navigation />
-				{!!heroSectionResponse && <HeroSection heroSectionData={heroSectionResponse} />}
-			</div>
+			<HeroSection />
 			<WhatWeDoSection />
 			<WhyWeSection />
 			<AchievementSection />

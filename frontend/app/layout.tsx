@@ -2,7 +2,6 @@ import '@styles/base/global.scss';
 import { Inter } from 'next/font/google';
 import { ApolloProvider } from '@/client/apollo-provider';
 import Navigation from '@/components/Navigation/Navigation';
-import Home from '@/app/page';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,8 +15,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang="en">
 			<body className={inter.className}>
 				<ApolloProvider>
-					{/*<Navigation />*/}
-					<Home />
+					<Navigation />
+					{children}
 				</ApolloProvider>
 			</body>
 		</html>

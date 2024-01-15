@@ -1,4 +1,5 @@
 import { motion, Transition, SVGMotionProps } from 'framer-motion';
+import styles from '@/styles/components/Navigation.module.scss';
 
 interface IProps {
 	isOpen: boolean;
@@ -39,7 +40,7 @@ const HamburgerButton = ({ isOpen, onClick, size, color }: IProps) => {
 
 	const lineProps = {
 		stroke: color,
-		strokeWidth: 1,
+		strokeWidth: 2,
 		vectorEffect: 'non-scaling-stroke',
 		initial: 'closed',
 		animate: variant,
@@ -47,11 +48,13 @@ const HamburgerButton = ({ isOpen, onClick, size, color }: IProps) => {
 	};
 
 	return (
-		<motion.svg viewBox={`0 0 4 4`} overflow="visible" preserveAspectRatio="none" width={size} height={size} onClick={onClick}>
-			<motion.line x1="0" x2="4" y1="0" y2="0" variants={top} {...lineProps} />
-			<motion.line x1="0" x2="4" y1="2" y2="2" variants={center} {...lineProps} />
-			<motion.line x1="0" x2="4" y1="4" y2="4" variants={bottom} {...lineProps} />
-		</motion.svg>
+		<div className={styles.hamburgerButton}>
+			<motion.svg viewBox={`0 0 4 4`} overflow="visible" preserveAspectRatio="none" width={size} height={size} onClick={onClick}>
+				<motion.line x1="0" x2="4" y1="0" y2="0" variants={top} {...lineProps} />
+				<motion.line x1="0" x2="4" y1="2" y2="2" variants={center} {...lineProps} />
+				<motion.line x1="0" x2="4" y1="4" y2="4" variants={bottom} {...lineProps} />
+			</motion.svg>
+		</div>
 	);
 };
 

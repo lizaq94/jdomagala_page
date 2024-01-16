@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const useRwd = () => {
 	const MAX_MOBILE_WIDTH = 768;
-	const [screenWidth, setScreenWidth] = useState(0);
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
 	useEffect(() => {
 		const handleResize = () => setScreenWidth(window.innerWidth);

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { NavigationButton } from '@/types/NavigationData';
 import HamburgerButton from '@/components/HamburgerButton/HamburgerButton';
 import { useState } from 'react';
+import Button from '@/components/Button/Button';
 
 interface IProps {
 	buttons: NavigationButton[];
@@ -29,9 +30,16 @@ const MobileNavigation = ({ buttons }: IProps) => {
 				exit={{ opacity: 0.5, x: '-100%' }}
 				className={styles.mobileButtonsWrapper}
 			>
-				{/*{buttons.map(({ content, link }, index) => (*/}
-				{/*	<Button key={index} content={content} url={link} hoverEffect outline={index + 1 === buttons.length} />*/}
-				{/*))}*/}
+				{buttons.map(({ content, link }, index) => (
+					<Button
+						key={index}
+						content={content}
+						url={link}
+						hoverEffect
+						outline={index + 1 === buttons.length}
+						mobileNavigationButton
+					/>
+				))}
 			</motion.div>
 		);
 	};

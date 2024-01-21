@@ -9,6 +9,7 @@ export const projectsQuery = gql`
 					description
 					status
 					localization
+					slug
 					images {
 						data {
 							attributes {

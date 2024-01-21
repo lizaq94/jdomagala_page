@@ -24,7 +24,7 @@ const Navigation = () => {
 
 	const { logo, navigationButtons, emailAddress, phoneNumber } = response;
 	const logoUrl = getImageUrl(logo);
-	console.log('Kamil isRwd', isRwd);
+
 	return (
 		<div className={styles.wrapper}>
 			{!isRwd && (

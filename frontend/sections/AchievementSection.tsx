@@ -28,7 +28,7 @@ const AchievementSection = (): JSX.Element | null => {
 	const { background, counters } = response;
 
 	return (
-		<Section>
+		<Section onFullPage>
 			<div
 				className={styles.wrapper}
 				style={{

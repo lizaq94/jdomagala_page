@@ -41,6 +41,7 @@ const ProjectsSection = (props: IProps) => {
 						name={project.title}
 						description={project.description}
 						images={project.images}
+						slug={project.slug}
 					/>
 				))}
 			</FlexBlocks>

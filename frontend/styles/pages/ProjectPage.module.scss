@@ -25,8 +25,9 @@ $leftSideWidth: 45%;
 
 .galleryWrapper {
 	width: calc(100% - #{$leftSideWidth});
-	border: 1px solid white;
 	margin-left: 30px;
+	display: flex;
+	flex-direction: column;
 }
 
 .leftSideWrapper,

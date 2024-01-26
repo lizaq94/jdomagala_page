@@ -1,5 +1,6 @@
 import Section from '@/components/Section/Section';
 import styles from '@/styles/pages/ProjectPage.module.scss';
+import Gallery from '@/components/Gallery/Gallery';
 
 const ProjectView = ({ params }: any) => {
 	return (
@@ -41,7 +42,9 @@ const ProjectView = ({ params }: any) => {
 					</ul>
 				</div>
 			</div>
-			<div className={styles.galleryWrapper}></div>
+			<div className={styles.galleryWrapper}>
+				<Gallery />
+			</div>
 		</Section>
 	);
 };

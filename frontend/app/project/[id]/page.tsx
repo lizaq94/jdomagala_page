@@ -1,8 +1,13 @@
+'use client';
+
 import Section from '@/components/Section/Section';
 import styles from '@/styles/pages/ProjectPage.module.scss';
 import Gallery from '@/components/Gallery/Gallery';
+import useRwd from '@/hooks/useRwd';
 
 const ProjectView = ({ params }: any) => {
+	const { isRwd } = useRwd();
+
 	return (
 		<Section customClass={styles.sectionWrapper}>
 			<div className={styles.leftSideWrapper}>
@@ -22,6 +27,7 @@ const ProjectView = ({ params }: any) => {
 						<span className={styles.elementDescription}>Zakończona</span>
 					</div>
 				</div>
+				{isRwd && <Gallery mobileView={true} />}
 				<div className={styles.descriptionWrapper}>
 					<p className={styles.descriptionParagraph}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus diam, vulputate eu lectus mattis, feugiat
@@ -42,9 +48,7 @@ const ProjectView = ({ params }: any) => {
 					</ul>
 				</div>
 			</div>
-			<div className={styles.galleryWrapper}>
-				<Gallery />
-			</div>
+			<div className={styles.galleryWrapper}>{!isRwd && <Gallery />}</div>
 		</Section>
 	);
 };

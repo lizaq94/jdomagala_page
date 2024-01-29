@@ -4,10 +4,22 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import styles from '@styles/components/CarouselSwiper.module.scss';
 
 interface IProps {
+	slides: string[];
+	activeSlideIndex: number;
 	onSwiper?: any;
 }
 
-const CarouselSwiper: FC<IProps> = ({ onSwiper }) => {
+const CarouselSwiper: FC<IProps> = ({ onSwiper, slides, activeSlideIndex }) => {
+	const getSlide = (imageSrc: string, index: number) => {
+		const isActiveSlide = activeSlideIndex === index;
+		const slideClasses = `${styles.slideWrapper} ${isActiveSlide ? styles.active : ''}`;
+		return (
+			<SwiperSlide className={slideClasses}>
+				<img src={imageSrc} alt={`Thumb ${index}`} />
+			</SwiperSlide>
+		);
+	};
+
 	return (
 		<Swiper
 			onSwiper={onSwiper}
@@ -18,36 +30,7 @@ const CarouselSwiper: FC<IProps> = ({ onSwiper }) => {
 			modules={[FreeMode, Navigation, Thumbs]}
 			className={styles.sliderWrapper}
 		>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-			</SwiperSlide>
-			<SwiperSlide className={styles.slideWrapper}>
-				<img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-			</SwiperSlide>
+			{slides.map((slide, index) => getSlide(slide, index))}
 		</Swiper>
 	);
 };

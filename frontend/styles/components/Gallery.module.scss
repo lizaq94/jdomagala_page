@@ -1,6 +1,15 @@
+$additionalWidth: 10%;
+
 .sliderWrapper {
 	flex: 1;
-	width: 100%;
-	border: 1px solid cadetblue;
+	width: calc(100% + 2 * #{$additionalWidth});
+	margin-left: -$additionalWidth !important;
 	margin-bottom: 40px;
+	max-height: 500px;
+
+	@include mediaQuery(medium) {
+		max-height: unset;
+		margin-left: auto !important;
+		width: 100%;
+	}
 }

@@ -24,10 +24,13 @@ $leftSideWidth: 45%;
 }
 
 .galleryWrapper {
-	width: calc(100% - #{$leftSideWidth});
-	margin-left: 30px;
 	display: flex;
 	flex-direction: column;
+
+	@include mediaQuery(medium) {
+		width: calc(100% - #{$leftSideWidth});
+		margin-left: 30px;
+	}
 }
 
 .leftSideWrapper,

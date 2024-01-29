@@ -1,63 +1,60 @@
 'use client';
 import React, { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, FreeMode, Thumbs, Pagination } from 'swiper/modules';
+import styles from '@styles/components/Gallery.module.scss';
+import CarouselSwiper from '@/components/CarouselSwiper/CarouselSwiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styles from '@styles/components/Gallery.module.scss';
-import { Navigation, FreeMode, Thumbs } from 'swiper/modules';
-import CarouselSwiper from '@/components/CarouselSwiper/CarouselSwiper';
+import 'swiper/css/pagination';
+interface IProps {
+	photos?: string[];
+	mobileView?: boolean;
+}
 
-const Gallery: FC<IProps> = (props) => {
+const mockImageData = [
+	'https://swiperjs.com/demos/images/nature-1.jpg',
+	'https://swiperjs.com/demos/images/nature-2.jpg',
+	'https://swiperjs.com/demos/images/nature-3.jpg',
+	'https://swiperjs.com/demos/images/nature-4.jpg',
+	'https://swiperjs.com/demos/images/nature-5.jpg',
+	'https://swiperjs.com/demos/images/nature-6.jpg',
+	'https://swiperjs.com/demos/images/nature-7.jpg',
+	'https://swiperjs.com/demos/images/nature-8.jpg',
+	'https://swiperjs.com/demos/images/nature-9.jpg',
+	'https://swiperjs.com/demos/images/nature-10.jpg',
+];
+
+const Gallery: FC<IProps> = ({ photos = mockImageData, mobileView = false }) => {
 	const [carouselSwiper, setCarouselSwiper] = useState(null);
+	const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+	const getSlide = (imagSrc: string) => (
+		<SwiperSlide>
+			<img src={imagSrc} alt="Slide" />
+		</SwiperSlide>
+	);
 
 	return (
 		<>
 			<Swiper
 				spaceBetween={50}
 				slidesPerView={1}
-				onSlideChange={() => console.log('Kamil here slide change')}
-				onSwiper={(swiper) => console.log('Kamil swiper', swiper)}
-				navigation={true}
-				modules={[FreeMode, Navigation, Thumbs]}
+				onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+				navigation={!mobileView}
+				modules={[FreeMode, Navigation, Thumbs, Pagination]}
 				className={styles.sliderWrapper}
 				thumbs={{ swiper: carouselSwiper }}
+				pagination={{
+					enabled: mobileView,
+					dynamicBullets: true,
+				}}
 			>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-				</SwiperSlide>
-				<SwiperSlide>
-					<img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-				</SwiperSlide>
+				{photos.map((imageSrc) => getSlide(imageSrc))}
 			</Swiper>
-			<CarouselSwiper onSwiper={setCarouselSwiper} />
+			{!mobileView && <CarouselSwiper slides={photos} activeSlideIndex={activeSlideIndex} onSwiper={setCarouselSwiper} />}
 		</>
 	);
 };
-
-interface IProps {}
 
 export default Gallery;

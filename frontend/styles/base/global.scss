@@ -5,7 +5,11 @@
 }
 
 html {
+	--swiper-pagination-color: #454ade;
 	--swiper-navigation-color: white;
+	--swiper-pagination-bullet-size: 15px;
+	--swiper-pagination-bullet-inactive-color: #fff;
+	--swiper-pagination-bullet-inactive-opacity: 0.4;
 }
 
 html,

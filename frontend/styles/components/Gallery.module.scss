@@ -1,4 +1,4 @@
-$additionalWidth: 10%;
+$additionalWidth: 4%;
 
 .sliderWrapper {
 	flex: 1;
@@ -12,4 +12,8 @@ $additionalWidth: 10%;
 		margin-left: auto !important;
 		width: 100%;
 	}
+}
+
+.activeDot {
+	background-color: red;
 }

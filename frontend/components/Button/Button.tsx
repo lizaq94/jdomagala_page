@@ -4,11 +4,12 @@ import styles from '@styles/components/Button.module.scss';
 interface IProps {
 	content: string;
 	url?: string;
+	onClick?: () => void;
 	outline?: boolean;
 	hoverEffect?: boolean;
 	mobileNavigationButton?: boolean;
 }
-const Button = ({ content, url, outline, hoverEffect, mobileNavigationButton }: IProps): JSX.Element => {
+const Button = ({ content, url, onClick, outline, hoverEffect, mobileNavigationButton }: IProps): JSX.Element => {
 	const classNames = `Button ${mobileNavigationButton ? styles.mobileNavigationButton : ''} ${styles.wrapper} ${
 		outline ? styles.outline : ''
 	} ${hoverEffect ? styles.hover : ''}`;
@@ -17,7 +18,9 @@ const Button = ({ content, url, outline, hoverEffect, mobileNavigationButton }: 
 			{content}
 		</Link>
 	) : (
-		<button className={classNames}>{content}</button>
+		<button className={classNames} onClick={onClick}>
+			{content}
+		</button>
 	);
 };
 

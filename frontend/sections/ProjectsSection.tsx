@@ -11,6 +11,7 @@ import { useSuspenseQuery } from '@apollo/client';
 import { projectsSectionQuery } from '@/graphql/queries/ProjectsSectionQuery';
 import Heading from '@/components/Heading/Heading';
 import Button from '@/components/Button/Button';
+import { useState } from 'react';
 
 interface IProps {
 	test?: string;
@@ -21,6 +22,8 @@ interface IProjectsSectionData {
 	buttonText: string;
 }
 const ProjectsSection = (props: IProps) => {
+	const COUNT_PRODUCT_TO_VIEW = 4;
+	const [displayedProjects, setDisplayedProjects] = useState(COUNT_PRODUCT_TO_VIEW);
 	const responseForProjects = useSuspenseQuery<any>(projectsQuery);
 	const responseForSection = extractDataFromApiResponse<IProjectsSectionData>(useSuspenseQuery(projectsSectionQuery));
 
@@ -30,11 +33,21 @@ const ProjectsSection = (props: IProps) => {
 
 	const { title, buttonText } = responseForSection;
 
+	const loadMoreProjects = () => {
+		setDisplayedProjects((prev) => prev + COUNT_PRODUCT_TO_VIEW);
+	};
+
+	const getProjectsToView = (allProjects: IProjectData[]) => {
+		return allProjects.slice(0, displayedProjects);
+	};
+	const projectsToDisplay = getProjectsToView(allProjects);
+	const showLoadMoreButton = allProjects.length > projectsToDisplay.length;
+
 	return (
 		<Section center>
 			<Heading>{title}</Heading>
 			<FlexBlocks additionalClassName="withProjects">
-				{allProjects.map((project, index) => (
+				{getProjectsToView(allProjects).map((project, index) => (
 					<ProjectBlock
 						key={index}
 						status={project.status}
@@ -45,7 +58,7 @@ const ProjectsSection = (props: IProps) => {
 					/>
 				))}
 			</FlexBlocks>
-			<Button content={buttonText} outline />
+			{showLoadMoreButton && <Button content={buttonText} outline onClick={loadMoreProjects} />}
 		</Section>
 	);
 };

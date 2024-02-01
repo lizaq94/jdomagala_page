@@ -12,6 +12,8 @@ import { projectsSectionQuery } from '@/graphql/queries/ProjectsSectionQuery';
 import Heading from '@/components/Heading/Heading';
 import Button from '@/components/Button/Button';
 import { useState } from 'react';
+import Slider from '@/components/Slider/Slider';
+import { SwiperSlide } from 'swiper/react';
 
 interface IProps {
 	test?: string;
@@ -43,6 +45,18 @@ const ProjectsSection = (props: IProps) => {
 	const projectsToDisplay = getProjectsToView(allProjects);
 	const showLoadMoreButton = allProjects.length > projectsToDisplay.length;
 
+	const getRwdView = () => {
+		return (
+			<Slider>
+				{allProjects.map((project, index) => (
+					<SwiperSlide>
+						<h2>{index}</h2>
+					</SwiperSlide>
+				))}
+			</Slider>
+		);
+	};
+
 	return (
 		<Section center>
 			<Heading>{title}</Heading>
@@ -59,6 +73,7 @@ const ProjectsSection = (props: IProps) => {
 				))}
 			</FlexBlocks>
 			{showLoadMoreButton && <Button content={buttonText} outline onClick={loadMoreProjects} />}
+			{getRwdView()}
 		</Section>
 	);
 };

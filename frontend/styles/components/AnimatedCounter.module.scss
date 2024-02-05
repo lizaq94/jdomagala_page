@@ -5,10 +5,14 @@
 	align-items: center;
 	justify-content: center;
 	z-index: 1;
-	margin-right: 70px;
+	margin: 0 0 30px;
 
-	&:last-of-type {
-		margin-right: 0;
+	@include mediaQuery(medium) {
+		margin: 0 70px 0 0;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
 	}
 }
 

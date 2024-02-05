@@ -4,6 +4,11 @@
 	max-width: 334px;
 	border: 1px solid white;
 	padding: 20px 50px 20px 18px;
+	margin-bottom: 50px;
+
+	@include mediaQuery(medium) {
+		margin-bottom: 0;
+	}
 }
 
 .title {

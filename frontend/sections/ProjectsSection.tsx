@@ -14,6 +14,7 @@ import Button from '@/components/Button/Button';
 import { useState } from 'react';
 import Slider from '@/components/Slider/Slider';
 import { SwiperSlide } from 'swiper/react';
+import useRwd from '@/hooks/useRwd';
 
 interface IProps {
 	test?: string;
@@ -26,6 +27,7 @@ interface IProjectsSectionData {
 const ProjectsSection = (props: IProps) => {
 	const COUNT_PRODUCT_TO_VIEW = 4;
 	const [displayedProjects, setDisplayedProjects] = useState(COUNT_PRODUCT_TO_VIEW);
+	const { isRwd } = useRwd();
 	const responseForProjects = useSuspenseQuery<any>(projectsQuery);
 	const responseForSection = extractDataFromApiResponse<IProjectsSectionData>(useSuspenseQuery(projectsSectionQuery));
 
@@ -47,19 +49,25 @@ const ProjectsSection = (props: IProps) => {
 
 	const getRwdView = () => {
 		return (
-			<Slider>
+			<Slider height={400}>
 				{allProjects.map((project, index) => (
 					<SwiperSlide>
-						<h2>{index}</h2>
+						<ProjectBlock
+							key={index}
+							status={project.status}
+							name={project.title}
+							description={project.description}
+							images={project.images}
+							slug={project.slug}
+						/>
 					</SwiperSlide>
 				))}
 			</Slider>
 		);
 	};
 
-	return (
-		<Section center>
-			<Heading>{title}</Heading>
+	const getDesktopView = () => (
+		<>
 			<FlexBlocks additionalClassName="withProjects">
 				{getProjectsToView(allProjects).map((project, index) => (
 					<ProjectBlock
@@ -73,7 +81,14 @@ const ProjectsSection = (props: IProps) => {
 				))}
 			</FlexBlocks>
 			{showLoadMoreButton && <Button content={buttonText} outline onClick={loadMoreProjects} />}
-			{getRwdView()}
+		</>
+	);
+
+	return (
+		<Section center>
+			<Heading>{title}</Heading>
+			{!isRwd && getDesktopView()}
+			{isRwd && getRwdView()}
 		</Section>
 	);
 };

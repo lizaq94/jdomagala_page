@@ -1,11 +1,11 @@
 .wrapper {
 	width: 100%;
-	height: 600px;
 	display: flex;
 	flex-direction: column;
 
 	@include mediaQuery(medium) {
 		flex-direction: row;
+		height: 600px;
 	}
 }
 

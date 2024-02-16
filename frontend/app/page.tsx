@@ -11,6 +11,7 @@ import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
 import WhatWeDoSection from '@/sections/WhatWeDoSection';
 import WhyWeSection from '@/sections/WhyWeSection';
 import AboutUsSection from '@/sections/AboutUsSection';
+import ContactUsSection from '@/sections/ContactUsSection';
 export default function Home() {
 	return (
 		<>
@@ -20,6 +21,7 @@ export default function Home() {
 			<AchievementSection />
 			<ProjectsSection />
 			<AboutUsSection />
+			<ContactUsSection />
 		</>
 	);
 }

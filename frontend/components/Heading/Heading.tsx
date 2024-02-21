@@ -1,20 +1,14 @@
-import { Property } from 'csstype';
 import React from 'react';
-import styles from '@styles//components/Heading.module.scss';
+import classes from '@styles//components/Heading.module.scss';
 import { ReactNode } from 'react';
-import TextAlign = Property.TextAlign;
 
 interface IProps {
 	children: ReactNode;
-	align?: TextAlign;
+	customClass?: string;
 }
 
-const Heading = ({ children, align = 'center' }: IProps): JSX.Element => {
-	return (
-		<h2 className={styles.heading} style={{ textAlign: align }}>
-			{children}
-		</h2>
-	);
+const Heading = ({ children, customClass }: IProps): JSX.Element => {
+	return <h2 className={`${classes.heading} ${customClass ? customClass : ''}`}>{children}</h2>;
 };
 
 export default Heading;

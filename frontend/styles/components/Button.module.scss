@@ -61,3 +61,11 @@
 .mobileNavigationButton {
 	margin: 20px 0;
 }
+
+.clickEffect {
+	transition: transform 0.5ms linear;
+
+	&:active {
+		transform: scale(0.9);
+	}
+}

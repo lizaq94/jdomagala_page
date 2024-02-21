@@ -9,7 +9,7 @@ const ContactUsSection = (): JSX.Element | null => {
 	return (
 		<Section customClass={classes.wrapper}>
 			<div className={classes.leftSideWrapper}>
-				<Heading align="left">Contact with us</Heading>
+				<Heading customClass={classes.heading}>Contact with us</Heading>
 				<Form />
 			</div>
 			<div className={classes.rightSideWrapper}>

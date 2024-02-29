@@ -6,6 +6,19 @@ $gray: #9b9b9b;
 	width: 100%;
 }
 
+.withError {
+	.field {
+		border-color: red;
+	}
+
+	//.field,
+	//.field:focus {
+	//	~ .label {
+	//		color: red;
+	//	}
+	//}
+}
+
 .field {
 	font-family: inherit;
 	width: 100%;
@@ -63,4 +76,10 @@ $gray: #9b9b9b;
 	overflow: hidden;
 	min-height: 150px;
 	resize: none;
+}
+
+.error {
+	margin-top: 5px;
+	color: red;
+	font-size: 14px;
 }

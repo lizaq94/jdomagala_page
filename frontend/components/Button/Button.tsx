@@ -10,8 +10,19 @@ interface IProps {
 	mobileNavigationButton?: boolean;
 	customClass?: string;
 	clickEffect?: boolean;
+	buttonType?: 'button' | 'submit' | 'reset';
 }
-const Button = ({ content, url, onClick, outline, hoverEffect, mobileNavigationButton, customClass, clickEffect }: IProps): JSX.Element => {
+const Button = ({
+	content,
+	url,
+	onClick,
+	outline,
+	hoverEffect,
+	mobileNavigationButton,
+	customClass,
+	clickEffect,
+	buttonType = 'button',
+}: IProps): JSX.Element => {
 	const classNames = `Button ${mobileNavigationButton ? clasess.mobileNavigationButton : ''} ${clasess.wrapper} ${
 		outline ? clasess.outline : ''
 	} ${hoverEffect ? clasess.hover : ''} ${clickEffect ? clasess.clickEffect : ''} ${customClass}`;
@@ -20,7 +31,7 @@ const Button = ({ content, url, onClick, outline, hoverEffect, mobileNavigationB
 			{content}
 		</Link>
 	) : (
-		<button className={classNames} onClick={onClick}>
+		<button className={classNames} onClick={onClick} type={buttonType}>
 			{content}
 		</button>
 	);

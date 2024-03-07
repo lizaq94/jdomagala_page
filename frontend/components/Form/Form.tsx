@@ -1,4 +1,4 @@
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import classes from '@/styles/components/Form.module.scss';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
@@ -15,8 +15,26 @@ const Form = () => {
 	const { values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
 		initialValues,
 		validationSchema: FormValidationSchema,
-		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+		onSubmit: async (values) => {
+			try {
+				const res = await fetch('/api/form', {
+					method: 'POST',
+					body: JSON.stringify({
+						name: values.name,
+						email: values.email,
+						phone: values.phone,
+						message: values.message,
+					}),
+					headers: {
+						'content-type': 'application/json',
+					},
+				});
+				if (res.status === 200) {
+					console.log('Kamil here great');
+				}
+			} catch (err: any) {
+				console.error('Err', err);
+			}
 		},
 	});
 

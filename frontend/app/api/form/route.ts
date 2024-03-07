@@ -9,8 +9,8 @@ export async function POST(req: NextRequest) {
 
 	try {
 		const info = await transporter.sendMail({
-			from: 'domagalaaaa.k94@gmail.com',
-			to: 'domagala.k94@gmail.com',
+			from: process.env.NODMAILER_USER,
+			to: process.env.NODMAILER_RECIPIENT,
 			subject: 'Wiadomość ze strony jdomagala.pl',
 			text: getEmailTextTemplate(name, email, phone, message),
 			html: getEmailHTMLTemplate(name, email, phone, message),

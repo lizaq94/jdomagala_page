@@ -15,9 +15,10 @@ export async function POST(req: NextRequest) {
 			text: getEmailTextTemplate(name, email, phone, message),
 			html: getEmailHTMLTemplate(name, email, phone, message),
 		});
+		return new Response(JSON.stringify({ data: info }));
 	} catch (error) {
-		console.error(error);
+		return new Response('Bad request', {
+			status: 400,
+		});
 	}
-
-	return new Response('OK');
 }

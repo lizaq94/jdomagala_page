@@ -3,8 +3,13 @@ import classes from '@/styles/components/Form.module.scss';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import { FormValidationSchema } from '@/components/Form/schema/FormValidationSchema';
+import { useState } from 'react';
+import { sendContactForm } from '@/lib/api';
 
 const Form = () => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+
 	const initialValues = {
 		name: '',
 		email: '',
@@ -17,23 +22,14 @@ const Form = () => {
 		validationSchema: FormValidationSchema,
 		onSubmit: async (values) => {
 			try {
-				const res = await fetch('/api/form', {
-					method: 'POST',
-					body: JSON.stringify({
-						name: values.name,
-						email: values.email,
-						phone: values.phone,
-						message: values.message,
-					}),
-					headers: {
-						'content-type': 'application/json',
-					},
-				});
-				if (res.status === 200) {
-					console.log('Kamil here great');
+				setIsLoading(true);
+				await sendContactForm(values);
+				setIsLoading(false);
+			} catch (error) {
+				if (error instanceof Error) {
+					setErrorMessage(error.message);
+					setIsLoading(false);
 				}
-			} catch (err: any) {
-				console.error('Err', err);
 			}
 		},
 	});
@@ -82,7 +78,13 @@ const Form = () => {
 					isTextArea
 				/>
 				<div className={classes.buttonWrapper}>
-					<Button content="Send" customClass={classes.formButton} outline clickEffect buttonType="submit" />
+					<Button
+						content={isLoading ? 'Loading..' : 'Send'}
+						customClass={classes.formButton}
+						outline
+						clickEffect
+						buttonType="submit"
+					/>
 				</div>
 			</form>
 		</div>

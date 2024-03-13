@@ -4,6 +4,7 @@ import { ChangeEvent, FocusEvent } from 'react';
 interface IProps {
 	onChange: (e: ChangeEvent<any>) => void;
 	onBlur: (e: FocusEvent<any>) => void;
+	value: string;
 	label?: string;
 	type?: string;
 	placeholder?: string;
@@ -14,7 +15,7 @@ interface IProps {
 	isTouched?: boolean;
 }
 const Input = (props: IProps) => {
-	const { label, type, placeholder, name, required, isTextArea = false, onChange, onBlur, errorMessage, isTouched } = props;
+	const { label, type, placeholder, name, required, isTextArea = false, onChange, onBlur, errorMessage, isTouched, value } = props;
 	const wrapperClasses = `${classes.wrapper} ${errorMessage && isTouched ? classes.withError : ''}`;
 
 	return (
@@ -26,6 +27,7 @@ const Input = (props: IProps) => {
 					placeholder={placeholder}
 					name={name}
 					id={name}
+					value={value}
 					required={required}
 					onChange={onChange}
 					onBlur={onBlur}
@@ -36,6 +38,7 @@ const Input = (props: IProps) => {
 					placeholder={placeholder}
 					name={name}
 					id={name}
+					value={value}
 					required={required}
 					onChange={onChange}
 					onBlur={onBlur}

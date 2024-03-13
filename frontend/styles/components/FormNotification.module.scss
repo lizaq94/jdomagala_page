@@ -1,0 +1,25 @@
+.wrapper {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	height: 40px;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #dcedc8;
+	color: #33691e;
+	padding: 10px 30px;
+	border-radius: 4px;
+	z-index: 100;
+	box-shadow: 9px 3px 24px -14px rgba(66, 68, 90, 1);
+}
+
+.error {
+	background-color: #ffccbc;
+	color: #b71c1c;
+}
+
+.message {
+	margin-left: 10px;
+	font-size: 14px;
+}

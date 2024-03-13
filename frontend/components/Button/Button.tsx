@@ -11,6 +11,7 @@ interface IProps {
 	customClass?: string;
 	clickEffect?: boolean;
 	buttonType?: 'button' | 'submit' | 'reset';
+	isLoading?: boolean;
 }
 const Button = ({
 	content,
@@ -22,17 +23,19 @@ const Button = ({
 	customClass,
 	clickEffect,
 	buttonType = 'button',
+	isLoading = false,
 }: IProps): JSX.Element => {
 	const classNames = `Button ${mobileNavigationButton ? clasess.mobileNavigationButton : ''} ${clasess.wrapper} ${
 		outline ? clasess.outline : ''
 	} ${hoverEffect ? clasess.hover : ''} ${clickEffect ? clasess.clickEffect : ''} ${customClass}`;
+
 	return !!url ? (
 		<Link className={classNames} href={url}>
 			{content}
 		</Link>
 	) : (
 		<button className={classNames} onClick={onClick} type={buttonType}>
-			{content}
+			{isLoading ? <span className={clasess.loader}></span> : content}
 		</button>
 	);
 };

@@ -26,7 +26,7 @@ const Navigation = () => {
 	const logoUrl = getImageUrl(logo);
 
 	return (
-		<div className={styles.wrapper}>
+		<header className={styles.wrapper}>
 			{!isRwd && (
 				<div className={styles.additional_info}>
 					<div className={styles.email}>{emailAddress}</div>
@@ -39,7 +39,7 @@ const Navigation = () => {
 				</div>
 				{isRwd ? <MobileNavigation buttons={navigationButtons} /> : <DesktopNavigation buttons={navigationButtons} />}
 			</div>
-		</div>
+		</header>
 	);
 };
 

@@ -2,6 +2,7 @@ import '@styles/base/global.scss';
 import { Inter } from 'next/font/google';
 import { ApolloProvider } from '@/client/apollo-provider';
 import Navigation from '@/components/Navigation/Navigation';
+import Footer from '@/components/Footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<ApolloProvider>
 					<Navigation />
 					{children}
+					<Footer />
 				</ApolloProvider>
 			</body>
 		</html>

@@ -1,32 +1,33 @@
-'use client';
-
 import Button from '@/components/Button/Button';
-import styles from '@styles/sections/HeroSection.module.scss';
+import classes from '@styles/sections/HeroSection.module.scss';
 import { IHeroSectionData } from '@/types/HeroSectionData';
-import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
-import { useSuspenseQuery } from '@apollo/client';
+
+const data = {
+	title: 'Home from you dreams',
+	description:
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus magna vel urna condimentum, et porta est' +
+		' faucibus. Fusce ut orci eu nisi facilisis pulvinar. Phasellus ac condimentum velit. Nunc pulvinar cursus viverra',
+	backgroundImage: {
+		url: 'https://images.pexels.com/photos/4513940/pexels-photo-4513940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		alternativeText: '',
+	},
+} as {} as IHeroSectionData;
+
 const HeroSection = () => {
-	const heroSectionResponse = extractDataFromApiResponse<IHeroSectionData>(useSuspenseQuery(heroSectionQuery));
-
-	if (!heroSectionResponse) return null;
-
-	const { title, description, backgroundImage } = heroSectionResponse;
-	const heroSectionImageUrl = !!backgroundImage ? getImageUrl(backgroundImage) : '';
+	const { title, description, backgroundImage } = data;
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.wrapper}>
-				<div className={styles.content}>
-					<h1 className={styles.title}>{title}</h1>
-					<p className={styles.description}>{description}</p>
+		<div className={classes.container}>
+			<div className={classes.wrapper}>
+				<div className={classes.content}>
+					<h1 className={classes.title}>{title}</h1>
+					<p className={classes.description}>{description}</p>
 					<Button content="Contact" outline={true} hoverEffect={true} />
 				</div>
-				<div className={styles.background} style={{ backgroundImage: `url(${heroSectionImageUrl})` }} />
+				<div className={classes.background} style={{ backgroundImage: `url(${backgroundImage.url})` }} />
 			</div>
 		</div>
 	);
 };
-
-import { heroSectionQuery } from '@/graphql/queries/HeroSectionQuery';
 
 export default HeroSection;

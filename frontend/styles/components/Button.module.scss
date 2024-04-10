@@ -20,6 +20,12 @@
 	border: 1px solid white;
 }
 
+.outline.hover {
+	&:hover {
+		background-color: $primaryColor;
+	}
+}
+
 .hover {
 	&::after,
 	&:before {

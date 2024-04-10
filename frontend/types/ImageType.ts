@@ -1,7 +1,6 @@
 export interface IImageData {
-	data: {
-		attributes: IImageAttributes;
-	};
+	url: string;
+	alternativeText: string;
 }
 
 export interface IImageAttributes {

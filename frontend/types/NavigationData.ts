@@ -1,4 +1,4 @@
-import { IImageData } from './ImageType';
+import { IImageData } from '@/types/ImageType';
 
 export interface NavigationButton {
 	content: string;

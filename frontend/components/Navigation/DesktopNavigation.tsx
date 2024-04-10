@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const DesktopNavigation = ({ buttons }: IProps) => {
-	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className={styles.buttons}>
 			{buttons.map(({ content, link }, index) => (

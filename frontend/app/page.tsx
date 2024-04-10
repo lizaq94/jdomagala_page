@@ -17,11 +17,11 @@ export default function Home() {
 		<>
 			<HeroSection />
 			<WhatWeDoSection />
-			<WhyWeSection />
-			<AchievementSection />
-			<ProjectsSection />
-			<AboutUsSection />
-			<ContactUsSection />
+			{/*<WhyWeSection />*/}
+			{/*<AchievementSection />*/}
+			{/*<ProjectsSection />*/}
+			{/*<AboutUsSection />*/}
+			{/*<ContactUsSection />*/}
 		</>
 	);
 }

@@ -1,41 +1,46 @@
 'use client';
 
 import DesktopNavigation from '@/components/Navigation/DesktopNavigation';
-import { useSuspenseQuery } from '@apollo/client';
 import { ReactNode } from 'react';
-import { navigationQuery } from '@/graphql/queries/NavigationQuery';
 import Image from 'next/image';
-import styles from '@styles/components/Navigation.module.scss';
-import Button from '@/components/Button/Button';
-import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
+import classes from '@styles/components/Navigation.module.scss';
 import { INavigationData } from '@/types/NavigationData';
 import useRwd from '@/hooks/useRwd';
 import MobileNavigation from '@/components/Navigation/MobileNavigation';
 
-interface IProps {
-	children: ReactNode;
-}
+const navigationButtons = [
+	{ content: 'About us', link: '/' },
+	{ content: 'Offers', link: '/' },
+	{ content: 'Projects', link: '/' },
+	{ content: 'Contact us', link: '/' },
+];
+
+const data = {
+	logo: {
+		url: 'https://assets.turbologo.com/blog/en/2018/03/19085254/prozrachniy-logo-1-800x575.png',
+		alternativeText: '',
+	},
+	navigationButtons,
+	emailAddress: 'jdomagala@gmail.com',
+	phoneNumber: '737 232 232',
+} as {} as INavigationData;
 
 const Navigation = () => {
 	const { isRwd } = useRwd();
-	const response = extractDataFromApiResponse<INavigationData>(useSuspenseQuery(navigationQuery));
 
-	if (!response) return null;
-
-	const { logo, navigationButtons, emailAddress, phoneNumber } = response;
-	const logoUrl = getImageUrl(logo);
+	const { logo, navigationButtons, emailAddress, phoneNumber } = data;
 
 	return (
-		<header className={styles.wrapper}>
+		<header className={classes.wrapper}>
 			{!isRwd && (
-				<div className={styles.additional_info}>
-					<div className={styles.email}>{emailAddress}</div>
-					<div className={styles.phone}>{phoneNumber}</div>
+				<div className={classes.additional_info}>
+					<div className={classes.email}>{emailAddress}</div>
+					<div className={classes.phone}>{phoneNumber}</div>
 				</div>
 			)}
-			<div className={styles.logoAndButtons_wrapper}>
-				<div className={styles.logo}>
-					<Image loader={({ src }) => src} src={logoUrl} alt="" fill={true} />
+			<div className={classes.logoAndButtons_wrapper}>
+				<div className={classes.logo}>
+					<Image loader={({ src }) => src} src={logo.url} alt="" fill={true} />
 				</div>
 				{isRwd ? <MobileNavigation buttons={navigationButtons} /> : <DesktopNavigation buttons={navigationButtons} />}
 			</div>

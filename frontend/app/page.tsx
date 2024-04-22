@@ -15,13 +15,13 @@ import ContactUsSection from '@/sections/ContactUsSection';
 export default function Home() {
 	return (
 		<>
-			<HeroSection />
-			<WhatWeDoSection />
-			<WhyWeSection />
-			<AchievementSection />
-			<ProjectsSection />
-			<AboutUsSection />
-			<ContactUsSection />
+			{/*<HeroSection />*/}
+			{/*<WhatWeDoSection />*/}
+			{/*<WhyWeSection />*/}
+			{/*<AchievementSection />*/}
+			{/*<ProjectsSection />*/}
+			{/*<AboutUsSection />*/}
+			{/*<ContactUsSection />*/}
 		</>
 	);
 }

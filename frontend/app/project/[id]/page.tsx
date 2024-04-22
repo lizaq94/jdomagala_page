@@ -1,7 +1,7 @@
 'use client';
 
 import Section from '@/components/Section/Section';
-import styles from '@/styles/pages/ProjectPage.module.scss';
+import styles from '@styles/pages/ProjectView.module.scss';
 import Gallery from '@/components/Gallery/Gallery';
 import useRwd from '@/hooks/useRwd';
 

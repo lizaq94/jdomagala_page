@@ -2,6 +2,7 @@ import Popup from '@/components/Popup/Popup';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styles from '@styles/sections/WhatWeDoBlock.module.scss';
+import { Buildings } from '@phosphor-icons/react';
 
 interface IProps {
 	title: string;
@@ -20,11 +21,9 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 	return (
 		<>
 			<div className={styles.wrapper}>
-				{!!icon && (
-					<span className={styles.icon}>
-						<img src={icon} alt="" />
-					</span>
-				)}
+				<span className={styles.icon}>
+					<Buildings size={32} />
+				</span>
 				<h3 className={styles.title}>{title}</h3>
 				<p className={styles.shortDescription}>{shortDescription}</p>
 				{!!longDescription && (
@@ -33,7 +32,7 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 					</motion.button>
 				)}
 			</div>
-			<AnimatePresence>{isPopupOpen && <Popup content={longDescription} onCloseButton={onCloseButton} />}</AnimatePresence>
+			{/*<AnimatePresence>{isPopupOpen && <Popup content={longDescription} onCloseButton={onCloseButton} />}</AnimatePresence>*/}
 		</>
 	);
 };

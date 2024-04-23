@@ -3,6 +3,7 @@
 	border: 1px solid transparent;
 	position: relative;
 	z-index: 0;
+	color: $white;
 }
 
 .wrapper {
@@ -43,9 +44,9 @@
 
 .background {
 	position: absolute;
-	top: -$navigationMaxHeight;
-	left: 0;
-	width: 100vw;
+	top: calc(-#{$navigationMaxHeight} - 5px);
+	left: -5px;
+	width: calc(100vw + 5px);
 	height: calc(100% + #{$navigationMaxHeight});
 	background-size: cover;
 	overflow: auto;

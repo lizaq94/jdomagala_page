@@ -1,13 +1,8 @@
-'use client';
-
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
-import { whatWeDoSectionQuery } from '@/graphql/queries/WhatWeDoSectionQuery';
-import { useSuspenseQuery } from '@apollo/client';
 import React from 'react';
-import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
 import { IImageData } from '@/types/ImageType';
 
 interface IWhatWeDoBlock {
@@ -23,16 +18,28 @@ interface IWhatWeDoSection {
 	whatWeDoBlocks: IWhatWeDoBlock[];
 }
 
+const block = {
+	title: 'PRE-CONSTRUCTION',
+	icon: '',
+	shortDescription: 'Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit',
+	longDescription:
+		'Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit, Phasellus ac condimentum' +
+		' velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit, Phasellus ac condimentum velit. Nunc pulvinar cursus viverra.' +
+		' Lorem ipsum dolor sit',
+	textForButton: 'Read more',
+};
+
+const data = {
+	sectionTitle: 'Our <span>Services</span>',
+	whatWeDoBlocks: [block, block, block],
+};
+
 const WhatWeDoSection = (): JSX.Element | null => {
-	const response = extractDataFromApiResponse<IWhatWeDoSection>(useSuspenseQuery(whatWeDoSectionQuery));
-
-	if (!response) return null;
-
-	const { sectionTitle, whatWeDoBlocks } = response;
+	const { sectionTitle, whatWeDoBlocks } = data;
 
 	return (
 		<Section>
-			<Heading>{sectionTitle}</Heading>
+			<Heading title={sectionTitle} />
 			<FlexBlocks>
 				{whatWeDoBlocks?.map((block, index) => {
 					const { title, icon, shortDescription, longDescription, textForButton } = block;
@@ -40,7 +47,7 @@ const WhatWeDoSection = (): JSX.Element | null => {
 					return (
 						<WhatWeDoBlock
 							title={title}
-							icon={getImageUrl(icon)}
+							icon={icon}
 							shortDescription={shortDescription}
 							longDescription={longDescription}
 							buttonText={textForButton}

@@ -14,8 +14,9 @@
 	font-family: $secondFontFamily;
 	font-size: 50px;
 	line-height: 48px;
-	font-weight: 400;
+	font-weight: 700;
 	text-align: center;
+	text-transform: uppercase;
 
 	@include mediaQuery(medium) {
 		font-size: 64px;

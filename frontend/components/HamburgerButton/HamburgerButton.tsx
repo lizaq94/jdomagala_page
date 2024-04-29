@@ -39,7 +39,7 @@ const HamburgerButton = ({ isOpen, onClick, size, color }: IProps) => {
 	};
 
 	const lineProps = {
-		stroke: color,
+		stroke: '#000',
 		strokeWidth: 2,
 		vectorEffect: 'non-scaling-stroke',
 		initial: 'closed',

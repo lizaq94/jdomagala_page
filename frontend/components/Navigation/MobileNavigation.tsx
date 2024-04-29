@@ -4,6 +4,7 @@ import styles from '@styles/components/Navigation.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavigationButton } from '@/types/NavigationData';
 import HamburgerButton from '@/components/HamburgerButton/HamburgerButton';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Button from '@/components/Button/Button';
 
@@ -13,7 +14,8 @@ interface IProps {
 
 const MobileNavigation = ({ buttons }: IProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-
+	const pathname = usePathname();
+	const isHomePage = pathname === '/';
 	const handleOpenMenu = () => setIsOpen(!isOpen);
 
 	const getNavigationButtons = () => {
@@ -46,7 +48,7 @@ const MobileNavigation = ({ buttons }: IProps) => {
 
 	return (
 		<div className={styles.mobileWrapper}>
-			<HamburgerButton isOpen={isOpen} size={30} color={'#fff'} onClick={handleOpenMenu} />
+			<HamburgerButton isOpen={isOpen} size={30} color={`${isHomePage ? '#fff' : '#212121'}`} onClick={handleOpenMenu} />
 			<AnimatePresence>{isOpen && getNavigationButtons()}</AnimatePresence>
 		</div>
 	);

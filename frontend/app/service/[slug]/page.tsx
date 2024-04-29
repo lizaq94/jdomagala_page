@@ -1,6 +1,7 @@
 'use client';
 
 import Section from '@/components/Section/Section';
+import { ArrowSquareRight } from '@phosphor-icons/react';
 import classes from '@styles/pages/ServiceView.module.scss';
 import useRwd from '@/hooks/useRwd';
 
@@ -15,27 +16,25 @@ const ServiceView = ({ params }: any) => {
 			<div className={classes.heroImage} style={{ backgroundImage: `url(${imageUrl})` }}>
 				<h2 className={classes.heroTitle}>Service 1</h2>
 				<h3 className={classes.heroSubtitle}>Lorem ipsum dolere ipsumo</h3>
-				{/*TODO:change to next image*/}
-				{/*<img*/}
-				{/*	src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"*/}
-				{/*	alt=""*/}
-				{/*/>*/}
 			</div>
 			<Section customClass={classes.sectionWrapper}>
-				<h2 className={classes.title}>Service</h2>
 				<div className={classes.sectionContent}>
 					<div className={classes.sidePanel}>
 						<ul className={classes.sidePanelNavigation}>
-							<li className={classes.sidePanelItem}>Service 1</li>
+							<li className={`${classes.sidePanelItem} ${classes.selected}`}>Service 1</li>
 							<li className={classes.sidePanelItem}>Service 2</li>
 							<li className={classes.sidePanelItem}>Service 2</li>
 							<li className={classes.sidePanelItem}>Service 3</li>
 							<li className={classes.sidePanelItem}>Service 4</li>
 							<li className={classes.sidePanelItem}>Service 5</li>
+							<li className={classes.sidePanelItem}>Service 5</li>
+							<li className={classes.sidePanelItem}>Service 5</li>
+							<li className={classes.sidePanelItem}>Service 5</li>
 						</ul>
 					</div>
 					<div className={classes.contentWrapper}>
-						<span>Heading 1</span>
+						<p className={classes.subtitle}>Single service</p>
+						<h2 className={classes.title}>Service</h2>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non lacinia sem. Integer consectetur vulputate enim
 							quis tristique. Donec vehicula, purus suscipit volutpat blandit, orci tortor elementum enim, id venenatis turpis
@@ -46,7 +45,7 @@ const ServiceView = ({ params }: any) => {
 							imperdiet ac, sollicitudin non diam. Nulla sollicitudin nibh eu mi porttitor vestibulum. Donec quis tellus erat.
 							Donec finibus neque ipsum, porttitor sagittis sem dictum non. Duis maximus consectetur est eu iaculis.
 						</p>
-						<span>Heading 2</span>
+						<span>Heading</span>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non lacinia sem. Integer consectetur vulputate enim
 							quis tristique. Donec vehicula, purus suscipit volutpat blandit, orci tortor elementum enim, id venenatis turpis
@@ -59,6 +58,14 @@ const ServiceView = ({ params }: any) => {
 							imperdiet ac, sollicitudin non diam. Nulla sollicitudin nibh eu mi porttitor vestibulum. Donec quis tellus erat.
 							Donec finibus neque ipsum, porttitor sagittis sem dictum non. Duis maximus consectetur est eu iaculis.
 						</p>
+					</div>
+					<div className={classes.contactBlock}>
+						<span className={classes.contactBlockTitle}>Contact with us</span>
+						<p className={classes.contactBlockDescription}>
+							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consequat a dui
+							quis vulputate.
+						</p>
+						<ArrowSquareRight size={50} color="#fff" />
 					</div>
 				</div>
 			</Section>

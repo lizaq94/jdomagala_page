@@ -34,7 +34,7 @@
 		position: absolute;
 		width: 0;
 		height: 0;
-		transition: width 0.5s, height 0.5s;
+		transition: width 0.5s, height 0.5s, background-color 5s;
 	}
 
 	&::after {

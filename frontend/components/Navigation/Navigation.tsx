@@ -1,6 +1,7 @@
 'use client';
 
 import DesktopNavigation from '@/components/Navigation/DesktopNavigation';
+import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import classes from '@styles/components/Navigation.module.scss';
@@ -27,22 +28,26 @@ const data = {
 
 const Navigation = () => {
 	const { isRwd } = useRwd();
-
+	const pathName = usePathname();
+	const isHomePage = pathName === '/';
+	const containerClassNames = `${classes.container} ${!isHomePage ? classes.notHomePage : ''}`;
 	const { logo, navigationButtons, emailAddress, phoneNumber } = data;
 
 	return (
-		<header className={classes.wrapper}>
-			{!isRwd && (
-				<div className={classes.additional_info}>
-					<div className={classes.email}>{emailAddress}</div>
-					<div className={classes.phone}>{phoneNumber}</div>
+		<header className={containerClassNames}>
+			<div className={classes.wrapper}>
+				{!isRwd && (
+					<div className={classes.additional_info}>
+						<div className={classes.email}>{emailAddress}</div>
+						<div className={classes.phone}>{phoneNumber}</div>
+					</div>
+				)}
+				<div className={classes.logoAndButtons_wrapper}>
+					<div className={classes.logo}>
+						<Image loader={({ src }) => src} src={logo.url} alt="" fill={true} />
+					</div>
+					{isRwd ? <MobileNavigation buttons={navigationButtons} /> : <DesktopNavigation buttons={navigationButtons} />}
 				</div>
-			)}
-			<div className={classes.logoAndButtons_wrapper}>
-				<div className={classes.logo}>
-					<Image loader={({ src }) => src} src={logo.url} alt="" fill={true} />
-				</div>
-				{isRwd ? <MobileNavigation buttons={navigationButtons} /> : <DesktopNavigation buttons={navigationButtons} />}
 			</div>
 		</header>
 	);

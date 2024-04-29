@@ -7,14 +7,19 @@ import useRwd from '@/hooks/useRwd';
 const ServiceView = ({ params }: any) => {
 	const { isRwd } = useRwd();
 
+	const imageUrl =
+		'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
 	return (
 		<div className={classes.wrapper}>
-			<div className={classes.heroImage}>
+			<div className={classes.heroImage} style={{ backgroundImage: `url(${imageUrl})` }}>
+				<h2 className={classes.heroTitle}>Service 1</h2>
+				<h3 className={classes.heroSubtitle}>Lorem ipsum dolere ipsumo</h3>
 				{/*TODO:change to next image*/}
-				<img
-					src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-					alt=""
-				/>
+				{/*<img*/}
+				{/*	src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2531&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"*/}
+				{/*	alt=""*/}
+				{/*/>*/}
 			</div>
 			<Section customClass={classes.sectionWrapper}>
 				<h2 className={classes.title}>Service</h2>
@@ -46,9 +51,11 @@ const ServiceView = ({ params }: any) => {
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non lacinia sem. Integer consectetur vulputate enim
 							quis tristique. Donec vehicula, purus suscipit volutpat blandit, orci tortor elementum enim, id venenatis turpis
 							quam quis nisi. Sed a lacus semper, aliquam enim eget, viverra nisi. Proin condimentum dolor arcu, in porttitor
-							ante lacinia ac. Nulla sed convallis leo. Proin nibh neque, laoreet eget auctor in, rhoncus et sapien. Class
-							aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consequat a dui quis
-							vulputate. Pellentesque nec malesuada dolor. Suspendisse potenti. Pellentesque odio mauris, ultricies et
+							ante lacinia ac. Nulla sed convallis leo. Proin nibh neque, laoreet eget auctor in, rhoncus et sapien.
+						</p>
+						<p>
+							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis consequat a dui
+							quis vulputate. Pellentesque nec malesuada dolor. Suspendisse potenti. Pellentesque odio mauris, ultricies et
 							imperdiet ac, sollicitudin non diam. Nulla sollicitudin nibh eu mi porttitor vestibulum. Donec quis tellus erat.
 							Donec finibus neque ipsum, porttitor sagittis sem dictum non. Duis maximus consectetur est eu iaculis.
 						</p>

@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Section from '@/components/Section/Section';
 import Heading from '@/components/Heading/Heading';
@@ -8,7 +6,7 @@ import classes from '@styles/sections/AboutUsSection.module.scss';
 const AchievementSection = (): JSX.Element | null => {
 	return (
 		<Section>
-			<Heading>About us</Heading>
+			<Heading title={`About<span>us</span>`} />
 			<div className={classes.wrapper}>
 				<div className={classes.leftSideWrapper}>
 					<img src="https://cdn.pixabay.com/photo/2019/02/06/16/32/architect-3979490_1280.jpg " alt="" />

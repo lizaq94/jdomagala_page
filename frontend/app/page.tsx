@@ -20,7 +20,7 @@ export default function Home() {
 			<WhyWeSection />
 			{/*<AchievementSection />*/}
 			{/*<ProjectsSection />*/}
-			{/*<AboutUsSection />*/}
+			<AboutUsSection />
 			{/*<ContactUsSection />*/}
 		</>
 	);

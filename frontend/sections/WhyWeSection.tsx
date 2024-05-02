@@ -13,26 +13,45 @@ import React from 'react';
 interface IReasonBlock {
 	title: string;
 	description: string;
-	icon: IImageData;
+	image: string;
 }
 
 interface IWhyWeSection {
 	sectionTitle: string;
 	reasons: IReasonBlock[];
 }
+
+const data = {
+	sectionTitle: 'Why <span>we?</span>',
+	reasons: [
+		{
+			title: 'Reason 1',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+			image: 'https://images.pexels.com/photos/1216544/pexels-photo-1216544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		},
+		{
+			title: 'Reason 2',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+			image: 'https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		},
+		{
+			title: 'Reason 3',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+			image: 'https://images.pexels.com/photos/1094767/pexels-photo-1094767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		},
+	],
+};
+
 const WhyWeSection = (): JSX.Element | null => {
-	const response = extractDataFromApiResponse<IWhyWeSection>(useSuspenseQuery(whyWeSectionQuery));
-
-	if (!response) return null;
-
-	const { sectionTitle, reasons } = response;
+	const { sectionTitle, reasons } = data;
 
 	return (
 		<Section>
-			<Heading>{'Why we?'}</Heading>
+			<Heading title={sectionTitle}></Heading>
 			<FlexBlocks>
 				{reasons.map((reason, index) => (
-					<WhyWeBlock title={sectionTitle} icon={getImageUrl(reason.icon)} description={reason.description} key={index} />
+					<WhyWeBlock title={reason.title} description={reason.description} image={reason.image} index={index} key={index} />
 				))}
 			</FlexBlocks>
 		</Section>

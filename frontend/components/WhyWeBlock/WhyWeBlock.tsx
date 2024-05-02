@@ -1,25 +1,21 @@
 import React from 'react';
-import styles from '@styles/sections/WhyWeBlock.module.scss';
+import classes from '@styles/sections/WhyWeBlock.module.scss';
 
 interface IProps {
 	title: string;
-	icon: string;
+	image: string;
+	index: number;
 	description: string;
 }
 
-const WhyWeBlock = ({ title, icon, description }: IProps): JSX.Element => {
+const WhyWeBlock = ({ title, description, image, index }: IProps): JSX.Element => {
+	const blockNumber = index + 1 < 10 ? `0${index + 1}` : index + 1;
+
 	return (
-		<div className={styles.wrapper}>
-			<h3 className={styles.title}>Reason 1</h3>
-			<p className={styles.description}>
-				Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Phasellus ac condimentum velit. Nunc pulvinar cursus viverr
-			</p>
-			{!!icon && (
-				<span className={styles.icon}>
-					<img src={icon} alt="" />
-				</span>
-			)}
+		<div className={classes.wrapper} style={{ backgroundImage: `url(${image})` }}>
+			<h3 className={classes.title}>{title}</h3>
+			<p className={classes.description}>{description}</p>
+			<span className={classes.blockNumber}>{blockNumber}</span>
 		</div>
 	);
 };

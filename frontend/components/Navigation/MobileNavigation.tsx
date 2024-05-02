@@ -19,11 +19,6 @@ const MobileNavigation = ({ buttons }: IProps) => {
 	const handleOpenMenu = () => setIsOpen(!isOpen);
 
 	const getNavigationButtons = () => {
-		const variants = {
-			open: { opacity: 1, scale: 1, x: 0 },
-			closed: { opacity: 0, scale: 0, x: 30 },
-		};
-
 		return (
 			<motion.div
 				initial={{ opacity: 0, x: '-100%' }}
@@ -48,7 +43,12 @@ const MobileNavigation = ({ buttons }: IProps) => {
 
 	return (
 		<div className={styles.mobileWrapper}>
-			<HamburgerButton isOpen={isOpen} size={30} color={`${isHomePage ? '#fff' : '#212121'}`} onClick={handleOpenMenu} />
+			<HamburgerButton
+				isOpen={isOpen}
+				size={30}
+				color={`${isHomePage && !isOpen ? '#ffffff' : '#212121'}`}
+				onClick={handleOpenMenu}
+			/>
 			<AnimatePresence>{isOpen && getNavigationButtons()}</AnimatePresence>
 		</div>
 	);

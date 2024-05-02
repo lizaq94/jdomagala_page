@@ -18,6 +18,10 @@
 
 .outline {
 	border: 1px solid white;
+
+	&.mobileNavigationButton {
+		border-color: $bodyFontColor;
+	}
 }
 
 .outline.hover {
@@ -70,6 +74,7 @@
 
 .mobileNavigationButton {
 	margin: 20px 0;
+	color: $bodyFontColor;
 }
 
 .clickEffect {

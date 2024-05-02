@@ -13,11 +13,6 @@ interface IProps {
 }
 
 const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonText }: IProps): JSX.Element => {
-	const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-	const onOpenButton = () => setIsPopupOpen(true);
-	const onCloseButton = () => setIsPopupOpen(false);
-
 	return (
 		<>
 			<div className={styles.wrapper}>
@@ -27,12 +22,11 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 				<h3 className={styles.title}>{title}</h3>
 				<p className={styles.shortDescription}>{shortDescription}</p>
 				{!!longDescription && (
-					<motion.button whileHover={{ y: '-2px' }} className={styles.button} onClick={onOpenButton}>
+					<motion.button whileHover={{ y: '-2px' }} className={styles.button}>
 						{buttonText}
 					</motion.button>
 				)}
 			</div>
-			{/*<AnimatePresence>{isPopupOpen && <Popup content={longDescription} onCloseButton={onCloseButton} />}</AnimatePresence>*/}
 		</>
 	);
 };

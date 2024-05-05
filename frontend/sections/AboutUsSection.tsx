@@ -2,16 +2,53 @@ import React from 'react';
 import Section from '@/components/Section/Section';
 import Heading from '@/components/Heading/Heading';
 import classes from '@styles/sections/AboutUsSection.module.scss';
+import { motion } from 'framer-motion';
 
 const AchievementSection = (): JSX.Element | null => {
+	const imageAnimationVariants = {
+		initial: {
+			opacity: 0,
+			x: -100,
+		},
+		animate: {
+			opacity: 1,
+			x: 0,
+			transition: { duration: 1, delay: 0.2 },
+		},
+	};
+
+	const contentAnimationVariants = {
+		initial: {
+			opacity: 0,
+			y: 100,
+		},
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: { duration: 0.5, delay: 0.2 },
+		},
+	};
+
 	return (
 		<Section>
-			<Heading title={`About<span>us</span>`} />
+			<Heading title={`About <span>us</span>`} />
 			<div className={classes.wrapper}>
-				<div className={classes.leftSideWrapper}>
+				<motion.div
+					variants={imageAnimationVariants}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true }}
+					className={classes.leftSideWrapper}
+				>
 					<img src="https://cdn.pixabay.com/photo/2019/02/06/16/32/architect-3979490_1280.jpg " alt="" />
-				</div>
-				<div className={classes.rightSideWrapper}>
+				</motion.div>
+				<motion.div
+					variants={contentAnimationVariants}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true }}
+					className={classes.rightSideWrapper}
+				>
 					<p className={classes.paragraph}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sit amet fringilla urna. Integer eget orci
 						condimentum, varius urna vitae, congue justo. Aenean eu consequat neque. In sed odio nec dui vehicula tempor in quis
@@ -24,7 +61,7 @@ const AchievementSection = (): JSX.Element | null => {
 						amet. Mauris quis nibh at felis efficitur aliquet. Sed arcu enim, varius non rutrum at, aliquet sit amet orci. Cras
 						sit amet lorem ipsum. Nullam at hendrerit est.
 					</p>
-				</div>
+				</motion.div>
 			</div>
 		</Section>
 	);

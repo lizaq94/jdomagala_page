@@ -52,6 +52,7 @@ const WhatWeDoSection = (): JSX.Element | null => {
 							longDescription={longDescription}
 							buttonText={textForButton}
 							key={index}
+							index={index}
 						/>
 					);
 				})}

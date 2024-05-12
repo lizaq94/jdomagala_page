@@ -3,8 +3,16 @@ export const homePageQuery = `
 		homePages {
 			navigation {
 				id
+				logoImage {
+					url
+				}
+				email
+				phoneNumber
+				facebookLink
 				navigatnionLinks {
+					id	
 					label
+					url
 				}
 			}
 			heroSection {
@@ -12,6 +20,8 @@ export const homePageQuery = `
 				description
 				button {
 					id
+					label
+					url
 				}
 				imageBackground {
 					url
@@ -20,7 +30,7 @@ export const homePageQuery = `
 			serviceSectionTile
 			whyWeSection {
 				title
-				block {
+				blocks {
 					id
 					title
 					description

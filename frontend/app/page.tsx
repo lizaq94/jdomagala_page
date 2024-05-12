@@ -6,12 +6,10 @@ import WhatWeDoSection from '@/sections/WhatWeDoSection';
 import WhyWeSection from '@/sections/WhyWeSection';
 import AboutUsSection from '@/sections/AboutUsSection';
 import ContactUsSection from '@/sections/ContactUsSection';
-import { getHomePageContent } from '@/lib/api';
+import { getHomePageData } from '@/lib/api';
 
 export default async function Home() {
-	const data = await getHomePageContent();
-
-	console.log('Kamil data', data);
+	const data = await getHomePageData();
 
 	return (
 		<>

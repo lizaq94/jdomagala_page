@@ -1,20 +1,6 @@
 export const homePageQuery = `
   query HomePage {
 		homePages {
-			navigation {
-				id
-				logoImage {
-					url
-				}
-				email
-				phoneNumber
-				facebookLink
-				navigatnionLinks {
-					id	
-					label
-					url
-				}
-			}
 			heroSection {
 				title
 				description
@@ -75,6 +61,5 @@ export const homePageQuery = `
 					placeholder
 				}
 			}
-			footerContent
 		}
 	}`;

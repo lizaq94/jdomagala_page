@@ -1,5 +1,5 @@
 import { date } from 'zod';
-import { ApiResponse, StrapiData } from '@/types/types';
+import { ApiResponse, StrapiData } from '@/types/cmsTypes';
 import { type } from 'os';
 import { IImageAttributes, IImageData } from '@/types/ImageType';
 

@@ -13,6 +13,27 @@ export interface INavigationAndFooterData {
 	metaDate: IMetaData;
 }
 
+export interface IServiceData {
+	id: string;
+	icon: {
+		id: string;
+		url: string;
+	};
+	title: string;
+	shortDescription: string;
+	heroImage: {
+		id: string;
+		url: string;
+	};
+	heroSubtitle: string;
+	contentSubtitle: string;
+	content: string;
+	contactBoxTitle: string;
+	contactBoxDescription: string;
+	buttonText: string;
+	slug: string;
+}
+
 export interface IMetaData {
 	title: string;
 	description: string;

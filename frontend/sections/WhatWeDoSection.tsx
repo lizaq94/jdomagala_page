@@ -3,56 +3,34 @@ import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import WhatWeDoBlock from '@/components/WhatWeDoBlock/WhatWeDoBlock';
 import React from 'react';
-import { IImageData } from '@/types/ImageType';
+import { IServiceSectionData } from '@/types/cmsTypes';
+import { getServicesData } from '@/lib/api';
 
-interface IWhatWeDoBlock {
-	title: string;
-	icon: IImageData;
-	shortDescription: string;
-	longDescription: string;
-	textForButton: string;
+interface IProps {
+	data: IServiceSectionData;
 }
 
-interface IWhatWeDoSection {
-	sectionTitle: string;
-	whatWeDoBlocks: IWhatWeDoBlock[];
-}
+const WhatWeDoSection = async ({ data }: IProps) => {
+	const servicesData = await getServicesData();
 
-const block = {
-	title: 'PRE-CONSTRUCTION',
-	icon: '',
-	shortDescription: 'Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit',
-	longDescription:
-		'Phasellus ac condimentum velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit, Phasellus ac condimentum' +
-		' velit. Nunc pulvinar cursus viverra. Lorem ipsum dolor sit, Phasellus ac condimentum velit. Nunc pulvinar cursus viverra.' +
-		' Lorem ipsum dolor sit',
-	textForButton: 'Read more',
-};
+	if (!data || !servicesData) return;
 
-const data = {
-	sectionTitle: 'Our <span>Services</span>',
-	whatWeDoBlocks: [block, block, block],
-};
-
-const WhatWeDoSection = (): JSX.Element | null => {
-	const { sectionTitle, whatWeDoBlocks } = data;
+	const { title } = data;
 
 	return (
 		<Section>
-			<Heading title={sectionTitle} />
+			<Heading title={title} />
 			<FlexBlocks>
-				{whatWeDoBlocks?.map((block, index) => {
-					const { title, icon, shortDescription, longDescription, textForButton } = block;
-
+				{servicesData?.map((service, index) => {
 					return (
 						<WhatWeDoBlock
-							title={title}
-							icon={icon}
-							shortDescription={shortDescription}
-							longDescription={longDescription}
-							buttonText={textForButton}
-							key={index}
+							title={service.title}
+							icon={service.icon.url}
+							shortDescription={service.shortDescription}
+							buttonText={service.buttonText}
+							key={service.id}
 							index={index}
+							slug={service.slug}
 						/>
 					);
 				})}

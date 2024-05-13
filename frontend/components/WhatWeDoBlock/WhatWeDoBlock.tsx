@@ -1,18 +1,21 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import React from 'react';
 import styles from '@styles/sections/WhatWeDoBlock.module.scss';
-import { Buildings } from '@phosphor-icons/react';
+import Link from 'next/link';
 
 interface IProps {
 	title: string;
 	icon: string;
 	shortDescription: string;
-	longDescription: string;
 	buttonText: string;
 	index: number;
+	slug: string;
 }
 
-const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonText, index }: IProps): JSX.Element => {
+const WhatWeDoBlock = (props: IProps) => {
+	const { title, icon, shortDescription, buttonText, index, slug } = props;
 	const fadeInAnimationVariants = {
 		initial: { opacity: 0, x: 100 },
 		animate: (index: number) => ({ opacity: 1, x: 0, transition: { delay: 0.2 * index } }),
@@ -28,15 +31,15 @@ const WhatWeDoBlock = ({ title, icon, shortDescription, longDescription, buttonT
 			className={styles.wrapper}
 		>
 			<span className={styles.icon}>
-				<Buildings size={32} />
+				<img src={icon} alt="" />
 			</span>
 			<h3 className={styles.title}>{title}</h3>
 			<p className={styles.shortDescription}>{shortDescription}</p>
-			{!!longDescription && (
-				<motion.button whileHover={{ y: '-2px' }} className={styles.button}>
+			<motion.div whileHover={{ y: '-2px' }}>
+				<Link href={`/service/${slug}`} className={styles.button}>
 					{buttonText}
-				</motion.button>
-			)}
+				</Link>
+			</motion.div>
 		</motion.div>
 	);
 };

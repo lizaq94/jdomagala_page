@@ -1,8 +1,15 @@
 import { IFormData } from '@/types/FormData';
 import { homePageQuery } from '@/graphql/queries/HomePageQuery';
-import { IHomePageData, INavigationAndFooterData } from '@/types/cmsTypes';
+import { IHomePageData, INavigationAndFooterData, IServiceData } from '@/types/cmsTypes';
 import { navigationAndFooterQuery } from '@/graphql/queries/NavigationAndFooterQuery';
-import { mapperHomePageData, mapperNavigationAndFooterData } from '@/lib/mappers';
+import {
+	mapperHomePageData,
+	mapperNavigationAndFooterData,
+	mapperServiceData,
+	mapperServicesData,
+} from '@/lib/mappers';
+import { servicesQuery } from '@/graphql/queries/ServicesQuery';
+import { serviceQuery } from '@/graphql/queries/ServiceQuery';
 
 export const sendContactForm = async (values: IFormData) =>
 	await fetch('/api/form', {
@@ -24,6 +31,7 @@ export const sendContactForm = async (values: IFormData) =>
 
 export const fetchDataFromCMS = async <T>(
 	query: string,
+	variables = {},
 	errorMessage = 'Failed to fetch data'
 ): Promise<{ [key: string]: T } | undefined> => {
 	try {
@@ -34,13 +42,14 @@ export const fetchDataFromCMS = async <T>(
 			},
 			body: JSON.stringify({
 				query: query,
+				variables: variables,
 			}),
 		});
 
 		const json = await response.json();
 
 		if (!!json.data) {
-			return json.data.homePages[0];
+			return json.data;
 		}
 	} catch (erorr) {
 		throw errorMessage;
@@ -48,13 +57,27 @@ export const fetchDataFromCMS = async <T>(
 };
 
 export const getHomePageData = async () => {
-	const data = await fetchDataFromCMS<IHomePageData>(homePageQuery);
+	const data = await fetchDataFromCMS<IHomePageData[]>(homePageQuery);
 
-	if (!!data) return mapperHomePageData(data);
+	if (!!data) return mapperHomePageData(data.homePages[0]);
 };
 
 export const getNavigationAndFooterData = async () => {
-	const data = await fetchDataFromCMS<INavigationAndFooterData>(navigationAndFooterQuery);
+	const data = await fetchDataFromCMS<INavigationAndFooterData[]>(navigationAndFooterQuery);
 
-	if (!!data) return mapperNavigationAndFooterData(data);
+	if (!!data) return mapperNavigationAndFooterData(data.homePages[0]);
+};
+
+export const getServicesData = async () => {
+	const data = await fetchDataFromCMS<IServiceData[]>(servicesQuery);
+
+	if (!!data) return mapperServicesData(data.services);
+};
+
+export const getServiceData = async (slug: string) => {
+	const data = await fetchDataFromCMS<IServiceData>(serviceQuery, { slug: slug });
+
+	if (!data?.service) return null;
+
+	return mapperServiceData(data.service);
 };

@@ -16,10 +16,12 @@ interface IProps {
 export default async function Home(props: IProps) {
 	const data = await getHomePageData();
 
+	if (!data) return null;
+
 	return (
 		<>
-			<HeroSection />
-			{/*<WhatWeDoSection />*/}
+			<HeroSection data={data.heroSectionData} />
+			<WhatWeDoSection data={data.serviceSectionData} />
 			{/*<WhyWeSection />*/}
 			{/*/!*<AchievementSection />*!/*/}
 			{/*/!*<ProjectsSection />*!/*/}

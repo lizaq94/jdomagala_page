@@ -22,6 +22,7 @@
 	max-width: $containerMaxWidth;
 	margin: 0 auto;
 	padding-left: 20px;
+	color: $white;
 
 	@include mediaQuery(medium) {
 		padding: 0;
@@ -125,6 +126,10 @@
 		overflow-x: unset;
 		flex-direction: column;
 	}
+
+	li {
+		display: block;
+	}
 }
 
 .sidePanelItem {
@@ -138,6 +143,7 @@
 	text-transform: uppercase;
 	transition: color 0.2s ease-in-out;
 	letter-spacing: 0.2px;
+	color: $bodyFontColor;
 
 	@include mediaQuery(medium) {
 		min-width: unset;

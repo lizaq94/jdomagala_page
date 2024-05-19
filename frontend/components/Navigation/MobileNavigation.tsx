@@ -1,15 +1,15 @@
 'use client';
 
 import styles from '@styles/components/Navigation.module.scss';
-import { motion, AnimatePresence } from 'framer-motion';
-import { NavigationButton } from '@/types/NavigationData';
+import { AnimatePresence, motion } from 'framer-motion';
 import HamburgerButton from '@/components/HamburgerButton/HamburgerButton';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Button from '@/components/Button/Button';
+import { ICMSLink } from '@/types/cmsTypes';
 
 interface IProps {
-	buttons: NavigationButton[];
+	buttons: ICMSLink[];
 }
 
 const MobileNavigation = ({ buttons }: IProps) => {
@@ -27,11 +27,11 @@ const MobileNavigation = ({ buttons }: IProps) => {
 				exit={{ opacity: 0.5, x: '-100%' }}
 				className={styles.mobileButtonsWrapper}
 			>
-				{buttons.map(({ content, link }, index) => (
+				{buttons.map(({ url, label, id }, index) => (
 					<Button
-						key={index}
-						content={content}
-						url={link}
+						key={id}
+						content={label}
+						url={url}
 						hoverEffect
 						outline={index + 1 === buttons.length}
 						mobileNavigationButton

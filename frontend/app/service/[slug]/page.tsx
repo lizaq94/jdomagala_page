@@ -3,6 +3,7 @@ import classes from '@styles/pages/ServiceView.module.scss';
 import { getServiceData, getServicesData } from '@/lib/api';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import ButtonArrow from '@/components/ButtonArrow/ButtonArrow';
 
 const ServiceView = async ({ params }: any) => {
 	const data = await getServiceData(params.slug);
@@ -29,6 +30,7 @@ const ServiceView = async ({ params }: any) => {
 										<Link
 											href={`/service/${service.slug}`}
 											className={`${classes.sidePanelItem} ${isSelected ? classes.selected : ''}`}
+											key={service.slug}
 										>
 											{service.name}
 										</Link>
@@ -44,7 +46,7 @@ const ServiceView = async ({ params }: any) => {
 					<div className={classes.contactBlock}>
 						<span className={classes.contactBlockTitle}>{data.contactBoxTitle}</span>
 						<p className={classes.contactBlockDescription}>{data.contactBoxDescription}</p>
-						{/*<ArrowSquareRight size={50} color="#fff" />*/}
+						<ButtonArrow url={'/'} />
 					</div>
 				</div>
 			</Section>

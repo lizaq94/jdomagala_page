@@ -6,13 +6,18 @@ interface IProps {
 	center?: boolean;
 	onFullPage?: boolean;
 	customClass?: string;
+	id?: string;
 }
 
-const Section = ({ children, center, onFullPage, customClass }: IProps) => {
+const Section = ({ children, center, onFullPage, customClass, id = '' }: IProps) => {
 	const classes = `${styles.wrapper} ${center ? styles.center : ''} ${onFullPage ? styles.onFullPage : ''} ${
 		!!customClass ? customClass : ''
 	}`;
-	return <section className={classes}>{children}</section>;
+	return (
+		<section className={classes} id={id}>
+			{children}
+		</section>
+	);
 };
 
 export default Section;

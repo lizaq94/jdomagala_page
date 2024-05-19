@@ -14,6 +14,7 @@ export const homePageQuery = `
 				}
 			}
 			serviceSectionTile
+			serviceSectionId
 			whyWeSection {
 				title
 				blocks {

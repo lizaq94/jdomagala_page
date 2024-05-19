@@ -31,6 +31,7 @@ export interface IServiceData {
 	contactBoxTitle: string;
 	contactBoxDescription: string;
 	buttonText: string;
+	buttonUrl: string;
 	slug: string;
 }
 
@@ -82,6 +83,7 @@ export interface IBlockData {
 
 export interface IServiceSectionData {
 	title: string;
+	sectionId: string;
 }
 
 export interface IHeroSectionData {

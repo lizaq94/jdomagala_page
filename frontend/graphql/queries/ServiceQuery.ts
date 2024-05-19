@@ -18,6 +18,7 @@ export const serviceQuery = `
 			contactBoxTitle
 			contactBoxDescription
 			buttonText
+			buttonUrl
 		}
 	}
 `;

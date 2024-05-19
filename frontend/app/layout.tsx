@@ -15,10 +15,12 @@ export const metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
 	const data = await getNavigationAndFooterData();
 
+	if (!data) return null;
+
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Navigation />
+				<Navigation data={data.navigationData} />
 				{children}
 				<Footer />
 			</body>

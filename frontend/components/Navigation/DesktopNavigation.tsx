@@ -2,19 +2,17 @@
 
 import styles from '@styles/components/Navigation.module.scss';
 import Button from '@/components/Button/Button';
-
-import { NavigationButton } from '@/types/NavigationData';
-import { useState } from 'react';
+import { ICMSLink } from '@/types/cmsTypes';
 
 interface IProps {
-	buttons: NavigationButton[];
+	buttons: ICMSLink[];
 }
 
 const DesktopNavigation = ({ buttons }: IProps) => {
 	return (
 		<div className={styles.buttons}>
-			{buttons.map(({ content, link }, index) => (
-				<Button key={index} content={content} url={link} hoverEffect outline={index + 1 === buttons.length} />
+			{buttons.map(({ url, label, id }, index) => (
+				<Button key={id} content={label} url={url} hoverEffect outline={index + 1 === buttons.length} />
 			))}
 		</div>
 	);

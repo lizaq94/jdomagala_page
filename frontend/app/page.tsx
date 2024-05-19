@@ -2,7 +2,7 @@ import AchievementSection from '@/sections/AchievementSection';
 import HeroSection from '@/sections/HeroSection';
 import Navigation from '@/components/Navigation/Navigation';
 import ProjectsSection from '@/sections/ProjectsSection';
-import WhatWeDoSection from '@/sections/WhatWeDoSection';
+import ServicesSection from '@/sections/ServicesSection';
 import WhyWeSection from '@/sections/WhyWeSection';
 import AboutUsSection from '@/sections/AboutUsSection';
 import ContactUsSection from '@/sections/ContactUsSection';
@@ -21,7 +21,7 @@ export default async function Home(props: IProps) {
 	return (
 		<>
 			<HeroSection data={data.heroSectionData} />
-			<WhatWeDoSection data={data.serviceSectionData} />
+			<ServicesSection data={data.serviceSectionData} />
 			{/*<WhyWeSection />*/}
 			{/*/!*<AchievementSection />*!/*/}
 			{/*/!*<ProjectsSection />*!/*/}

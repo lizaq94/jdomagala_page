@@ -1,9 +1,9 @@
-import { IHomePageData, INavigationAndFooterData, IServiceData, IServiceSectionData } from '@/types/cmsTypes';
+import { IHomePageData, INavigationAndFooterData, IServiceData } from '@/types/cmsTypes';
 
 export const mapperHomePageData = (data: any): IHomePageData => {
 	return {
 		heroSectionData: data.heroSection,
-		serviceSectionData: { title: data.serviceSectionTile },
+		serviceSectionData: { title: data.serviceSectionTile, sectionId: data.serviceSectionId },
 		whyWeSectionData: data.whyWeSection,
 		projectSectionData: {
 			title: data.projectsSectionTile,
@@ -42,6 +42,7 @@ export const mapperServiceData = (data: any): IServiceData => {
 		contactBoxTitle: data.contactBoxTitle,
 		contactBoxDescription: data.contactBoxDescription,
 		buttonText: data.buttonText,
+		buttonUrl: data.buttonUrl,
 		slug: data.slug,
 	};
 };

@@ -14,7 +14,7 @@ interface IProps {
 	slug: string;
 }
 
-const WhatWeDoBlock = (props: IProps) => {
+const ServiceBlock = (props: IProps) => {
 	const { title, icon, shortDescription, buttonText, index, slug } = props;
 	const fadeInAnimationVariants = {
 		initial: { opacity: 0, x: 100 },
@@ -44,4 +44,4 @@ const WhatWeDoBlock = (props: IProps) => {
 	);
 };
 
-export default WhatWeDoBlock;
+export default ServiceBlock;

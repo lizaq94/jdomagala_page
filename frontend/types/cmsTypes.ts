@@ -51,6 +51,7 @@ export interface IContactSectionData {
 	emailInput: ICMSInput;
 	phoneInput: ICMSInput;
 	messageInput: ICMSInput;
+	sectionId: string;
 }
 
 export interface ICMSInput {
@@ -72,6 +73,7 @@ export interface IProjectSectionData {
 export interface IWhyWeSectionData {
 	title: string;
 	blocks: IBlockData[];
+	sectionId: string;
 }
 
 export interface IBlockData {

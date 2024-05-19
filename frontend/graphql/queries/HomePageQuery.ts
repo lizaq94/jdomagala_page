@@ -25,6 +25,7 @@ export const homePageQuery = `
 						url
 					}
 				}
+				sectionId
 			}
 			achievementSection {
 				achievementCounter {
@@ -61,6 +62,7 @@ export const homePageQuery = `
 					label
 					placeholder
 				}
+				sectionId
 			}
 		}
 	}`;

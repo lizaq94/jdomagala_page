@@ -5,6 +5,7 @@ export const mapperHomePageData = (data: any): IHomePageData => {
 		heroSectionData: data.heroSection,
 		serviceSectionData: { title: data.serviceSectionTile, sectionId: data.serviceSectionId },
 		whyWeSectionData: data.whyWeSection,
+		achievementSectionData: data.achievementSection,
 		projectSectionData: {
 			title: data.projectsSectionTile,
 			buttonText: data.projectSectionButtonText,

@@ -2,6 +2,7 @@ export interface IHomePageData {
 	heroSectionData: IHeroSectionData;
 	serviceSectionData: IServiceSectionData;
 	whyWeSectionData: IWhyWeSectionData;
+	achievementSectionData: IAchievementSectionData;
 	projectSectionData: IProjectSectionData;
 	aboutUsSectionData: IAboutUsSectionData;
 	contactSectionData: IContactSectionData;
@@ -83,6 +84,11 @@ export interface IBlockData {
 	image: ICMSImage;
 }
 
+export interface IAchievementSectionData {
+	achievementCounters: ICounter[];
+	backgroundImage: ICMSImage;
+}
+
 export interface IServiceSectionData {
 	title: string;
 	sectionId: string;
@@ -102,6 +108,12 @@ export interface INavigationData {
 	phoneNumber: string;
 	facebookLink: string;
 	navigationLinks: ICMSLink[];
+}
+
+export interface ICounter {
+	id: string;
+	countNumber: number;
+	description: string;
 }
 
 export interface ICMSLink {

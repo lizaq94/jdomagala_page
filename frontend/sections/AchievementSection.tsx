@@ -5,39 +5,27 @@ import React from 'react';
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Section from '@/components/Section/Section';
 import styles from '@/styles/sections/AchievementSection.module.scss';
-import { extractDataFromApiResponse, getImageUrl } from '@/utils/utils';
-import { useSuspenseQuery } from '@apollo/client';
-import { achievementSectionQuery } from '@/graphql/queries/AchievmentSectionQuery';
-import { IImageData } from '@/types/ImageType';
+import { IAchievementSectionData } from '@/types/cmsTypes';
 
-interface ICounter {
-	id: string;
-	count: number;
-	description: string;
+interface IProps {
+	data: IAchievementSectionData;
 }
+const AchievementSection = ({ data }: IProps): JSX.Element | null => {
+	if (!data) return null;
 
-interface IAchievementSection {
-	background: IImageData;
-	counters: ICounter[];
-}
-const AchievementSection = (): JSX.Element | null => {
-	const response = extractDataFromApiResponse<IAchievementSection>(useSuspenseQuery(achievementSectionQuery));
-
-	if (!response) return null;
-
-	const { background, counters } = response;
+	const { backgroundImage, achievementCounters } = data;
 
 	return (
 		<Section onFullPage>
 			<div
 				className={styles.wrapper}
 				style={{
-					backgroundImage: `url(${getImageUrl(background)})`,
+					backgroundImage: `url(${backgroundImage?.url})`,
 				}}
 			>
 				<FlexBlocks>
-					{counters.map((counter) => (
-						<AnimatedCounter to={counter.count} description={counter.description} key={counter.id} />
+					{achievementCounters.map((counter) => (
+						<AnimatedCounter to={counter.countNumber} description={counter.description} key={counter.id} />
 					))}
 				</FlexBlocks>
 			</div>

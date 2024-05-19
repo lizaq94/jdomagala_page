@@ -8,10 +8,11 @@
 	background-size: cover;
 	margin: 50px 0;
 	padding: 30px 0;
+	color: $white;
 
 	@include mediaQuery(medium) {
 		flex-direction: row;
-		min-height: 250px;
+		min-height: 400px;
 		margin: 100px 0;
 	}
 

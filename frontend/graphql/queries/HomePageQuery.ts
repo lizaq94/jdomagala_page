@@ -28,10 +28,13 @@ export const homePageQuery = `
 				sectionId
 			}
 			achievementSection {
-				achievementCounter {
+				achievementCounters {
 					id
-					number
+					countNumber
 					description
+				}
+				backgroundImage {
+				    url
 				}
 			}
 			projectsSectionTile

@@ -25,7 +25,7 @@ export default async function Home(props: IProps) {
 			<WhyWeSection data={data.whyWeSectionData} />
 			<AchievementSection data={data.achievementSectionData} />
 			<ProjectsSection data={data.projectSectionData} />
-			{/*<AboutUsSection />*/}
+			<AboutUsSection data={data.aboutUsSectionData} />
 			{/*<ContactUsSection />*/}
 		</>
 	);

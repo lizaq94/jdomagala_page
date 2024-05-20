@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 import clasess from '@styles/components/Button.module.scss';
 
 interface IProps {
@@ -10,6 +10,7 @@ interface IProps {
 	mobileNavigationButton?: boolean;
 	customClass?: string;
 	clickEffect?: boolean;
+	filled?: boolean;
 	buttonType?: 'button' | 'submit' | 'reset';
 	isLoading?: boolean;
 }
@@ -22,17 +23,20 @@ const Button = ({
 	mobileNavigationButton,
 	customClass,
 	clickEffect,
+	filled,
 	buttonType = 'button',
 	isLoading = false,
 }: IProps): JSX.Element => {
 	const classNames = `Button ${mobileNavigationButton ? clasess.mobileNavigationButton : ''} ${clasess.wrapper} ${
 		outline ? clasess.outline : ''
-	} ${hoverEffect ? clasess.hover : ''} ${clickEffect ? clasess.clickEffect : ''} ${customClass}`;
+	} ${hoverEffect ? clasess.hover : ''} ${clickEffect ? clasess.clickEffect : ''} ${
+		filled ? clasess.filled : ''
+	} ${customClass}`;
 
 	return !!url ? (
-		<Link className={classNames} href={url}>
+		<NextLink className={classNames} href={url}>
 			{content}
-		</Link>
+		</NextLink>
 	) : (
 		<button className={classNames} onClick={onClick} type={buttonType}>
 			{isLoading ? <span className={clasess.loader}></span> : content}

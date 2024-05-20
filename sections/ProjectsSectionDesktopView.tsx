@@ -44,7 +44,7 @@ const ProjectsSectionDesktopView = (props: IProps) => {
 					/>
 				))}
 			</FlexBlocks>
-			{showLoadMoreButton && <Button content={buttonText} outline onClick={loadMoreProjects} />}
+			{showLoadMoreButton && <Button content={buttonText} onClick={loadMoreProjects} filled />}
 		</>
 	);
 };

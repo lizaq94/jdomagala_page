@@ -31,6 +31,17 @@
 	}
 }
 
+.filled {
+	background-color: $primaryColor;
+	color: $white;
+	border: none;
+	transition: background-color 0.1s ease-in-out;
+
+	&:hover {
+		background-color: darken($primaryColor, 10);
+	}
+}
+
 .hover {
 	&::after,
 	&:before {

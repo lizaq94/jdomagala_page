@@ -11,6 +11,9 @@ html {
 	--swiper-pagination-bullet-size: 15px;
 	--swiper-pagination-bullet-inactive-color: #fff;
 	--swiper-pagination-bullet-inactive-opacity: 0.4;
+
+	--scroll-behavior: smooth !important;
+	scroll-behavior: smooth !important;
 }
 
 html,

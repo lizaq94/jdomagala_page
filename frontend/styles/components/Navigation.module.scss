@@ -3,6 +3,8 @@
 }
 
 .notHomePage {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
 	.wrapper {
 		color: #212121;
 	}
@@ -22,7 +24,7 @@
 	color: $white;
 
 	@include mediaQuery(medium) {
-		padding-top: 0;
+		padding: 0 0 10px;
 	}
 }
 

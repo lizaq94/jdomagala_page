@@ -1,15 +1,15 @@
 import { IFormData } from '@/types/FormData';
 import { homePageQuery } from '@/graphql/queries/HomePageQuery';
-import { IHomePageData, INavigationAndFooterData, IServiceData } from '@/types/cmsTypes';
+import { IHomePageData, INavigationAndFooterData, IProjectData, IServiceData } from '@/types/cmsTypes';
 import { navigationAndFooterQuery } from '@/graphql/queries/NavigationAndFooterQuery';
-import {
-	mapperHomePageData,
-	mapperNavigationAndFooterData,
-	mapperServiceData,
-	mapperServicesData,
-} from '@/lib/mappers';
+import { mapperHomePageData } from '@/lib/mappers/mapperHomePageData';
+import { mapperNavigationAndFooterData } from '@/lib/mappers/mapperNavigationAndFooterData';
+import { mapperServiceData, mapperServicesData } from '@/lib/mappers/mapperServicesData';
 import { servicesQuery } from '@/graphql/queries/ServicesQuery';
 import { serviceQuery } from '@/graphql/queries/ServiceQuery';
+import { projectsQuery } from '@/graphql/queries/ProjectsQuery';
+import { projectQuery } from '@/graphql/queries/ProjectQuery';
+import { mapperProjectData, mapperProjectsData } from '@/lib/mappers/mapperProjectsData';
 
 export const sendContactForm = async (values: IFormData) =>
 	await fetch('/api/form', {
@@ -48,7 +48,9 @@ export const fetchDataFromCMS = async <T>(
 
 		const json = await response.json();
 
-		if (!!json.data) {
+		if (json.errors?.length) {
+			console.error('Error with fetching data: ', json.errors[0].message);
+		} else if (!!json.data) {
 			return json.data;
 		}
 	} catch (erorr) {
@@ -80,4 +82,20 @@ export const getServiceData = async (slug: string) => {
 	if (!data?.service) return null;
 
 	return mapperServiceData(data.service);
+};
+
+export const getProjectsData = async () => {
+	const data = await fetchDataFromCMS<IProjectData[]>(projectsQuery);
+
+	if (!data?.projects) return null;
+
+	return mapperProjectsData(data.projects);
+};
+
+export const getProjectData = async (slug: string) => {
+	const data = await fetchDataFromCMS<IProjectData>(projectQuery, { slug: slug });
+
+	if (!data?.project) return null;
+
+	return mapperProjectData(data.project);
 };

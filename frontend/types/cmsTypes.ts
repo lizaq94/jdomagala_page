@@ -36,6 +36,18 @@ export interface IServiceData {
 	slug: string;
 }
 
+export interface IProjectData {
+	id: string;
+	slug: string;
+	title: string;
+	subtitle: string;
+	description: string;
+	scopeOfWorkTitle: string;
+	scopeOfWorkItem: string[];
+	projectStatus: string;
+	images: ICMSImage[];
+}
+
 export interface IMetaData {
 	title: string;
 	description: string;

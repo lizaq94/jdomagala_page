@@ -1,28 +1,31 @@
 'use client';
 
-import { ProjectStatus } from '@/types/ProjectType';
-import { getImageUrl } from '@/utils/utils';
 import styles from '@styles/components/ProjectBlock.module.scss';
 import Link from 'next/link';
+import { ICMSImage } from '@/types/cmsTypes';
 
 interface IProps {
-	status: ProjectStatus;
+	status: string;
 	name: string;
-	description: string;
-	images: any;
+	subtitle: string;
+	images: ICMSImage[];
 	slug: string;
 }
 
 const ProjectBlock = (props: IProps) => {
-	const { status, name, description, images, slug } = props;
+	const { status, name, subtitle, images, slug } = props;
 
-	const projectImageUrl = getImageUrl({ data: images.data[0] });
+	const projectImageUrl = images[0].url;
 
 	return (
-		<Link href={`/project/${slug}`} className={styles.wrapper} style={{ backgroundImage: `url(${projectImageUrl})` }}>
+		<Link
+			href={`/project/${slug}`}
+			className={styles.wrapper}
+			style={{ backgroundImage: `url(${projectImageUrl})` }}
+		>
 			<span className={`${styles.status} ${styles[status]}`}></span>
 			<span className={styles.name}>{name}</span>
-			<span className={styles.description}>{description}</span>
+			<span className={styles.description}>{subtitle}</span>
 		</Link>
 	);
 };

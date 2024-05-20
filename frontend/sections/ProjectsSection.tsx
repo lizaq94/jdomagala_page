@@ -1,94 +1,26 @@
-'use client';
-
-import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
-import ProjectBlock from '@/components/ProjectBlock/ProjectBlock';
 import Section from '@/components/Section/Section';
-import { achievementSectionQuery } from '@/graphql/queries/AchievmentSectionQuery';
-import { projectsQuery } from '@/graphql/queries/ProjectsQuery';
-import { IProjectData, ProjectStatus } from '@/types/ProjectType';
-import { extractDataFromApiResponse } from '@/utils/utils';
-import { useSuspenseQuery } from '@apollo/client';
-import { projectsSectionQuery } from '@/graphql/queries/ProjectsSectionQuery';
 import Heading from '@/components/Heading/Heading';
-import Button from '@/components/Button/Button';
-import { useState } from 'react';
-import Slider from '@/components/Slider/Slider';
-import { SwiperSlide } from 'swiper/react';
-import useRwd from '@/hooks/useRwd';
+import { IProjectSectionData } from '@/types/cmsTypes';
+import { getProjectsData } from '@/lib/api';
+import ProjectsSectionDesktopView from '@/sections/ProjectsSectionDesktopView';
+import ProjectSectionRWDView from '@/sections/ProjectSectionRWDView';
 
 interface IProps {
-	test?: string;
+	data: IProjectSectionData;
 }
 
-interface IProjectsSectionData {
-	title: string;
-	buttonText: string;
-}
-const ProjectsSection = (props: IProps) => {
-	const COUNT_PRODUCT_TO_VIEW = 4;
-	const [displayedProjects, setDisplayedProjects] = useState(COUNT_PRODUCT_TO_VIEW);
-	const { isRwd } = useRwd();
-	const responseForProjects = useSuspenseQuery<any>(projectsQuery);
-	const responseForSection = extractDataFromApiResponse<IProjectsSectionData>(useSuspenseQuery(projectsSectionQuery));
+const ProjectsSection = async ({ data }: IProps) => {
+	const allProjects = await getProjectsData();
 
-	const allProjects: IProjectData[] = responseForProjects.data.projects.data.map((project: any) => project.attributes);
+	if (!allProjects) return null;
 
-	if (!allProjects.length || !responseForSection) return null;
-
-	const { title, buttonText } = responseForSection;
-
-	const loadMoreProjects = () => {
-		setDisplayedProjects((prev) => prev + COUNT_PRODUCT_TO_VIEW);
-	};
-
-	const getProjectsToView = (allProjects: IProjectData[]) => {
-		return allProjects.slice(0, displayedProjects);
-	};
-	const projectsToDisplay = getProjectsToView(allProjects);
-	const showLoadMoreButton = allProjects.length > projectsToDisplay.length;
-
-	const getRwdView = () => {
-		return (
-			<Slider height={400}>
-				{allProjects.map((project, index) => (
-					<SwiperSlide>
-						<ProjectBlock
-							key={index}
-							status={project.status}
-							name={project.title}
-							description={project.description}
-							images={project.images}
-							slug={project.slug}
-						/>
-					</SwiperSlide>
-				))}
-			</Slider>
-		);
-	};
-
-	const getDesktopView = () => (
-		<>
-			<FlexBlocks additionalClassName="withProjects">
-				{getProjectsToView(allProjects).map((project, index) => (
-					<ProjectBlock
-						key={index}
-						status={project.status}
-						name={project.title}
-						description={project.description}
-						images={project.images}
-						slug={project.slug}
-					/>
-				))}
-			</FlexBlocks>
-			{showLoadMoreButton && <Button content={buttonText} outline onClick={loadMoreProjects} />}
-		</>
-	);
+	const { title, buttonText } = data;
 
 	return (
 		<Section center>
-			<Heading>{title}</Heading>
-			{!isRwd && getDesktopView()}
-			{isRwd && getRwdView()}
+			<Heading title={title} />
+			<ProjectSectionRWDView projects={allProjects} />
+			<ProjectsSectionDesktopView projects={allProjects} buttonText={buttonText} />
 		</Section>
 	);
 };

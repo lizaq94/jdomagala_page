@@ -6,7 +6,7 @@ import ServicesSection from '@/sections/ServicesSection';
 import WhyWeSection from '@/sections/WhyWeSection';
 import AboutUsSection from '@/sections/AboutUsSection';
 import ContactUsSection from '@/sections/ContactUsSection';
-import { getHomePageData } from '@/lib/api';
+import { getHomePageData, getProjectData, getProjectsData } from '@/lib/api';
 import { IHomePageData } from '@/types/cmsTypes';
 
 interface IProps {
@@ -24,7 +24,7 @@ export default async function Home(props: IProps) {
 			<ServicesSection data={data.serviceSectionData} />
 			<WhyWeSection data={data.whyWeSectionData} />
 			<AchievementSection data={data.achievementSectionData} />
-			{/*/!*<ProjectsSection />*!/*/}
+			<ProjectsSection data={data.projectSectionData} />
 			{/*<AboutUsSection />*/}
 			{/*<ContactUsSection />*/}
 		</>

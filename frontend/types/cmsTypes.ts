@@ -42,10 +42,12 @@ export interface IProjectData {
 	title: string;
 	subtitle: string;
 	description: string;
+	projectInformation: ICMSInput[];
 	scopeOfWorkTitle: string;
-	scopeOfWorkItem: string[];
+	scopeOfWorkItems: string[];
 	projectStatus: string;
 	images: ICMSImage[];
+	showGalleryCarousel: boolean;
 }
 
 export interface IMetaData {
@@ -68,6 +70,7 @@ export interface IContactSectionData {
 }
 
 export interface ICMSInput {
+	id: string;
 	label: string;
 	placeholder: string;
 }

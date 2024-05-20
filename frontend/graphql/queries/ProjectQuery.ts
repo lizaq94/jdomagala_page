@@ -5,13 +5,19 @@ export const projectQuery = `
 			slug
 			title
 			subtitle
+			projectInformation {
+              id
+              label
+              placeholder
+            }
 			description
 			scopeOfWorkTitle
-			scopeOfWorkItem
+			scopeOfWorkItems
 			projectStatus
 			images {
 				id
 				url
 			}
+			showGalleryCarousel
 		}
 	}`;

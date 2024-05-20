@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import styles from '@styles/components/CarouselSwiper.module.scss';
+import Image from 'next/image';
 
 interface IProps {
 	slides: string[];
@@ -14,8 +15,8 @@ const CarouselSwiper: FC<IProps> = ({ onSwiper, slides, activeSlideIndex }) => {
 		const isActiveSlide = activeSlideIndex === index;
 		const slideClasses = `${styles.slideWrapper} ${isActiveSlide ? styles.active : ''}`;
 		return (
-			<SwiperSlide className={slideClasses}>
-				<img src={imageSrc} alt={`Thumb ${index}`} />
+			<SwiperSlide className={slideClasses} key={index}>
+				<Image src={imageSrc} alt="Slide" fill={true} style={{ objectFit: 'cover' }} />
 			</SwiperSlide>
 		);
 	};

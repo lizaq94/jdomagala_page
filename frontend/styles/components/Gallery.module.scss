@@ -5,10 +5,11 @@ $additionalWidth: 4%;
 	width: calc(100% + 2 * #{$additionalWidth});
 	margin-left: -$additionalWidth !important;
 	margin-bottom: 40px;
+	height: 100%;
 	max-height: 500px;
 
 	@include mediaQuery(medium) {
-		max-height: unset;
+		max-height: 650px;
 		margin-left: auto !important;
 		width: 100%;
 	}

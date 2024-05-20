@@ -11,14 +11,14 @@ $leftSideWidth: 45%;
 	}
 }
 
-.leftSideWrapper {
+.contentWrapper {
 	width: 100%;
 	padding: 0 20px;
 
 	@include mediaQuery(medium) {
-		width: $leftSideWidth;
-		display: flex;
-		flex-direction: column;
+		//width: $leftSideWidth;
+		//display: flex;
+		//flex-direction: column;
 		padding: 0;
 	}
 }

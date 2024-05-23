@@ -10,13 +10,6 @@ $gray: #9b9b9b;
 	.field {
 		border-color: red;
 	}
-
-	//.field,
-	//.field:focus {
-	//	~ .label {
-	//		color: red;
-	//	}
-	//}
 }
 
 .field {
@@ -25,7 +18,7 @@ $gray: #9b9b9b;
 	border: 0;
 	outline: 0;
 	font-size: 16px;
-	color: white;
+	color: $bodyFontColor;
 	padding: 7px 0;
 	background: transparent;
 	transition: border-color 0.2s;

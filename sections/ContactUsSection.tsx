@@ -4,20 +4,29 @@ import Section from '@/components/Section/Section';
 import classes from '@/styles/sections/ContactUsSection.module.scss';
 import Form from '@/components/Form/Form';
 import Heading from '@/components/Heading/Heading';
+import { IContactSectionData } from '@/types/cmsTypes';
+import Image from 'next/image';
 
-const ContactUsSection = (): JSX.Element | null => {
+interface IProps {
+	data: IContactSectionData;
+}
+
+const ContactUsSection = ({ data }: IProps) => {
+	if (!data) return null;
+
+	const { title, buttonText, nameInput, emailInput, phoneInput, messageInput, sectionId, image } = data;
+
+	const inputsData = { nameInput, emailInput, phoneInput, messageInput };
+
 	return (
 		<Section customClass={classes.wrapper}>
 			<div className={classes.leftSideWrapper}>
-				<Heading customClass={classes.heading}>Contact with us</Heading>
-				<Form />
+				<Heading title={title} customClass={classes.heading} />
+				<Form inputs={inputsData} buttonText={buttonText} />
 			</div>
 			<div className={classes.rightSideWrapper}>
 				<div className={classes.imageWrapper}>
-					<img
-						src="https://mapiko.pl/wp-content/uploads/elementor/thumbs/budujemy-z-pasja-mapiko-pw772b52h95ipot17yz1b21zcqyuyd47q59ht15ugm.jpg"
-						alt=""
-					/>
+					<Image src={image.url} alt="Contact Image" fill />
 				</div>
 			</div>
 		</Section>

@@ -67,6 +67,7 @@ export interface IContactSectionData {
 	phoneInput: ICMSInput;
 	messageInput: ICMSInput;
 	sectionId: string;
+	image: ICMSImage;
 }
 
 export interface ICMSInput {

@@ -7,11 +7,23 @@ import { useState } from 'react';
 import { sendContactForm } from '@/lib/api';
 import FormNotification from '@/components/Toast/FormNotification';
 import { AnimatePresence } from 'framer-motion';
+import { ICMSInput } from '@/types/cmsTypes';
 
-const Form = () => {
+interface IProps {
+	inputs: {
+		nameInput: ICMSInput;
+		emailInput: ICMSInput;
+		phoneInput: ICMSInput;
+		messageInput: ICMSInput;
+	};
+	buttonText: string;
+}
+
+const Form = ({ inputs, buttonText }: IProps) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [notificationMessage, setNotificationMessage] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
+	const { nameInput, emailInput, phoneInput, messageInput } = inputs;
 
 	const initialValues = {
 		name: '',
@@ -58,8 +70,8 @@ const Form = () => {
 			<form onSubmit={handleSubmit}>
 				<Input
 					name="name"
-					label="Name"
-					placeholder="Name"
+					label={nameInput.label}
+					placeholder={nameInput.placeholder}
 					type="text"
 					value={values.name}
 					onChange={handleChange}
@@ -69,8 +81,8 @@ const Form = () => {
 				/>
 				<Input
 					name="email"
-					label="Email"
-					placeholder="Email"
+					label={emailInput.label}
+					placeholder={emailInput.placeholder}
 					type="email"
 					value={values.email}
 					onChange={handleChange}
@@ -80,8 +92,8 @@ const Form = () => {
 				/>
 				<Input
 					name="phone"
-					label="Phone"
-					placeholder="Phone"
+					label={phoneInput.label}
+					placeholder={phoneInput.placeholder}
 					type="tel"
 					value={values.phone}
 					onChange={handleChange}
@@ -91,8 +103,8 @@ const Form = () => {
 				/>
 				<Input
 					name="message"
-					label="Message"
-					placeholder="Message"
+					label={messageInput.label}
+					placeholder={messageInput.placeholder}
 					value={values.message}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -102,9 +114,9 @@ const Form = () => {
 				/>
 				<div className={classes.buttonWrapper}>
 					<Button
-						content={'Send'}
+						content={buttonText}
 						customClass={classes.formButton}
-						outline
+						filled
 						clickEffect
 						buttonType="submit"
 						isLoading={isLoading}

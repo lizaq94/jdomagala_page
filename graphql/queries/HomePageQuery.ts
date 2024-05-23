@@ -66,6 +66,9 @@ export const homePageQuery = `
 					placeholder
 				}
 				sectionId
+				image {
+				    url
+				}
 			}
 		}
 	}`;

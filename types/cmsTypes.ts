@@ -80,11 +80,13 @@ export interface IAboutUsSectionData {
 	title: string;
 	content: string;
 	image: ICMSImage;
+	sectionId: string;
 }
 
 export interface IProjectSectionData {
 	title: string;
 	buttonText: string;
+	sectionId: string;
 }
 
 export interface IWhyWeSectionData {

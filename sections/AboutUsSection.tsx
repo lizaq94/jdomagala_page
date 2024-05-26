@@ -15,7 +15,7 @@ interface IProps {
 const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 	if (!data) return null;
 
-	const { title, image, content } = data;
+	const { title, image, content, sectionId } = data;
 
 	const imageAnimationVariants = {
 		initial: {
@@ -42,7 +42,7 @@ const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 	};
 
 	return (
-		<Section>
+		<Section id={sectionId}>
 			<Heading title={title} />
 			<div className={classes.wrapper}>
 				<motion.div

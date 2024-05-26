@@ -9,6 +9,7 @@ export const mapperHomePageData = (data: any): IHomePageData => {
 		projectSectionData: {
 			title: data.projectsSectionTile,
 			buttonText: data.projectSectionButtonText,
+			sectionId: data.projectSectionId,
 		},
 		aboutUsSectionData: data.aboutUsSection,
 		contactSectionData: data.contactSection,

@@ -19,7 +19,7 @@ const ContactUsSection = ({ data }: IProps) => {
 	const inputsData = { nameInput, emailInput, phoneInput, messageInput };
 
 	return (
-		<Section customClass={classes.wrapper}>
+		<Section customClass={classes.wrapper} id={sectionId}>
 			<div className={classes.leftSideWrapper}>
 				<Heading title={title} customClass={classes.heading} />
 				<Form inputs={inputsData} buttonText={buttonText} />

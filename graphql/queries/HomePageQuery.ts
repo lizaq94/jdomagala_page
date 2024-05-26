@@ -39,12 +39,14 @@ export const homePageQuery = `
 			}
 			projectsSectionTile
 			projectSectionButtonText
+			projectSectionId
 			aboutUsSection {
 				title
 				content
 				image {
 					url
 				}
+				sectionId
 			}
 			contactSection {
 				title

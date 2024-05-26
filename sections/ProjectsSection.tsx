@@ -14,10 +14,10 @@ const ProjectsSection = async ({ data }: IProps) => {
 
 	if (!allProjects) return null;
 
-	const { title, buttonText } = data;
+	const { title, buttonText, sectionId } = data;
 
 	return (
-		<Section center>
+		<Section center id={sectionId}>
 			<Heading title={title} />
 			<ProjectSectionRWDView projects={allProjects} />
 			<ProjectsSectionDesktopView projects={allProjects} buttonText={buttonText} />

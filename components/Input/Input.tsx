@@ -15,7 +15,19 @@ interface IProps {
 	isTouched?: boolean;
 }
 const Input = (props: IProps) => {
-	const { label, type, placeholder, name, required, isTextArea = false, onChange, onBlur, errorMessage, isTouched, value } = props;
+	const {
+		label,
+		type,
+		placeholder,
+		name,
+		required,
+		isTextArea = false,
+		onChange,
+		onBlur,
+		errorMessage,
+		isTouched,
+		value,
+	} = props;
 	const wrapperClasses = `${classes.wrapper} ${errorMessage && isTouched ? classes.withError : ''}`;
 
 	return (

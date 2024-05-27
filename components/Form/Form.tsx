@@ -8,6 +8,7 @@ import { sendContactForm } from '@/lib/api';
 import FormNotification from '@/components/Toast/FormNotification';
 import { AnimatePresence } from 'framer-motion';
 import { ICMSInput } from '@/types/cmsTypes';
+import PhoneInput from '@/components/PhoneInput/PhoneInput';
 
 interface IProps {
 	inputs: {
@@ -91,6 +92,17 @@ const Form = ({ inputs, buttonText }: IProps) => {
 					isTouched={touched.email}
 				/>
 				<Input
+					name="phone"
+					label={phoneInput.label}
+					placeholder={phoneInput.placeholder}
+					type="tel"
+					value={values.phone}
+					onChange={handleChange}
+					onBlur={handleBlur}
+					errorMessage={errors.phone}
+					isTouched={touched.phone}
+				/>
+				<PhoneInput
 					name="phone"
 					label={phoneInput.label}
 					placeholder={phoneInput.placeholder}

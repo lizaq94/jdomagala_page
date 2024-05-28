@@ -13,6 +13,7 @@ interface IProps {
 	isTextArea?: boolean;
 	errorMessage?: string;
 	isTouched?: boolean;
+	maxLength?: number;
 }
 const Input = (props: IProps) => {
 	const {
@@ -27,6 +28,7 @@ const Input = (props: IProps) => {
 		errorMessage,
 		isTouched,
 		value,
+		maxLength,
 	} = props;
 	const wrapperClasses = `${classes.wrapper} ${errorMessage && isTouched ? classes.withError : ''}`;
 
@@ -43,6 +45,7 @@ const Input = (props: IProps) => {
 					required={required}
 					onChange={onChange}
 					onBlur={onBlur}
+					maxLength={maxLength}
 				/>
 			) : (
 				<textarea

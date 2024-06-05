@@ -1,10 +1,10 @@
 @mixin sectionWrapper {
 	width: 100%;
 	max-width: 1200px;
-	margin: 40px auto 0;
+	margin: 70px auto 0;
 
 	@include mediaQuery(medium) {
-		margin: 70px auto 0;
+		margin: 100px auto 0;
 	}
 }
 

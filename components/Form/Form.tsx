@@ -47,16 +47,7 @@ const Form = ({ inputs, buttonText }: IProps) => {
 		}, 3000);
 	};
 
-	const {
-		values,
-		errors,
-		touched,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-		isSubmitting,
-		setFieldValue,
-	} = useFormik({
+	const { values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue } = useFormik({
 		initialValues,
 		validationSchema: FormValidationSchema,
 		onSubmit: async (values, { resetForm }) => {
@@ -74,8 +65,6 @@ const Form = ({ inputs, buttonText }: IProps) => {
 			}
 		},
 	});
-
-	console.log('Kamil values', values);
 
 	return (
 		<div className={classes.wrapper}>

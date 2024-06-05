@@ -46,7 +46,7 @@ const ServiceView = async ({ params }: any) => {
 					<div className={classes.contactBlock}>
 						<span className={classes.contactBlockTitle}>{data.contactBoxTitle}</span>
 						<p className={classes.contactBlockDescription}>{data.contactBoxDescription}</p>
-						<ButtonArrow url={'/'} />
+						<ButtonArrow url={data.buttonUrl} />
 					</div>
 				</div>
 			</Section>

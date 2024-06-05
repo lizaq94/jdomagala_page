@@ -1,6 +1,7 @@
 .wrapper {
 	@include mediaQuery(medium) {
 		display: flex;
+		margin-top: 200px;
 	}
 }
 

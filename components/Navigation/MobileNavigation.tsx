@@ -32,6 +32,7 @@ const MobileNavigation = ({ buttons }: IProps) => {
 						key={id}
 						content={label}
 						url={url}
+						onClick={handleOpenMenu}
 						hoverEffect
 						outline={index + 1 === buttons.length}
 						mobileNavigationButton

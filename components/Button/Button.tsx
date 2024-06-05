@@ -34,7 +34,7 @@ const Button = ({
 	} ${customClass}`;
 
 	return !!url ? (
-		<NextLink className={classNames} href={url}>
+		<NextLink className={classNames} href={url} onClick={onClick}>
 			{content}
 		</NextLink>
 	) : (

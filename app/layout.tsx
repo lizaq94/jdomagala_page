@@ -17,12 +17,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 	if (!data) return null;
 
+	const { navigationData, footerData } = data;
+
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Navigation data={data.navigationData} />
+				<Navigation data={navigationData} />
 				{children}
-				<Footer />
+				<Footer data={footerData} navigationLinks={navigationData.navigationLinks} />
 			</body>
 		</html>
 	);

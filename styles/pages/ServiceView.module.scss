@@ -45,10 +45,6 @@
 	}
 }
 
-.sectionWrapper {
-	height: calc(100vh - #{$navigationMaxHeight});
-}
-
 .sectionContent {
 	display: flex;
 	flex-direction: column;

@@ -1,17 +1,23 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 const useRwd = () => {
+	const innerHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
+
 	const MAX_MOBILE_WIDTH = 768;
-	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+	const [screenWidth, setScreenWidth] = useState(innerHeight);
 
 	useEffect(() => {
-		const handleResize = () => setScreenWidth(window.innerWidth);
+		if (typeof window !== 'undefined') {
+			const handleResize = () => setScreenWidth(window?.innerWidth);
 
-		window.addEventListener('resize', handleResize);
+			window.addEventListener('resize', handleResize);
 
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
+			return () => {
+				window.removeEventListener('resize', handleResize);
+			};
+		}
 	}, []);
 	const isRwd = screenWidth <= MAX_MOBILE_WIDTH;
 

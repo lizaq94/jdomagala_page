@@ -6,13 +6,8 @@ import WhyWeSection from '@/sections/WhyWeSection';
 import AboutUsSection from '@/sections/AboutUsSection';
 import ContactUsSection from '@/sections/ContactUsSection';
 import { getHomePageData } from '@/lib/api';
-import { IHomePageData } from '@/types/cmsTypes';
 
-interface IProps {
-	data: IHomePageData;
-}
-
-export default async function Home(props: IProps) {
+export default async function Home() {
 	const data = await getHomePageData();
 
 	if (!data) return null;

@@ -1,6 +1,6 @@
 .wrapper {
 	position: relative;
-	font-family: $primaryFontFamily;
+	font-family: var(--fontPrimary);
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 20px;

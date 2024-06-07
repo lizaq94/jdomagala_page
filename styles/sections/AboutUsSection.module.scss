@@ -54,6 +54,6 @@ $imageMargin: 30px;
 	font-size: 18px;
 	font-weight: 300;
 	line-height: 20px;
-	font-family: $primaryFontFamily;
+	font-family: var(--fontPrimary);
 	margin-bottom: 20px;
 }

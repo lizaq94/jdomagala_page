@@ -30,7 +30,7 @@
 }
 
 .heroTitle {
-	font-family: $secondFontFamily;
+	font-family: var(--fontSecondary);
 	font-size: 60px;
 
 	@include mediaQuery(medium) {
@@ -56,7 +56,7 @@
 
 .subtitle {
 	font-size: 14px;
-	font-family: $secondFontFamily;
+	font-family: var(--fontSecondary);
 	font-weight: 600;
 	text-transform: uppercase;
 	color: $primaryColor;
@@ -179,7 +179,7 @@
 .contactBlockTitle {
 	font-size: 34px;
 	line-height: 38px;
-	font-family: $secondFontFamily;
+	font-family: var(--fontSecondary);
 	font-weight: 600;
 	margin-bottom: 15px;
 }

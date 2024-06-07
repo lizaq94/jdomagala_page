@@ -23,7 +23,7 @@ body {
 
 body {
 	color: $bodyFontColor;
-	font-family: $primaryFontFamily;
+	font-family: var(--fontPrimary);
 	background-color: $white;
 	height: 100dvh;
 	--scroll-behavior: smooth !important;

@@ -11,7 +11,7 @@
 @mixin sectionTitle {
 	width: 100%;
 	margin-bottom: 70px;
-	font-family: $secondFontFamily;
+	font-family: var(--fontSecondary);
 	font-size: 50px;
 	line-height: 48px;
 	font-weight: 700;

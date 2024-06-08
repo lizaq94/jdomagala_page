@@ -23,7 +23,7 @@ const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 					backgroundImage: `url(${backgroundImage?.url})`,
 				}}
 			>
-				<FlexBlocks>
+				<FlexBlocks additionalClassName="animatedCounters">
 					{achievementCounters.map((counter) => (
 						<AnimatedCounter to={counter.countNumber} description={counter.description} key={counter.id} />
 					))}

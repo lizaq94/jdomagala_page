@@ -10,6 +10,7 @@ import { serviceQuery } from '@/graphql/queries/ServiceQuery';
 import { projectsQuery } from '@/graphql/queries/ProjectsQuery';
 import { projectQuery } from '@/graphql/queries/ProjectQuery';
 import { mapperProjectData, mapperProjectsData } from '@/lib/mappers/mapperProjectsData';
+import { Tags } from '@/types/Tags';
 
 export const sendContactForm = async (values: IFormData) =>
 	await fetch('/api/form', {
@@ -44,6 +45,7 @@ export const fetchDataFromCMS = async <T>(
 				query: query,
 				variables: variables,
 			}),
+			next: { tags: [Tags.ALL] },
 		});
 
 		const json = await response.json();

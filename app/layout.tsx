@@ -1,9 +1,10 @@
 import '@styles/base/global.scss';
-import Navigation from '@/components/Navigation/Navigation';
 import { Raleway, Open_Sans } from 'next/font/google';
-import Footer from '@/components/Footer/Footer';
 import React from 'react';
 import { getNavigationAndFooterData } from '@/lib/api';
+import dynamic from 'next/dynamic';
+const Navigation = dynamic(() => import('@/components/Navigation/Navigation'), { ssr: false });
+const Footer = dynamic(() => import('@/components/Footer/Footer'), { ssr: false });
 
 export const metadata = {
 	title: 'JDomagala - usługi budowlano-remontowe',

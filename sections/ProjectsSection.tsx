@@ -2,8 +2,9 @@ import Section from '@/components/Section/Section';
 import Heading from '@/components/Heading/Heading';
 import { IProjectSectionData } from '@/types/cmsTypes';
 import { getProjectsData } from '@/lib/api';
-import ProjectsSectionDesktopView from '@/sections/ProjectsSectionDesktopView';
-import ProjectSectionRWDView from '@/sections/ProjectSectionRWDView';
+import dynamic from 'next/dynamic';
+const ProjectsSectionDesktopView = dynamic(() => import('@/sections/ProjectsSectionDesktopView'), { ssr: false });
+const ProjectSectionRWDView = dynamic(() => import('@/sections/ProjectSectionRWDView'), { ssr: false });
 
 interface IProps {
 	data: IProjectSectionData;

@@ -16,8 +16,7 @@ const ServiceView = async ({ params }: any) => {
 	return (
 		<div className={classes.wrapper}>
 			<div className={classes.heroImage} style={{ backgroundImage: `url(${data.heroImage.url})` }}>
-				<h2 className={classes.heroTitle}>{data.title}</h2>
-				<h3 className={classes.heroSubtitle}>{data.heroSubtitle}</h3>
+				{data?.title && <h2 className={classes.heroTitle}>{data.title}</h2>}
 			</div>
 			<Section customClass={classes.sectionWrapper}>
 				<div className={classes.sectionContent}>
@@ -39,7 +38,6 @@ const ServiceView = async ({ params }: any) => {
 						</div>
 					</div>
 					<div className={classes.contentWrapper}>
-						<p className={classes.subtitle}>{data.contentSubtitle}</p>
 						<h2 className={classes.title}>{data.title}</h2>
 						<div dangerouslySetInnerHTML={{ __html: data.content }}></div>
 					</div>

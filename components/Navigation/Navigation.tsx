@@ -27,8 +27,13 @@ const Navigation = ({ data }: IProps) => {
 			<div className={classes.wrapper}>
 				{!isRwd && (
 					<div className={classes.additional_info}>
-						<div className={classes.email}>{email}</div>
-						<div className={classes.phone}>{phoneNumber}</div>
+						<a href={`mailto:${email}`} className={classes.email}>
+							{email}
+						</a>
+
+						<a href={`tel:${phoneNumber}`} className={classes.phone}>
+							{phoneNumber}
+						</a>
 						{facebookLink && (
 							<Link href={facebookLink}>
 								<Image src={facebookLogo.src} alt="Facebook logo" width={17} height={21} />

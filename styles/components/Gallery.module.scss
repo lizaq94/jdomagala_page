@@ -7,11 +7,14 @@ $additionalWidth: 4%;
 	margin-bottom: 40px;
 	height: 100%;
 	max-height: 500px;
+	aspect-ratio: 16/9;
 
 	@include mediaQuery(medium) {
-		max-height: 650px;
 		margin-left: auto !important;
 		width: 100%;
+		height: calc(100vh - 200px);
+		min-height: 300px;
+		max-height: 700px;
 	}
 }
 

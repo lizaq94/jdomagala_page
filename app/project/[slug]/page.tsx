@@ -8,7 +8,6 @@ const ProjectView = async ({ params }: any) => {
 	const data = await getProjectData(params.slug);
 
 	if (!data) return notFound();
-	const isRwd = false;
 
 	const {
 		title,

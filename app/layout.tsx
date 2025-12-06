@@ -1,4 +1,4 @@
-import '@styles/base/global.scss';
+import './globals.css';
 import { Raleway, Open_Sans } from 'next/font/google';
 import React from 'react';
 import { getNavigationAndFooterData } from '@/lib/api';

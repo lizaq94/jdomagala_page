@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from '@styles//components/Heading.module.scss';
 
 interface IProps {
 	title: string;
@@ -7,7 +6,21 @@ interface IProps {
 }
 
 const Heading = ({ title, customClass }: IProps): JSX.Element => {
-	return <h2 className={`${classes.heading} ${customClass ? customClass : ''}`} dangerouslySetInnerHTML={{ __html: title }} />;
+	const headingClasses = `
+		section-heading
+		w-full mb-[70px]
+		font-secondary text-[50px] leading-[48px]
+		md:text-[64px] md:leading-[62px]
+		font-bold text-center uppercase
+		${customClass || ''}
+	`.replace(/\s+/g, ' ').trim();
+
+	return (
+		<h2
+			className={headingClasses}
+			dangerouslySetInnerHTML={{ __html: title }}
+		/>
+	);
 };
 
 export default Heading;

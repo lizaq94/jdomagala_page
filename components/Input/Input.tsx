@@ -1,4 +1,3 @@
-import classes from '@styles/components/Input.module.scss';
 import { ChangeEvent, FocusEvent } from 'react';
 
 interface IProps {
@@ -15,6 +14,7 @@ interface IProps {
 	isTouched?: boolean;
 	maxLength?: number;
 }
+
 const Input = (props: IProps) => {
 	const {
 		label,
@@ -30,14 +30,37 @@ const Input = (props: IProps) => {
 		value,
 		maxLength,
 	} = props;
-	const wrapperClasses = `${classes.wrapper} ${errorMessage && isTouched ? classes.withError : ''}`;
+
+	const hasError = errorMessage && isTouched;
+
+	const wrapperClasses = 'relative pt-[15px] mt-5 w-full';
+
+	const fieldClasses = `
+		input-field
+		font-inherit w-full border-0 outline-none
+		text-base text-body-font
+		py-[7px] px-0 bg-transparent
+		transition-[border-color] duration-200
+		border-b-2 border-primary
+		shadow-none
+		${hasError ? 'border-red-500' : ''}
+	`.replace(/\s+/g, ' ').trim();
+
+	const textareaClasses = `${fieldClasses} overflow-hidden min-h-[150px] resize-none`;
+
+	const labelClasses = `
+		input-label
+		absolute top-[-5px] block
+		transition-all duration-200
+		text-base text-gray-500
+	`.replace(/\s+/g, ' ').trim();
 
 	return (
 		<div className={wrapperClasses}>
 			{!isTextArea ? (
 				<input
 					type={type}
-					className={classes.field}
+					className={fieldClasses}
 					placeholder={placeholder}
 					name={name}
 					id={name}
@@ -49,7 +72,7 @@ const Input = (props: IProps) => {
 				/>
 			) : (
 				<textarea
-					className={`${classes.field} ${classes.textarea}`}
+					className={textareaClasses}
 					placeholder={placeholder}
 					name={name}
 					id={name}
@@ -60,10 +83,12 @@ const Input = (props: IProps) => {
 				/>
 			)}
 
-			<label htmlFor={name} className={classes.label}>
+			<label htmlFor={name} className={labelClasses}>
 				{label}
 			</label>
-			{errorMessage && isTouched ? <p className={classes.error}>{errorMessage}</p> : null}
+			{hasError && (
+				<p className="mt-[5px] text-red-500 text-sm">{errorMessage}</p>
+			)}
 		</div>
 	);
 };

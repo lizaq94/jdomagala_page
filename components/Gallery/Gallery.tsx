@@ -2,7 +2,6 @@
 import React, { FC, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode, Thumbs, Pagination } from 'swiper/modules';
-import styles from '@styles/components/Gallery.module.scss';
 import CarouselSwiper from '@/components/CarouselSwiper/CarouselSwiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -35,7 +34,7 @@ const Gallery: FC<IProps> = ({ photos, showCarousel = false }) => {
 				onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
 				navigation={!isRwd}
 				modules={[FreeMode, Navigation, Thumbs, Pagination]}
-				className={styles.sliderWrapper}
+				className="flex-1 w-[calc(100%+8%)] -ml-[4%] mb-10 h-full max-h-[500px] aspect-video md:ml-auto md:w-full md:h-[calc(100vh-200px)] md:min-h-[300px] md:max-h-[700px] md:aspect-auto"
 				thumbs={{ swiper: carouselSwiper }}
 				pagination={{
 					enabled: isRwd,

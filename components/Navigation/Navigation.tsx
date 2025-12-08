@@ -3,13 +3,11 @@
 import DesktopNavigation from '@/components/Navigation/DesktopNavigation';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import classes from '@styles/components/Navigation.module.scss';
 
 import useRwd from '@/hooks/useRwd';
 import MobileNavigation from '@/components/Navigation/MobileNavigation';
 import { INavigationData } from '@/types/cmsTypes';
 import Link from 'next/link';
-import facebookLogo from '@/public/static/facebook-logo.svg';
 
 interface IProps {
 	data: INavigationData;
@@ -19,31 +17,30 @@ const Navigation = ({ data }: IProps) => {
 	const { isRwd } = useRwd();
 	const pathName = usePathname();
 	const isHomePage = pathName === '/';
-	const containerClassNames = `${classes.container} ${!isHomePage ? classes.notHomePage : ''}`;
 	const { logoImage, email, facebookLink, phoneNumber, navigationLinks } = data;
 
 	return (
-		<header className={containerClassNames}>
-			<div className={classes.wrapper}>
+		<header className={`w-full ${!isHomePage ? 'md:shadow-[rgba(100,100,111,0.1)_0px_7px_30px_0px]' : ''}`}>
+			<div className={`relative flex flex-col w-full max-w-[1200px] max-h-[118px] mx-auto pt-5 md:pt-0 md:pb-2.5 z-10 font-primary ${isHomePage ? 'text-white' : 'text-[#212121]'}`}>
 				{!isRwd && (
-					<div className={classes.additional_info}>
-						<a href={`mailto:${email}`} className={classes.email}>
+					<div className="flex justify-end items-center my-2.5 mx-0 font-light text-xs">
+						<a href={`mailto:${email}`} className="mr-5">
 							{email}
 						</a>
 
-						<a href={`tel:${phoneNumber}`} className={classes.phone}>
+						<a href={`tel:${phoneNumber}`} className="mr-2.5">
 							{phoneNumber}
 						</a>
 						{facebookLink && (
 							<Link href={facebookLink}>
-								<Image src={facebookLogo.src} alt="Facebook logo" width={17} height={21} />
+								<img src="/static/facebook-logo.svg" alt="Facebook logo" width={17} height={21} />
 							</Link>
 						)}
 					</div>
 				)}
-				<div className={classes.logoAndButtons_wrapper}>
+				<div className="flex items-center justify-end">
 					{!!logoImage && (
-						<div className={classes.logo}>
+						<div className="relative h-20 w-[270px] z-10 ml-5 md:ml-0 md:mr-auto">
 							<Image loader={({ src }) => src} src={logoImage.url} alt="" fill={true} />
 						</div>
 					)}

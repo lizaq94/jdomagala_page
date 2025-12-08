@@ -1,5 +1,4 @@
 import { motion, Transition, SVGMotionProps } from 'framer-motion';
-import styles from '@/styles/components/Navigation.module.scss';
 
 interface IProps {
 	isOpen: boolean;
@@ -48,7 +47,7 @@ const HamburgerButton = ({ isOpen, onClick, size, color }: IProps) => {
 	};
 
 	return (
-		<div className={styles.hamburgerButton}>
+		<div className="relative flex justify-end p-0 pr-5 pb-5 z-[101]">
 			<motion.svg viewBox={`0 0 4 4`} overflow="visible" preserveAspectRatio="none" width={size} height={size} onClick={onClick}>
 				<motion.line x1="0" x2="4" y1="0" y2="0" variants={top} {...lineProps} />
 				<motion.line x1="0" x2="4" y1="2" y2="2" variants={center} {...lineProps} />

@@ -1,6 +1,5 @@
 'use client';
 
-import styles from '@styles/components/Navigation.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import HamburgerButton from '@/components/HamburgerButton/HamburgerButton';
 import { usePathname } from 'next/navigation';
@@ -25,7 +24,7 @@ const MobileNavigation = ({ buttons }: IProps) => {
 				animate={{ opacity: 1, x: 0 }}
 				transition={{ duration: 0.5, opacity: { duration: 0.4 } }}
 				exit={{ opacity: 0.5, x: '-100%' }}
-				className={styles.mobileButtonsWrapper}
+				className="fixed top-0 bottom-0 left-0 right-0 h-screen flex flex-col justify-center items-center bg-[#f8f5f9] z-[100]"
 			>
 				{buttons.map(({ url, label, id }, index) => (
 					<Button
@@ -43,7 +42,7 @@ const MobileNavigation = ({ buttons }: IProps) => {
 	};
 
 	return (
-		<div className={styles.mobileWrapper}>
+		<div className="w-full h-full">
 			<HamburgerButton
 				isOpen={isOpen}
 				size={30}

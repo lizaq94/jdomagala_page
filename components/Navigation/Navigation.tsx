@@ -21,7 +21,7 @@ const Navigation = ({ data }: IProps) => {
 
 	return (
 		<header className={`w-full ${!isHomePage ? 'md:shadow-[rgba(100,100,111,0.1)_0px_7px_30px_0px]' : ''}`}>
-			<div className={`relative flex flex-col w-full max-w-[1200px] max-h-[118px] mx-auto pt-5 md:pt-0 md:pb-2.5 z-10 font-primary ${isHomePage ? 'text-white' : 'text-[#212121]'}`}>
+			<div className={`relative flex flex-col w-full max-w-container max-h-[118px] mx-auto pt-5 md:pt-0 md:pb-2.5 z-10 font-primary ${isHomePage ? 'text-white' : 'text-[#212121]'}`}>
 				{!isRwd && (
 					<div className="flex justify-end items-center my-2.5 mx-0 font-light text-xs">
 						<a href={`mailto:${email}`} className="mr-5">

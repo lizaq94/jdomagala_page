@@ -1,4 +1,3 @@
-import styles from '@styles//components/Section.module.scss';
 import React, { ReactNode } from 'react';
 
 interface IProps {
@@ -10,9 +9,12 @@ interface IProps {
 }
 
 const Section = ({ children, center, onFullPage, customClass, id = '' }: IProps) => {
-	const classes = `${styles.wrapper} ${center ? styles.center : ''} ${onFullPage ? styles.onFullPage : ''} ${
-		!!customClass ? customClass : ''
-	}`;
+	const baseClasses = 'w-full max-w-container mt-[70px] md:mt-[100px] mx-auto';
+	const centerClasses = center ? 'flex flex-col justify-center items-center' : '';
+	const fullPageClasses = onFullPage ? 'max-w-none' : '';
+
+	const classes = `${baseClasses} ${centerClasses} ${fullPageClasses} ${customClass || ''}`.trim();
+
 	return (
 		<section className={classes} id={id}>
 			{children}

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import React from 'react';
-import styles from '@styles/sections/WhatWeDoBlock.module.scss';
 import Link from 'next/link';
 
 interface IProps {
@@ -28,15 +27,15 @@ const ServiceBlock = (props: IProps) => {
 			whileInView="animate"
 			viewport={{ once: true }}
 			custom={index}
-			className={styles.wrapper}
+			className="relative w-full mb-[50px] flex flex-col justify-center items-center px-5 md:max-w-[calc(100%/3-40px)] md:px-0"
 		>
-			<span className={styles.icon}>
+			<span className="mb-5 [&_img]:w-full [&_img]:h-full">
 				<img src={icon} alt="" />
 			</span>
-			<h3 className={styles.title}>{title}</h3>
-			<p className={styles.shortDescription}>{shortDescription}</p>
+			<h3 className="text-base mb-[15px] font-secondary font-normal leading-[1.2]">{title}</h3>
+			<p className="text-[15px] font-normal leading-[1.8] mb-5 text-center text-[#6c757d]">{shortDescription}</p>
 			<motion.div whileHover={{ y: '-2px' }}>
-				<Link href={`/service/${slug}`} className={styles.button}>
+				<Link href={`/service/${slug}`} className="text-primary text-sm font-bold bg-transparent leading-[1.8] border-none cursor-pointer">
 					{buttonText}
 				</Link>
 			</motion.div>

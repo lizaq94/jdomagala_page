@@ -4,7 +4,6 @@ import AnimatedCounter from '@/components/AnimtedCounter/AnimatedCounter';
 import React from 'react';
 import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Section from '@/components/Section/Section';
-import styles from '@/styles/sections/AchievementSection.module.scss';
 import { IAchievementSectionData } from '@/types/cmsTypes';
 
 interface IProps {
@@ -18,7 +17,7 @@ const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 	return (
 		<Section onFullPage>
 			<div
-				className={styles.wrapper}
+				className="relative w-full flex flex-col justify-center items-center bg-cover my-[50px] py-[30px] text-white md:flex-row md:min-h-[400px] md:my-[100px] before:absolute before:content-[''] before:inset-0 before:bg-black/50"
 				style={{
 					backgroundImage: `url(${backgroundImage?.url})`,
 				}}

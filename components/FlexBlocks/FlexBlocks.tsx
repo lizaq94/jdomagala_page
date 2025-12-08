@@ -1,13 +1,21 @@
 import React from 'react';
-import classes from '@styles//components/FlexBlocks.module.scss';
 import { ReactNode } from 'react';
 
 interface IProps {
 	children: ReactNode;
 	additionalClassName?: string;
 }
+
+const additionalClassMap: Record<string, string> = {
+	withProjects: 'w-full mb-[70px]',
+	animatedCounters: 'items-center justify-center',
+};
+
 const FlexBlocks = ({ children, additionalClassName = '' }: IProps): JSX.Element => {
-	return <div className={`${classes.wrapper} ${classes[additionalClassName]}`}>{children}</div>;
+	const baseClasses = 'flex flex-col items-start justify-between flex-wrap md:flex-row';
+	const extraClasses = additionalClassMap[additionalClassName] || '';
+
+	return <div className={`${baseClasses} ${extraClasses}`}>{children}</div>;
 };
 
 export default FlexBlocks;

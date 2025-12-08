@@ -17,7 +17,7 @@ const Footer = ({ data, navigationLinks }: IProps) => {
 
 	return (
 		<footer className="flex justify-center items-center py-2.5 mt-[100px] bg-primary text-white">
-			<div className="w-full max-w-[1200px] flex justify-between items-center">
+			<div className="w-full max-w-container flex justify-between items-center">
 				<div className="w-[250px] h-[94px]" dangerouslySetInnerHTML={{ __html: marked(data.content) }} />
 				<nav className="h-[50px] flex justify-center items-center">
 					{navigationLinks.map((link) => (

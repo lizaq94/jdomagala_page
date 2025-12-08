@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from '@styles/sections/WhyWeBlock.module.scss';
 import { motion } from 'framer-motion';
 
 interface IProps {
@@ -23,12 +22,14 @@ const WhyWeBlock = ({ title, description, image, index }: IProps): JSX.Element =
 			whileInView="animate"
 			viewport={{ once: true }}
 			custom={index}
-			className={classes.wrapper}
+			className="group relative flex flex-col justify-center w-full min-h-[300px] py-[50px] px-[30px] mb-0 text-white bg-cover cursor-pointer md:max-w-[calc(100%/3-20px)] md:rounded-[10px] before:content-[''] before:absolute before:inset-0 before:bg-black/60 before:z-0 md:before:rounded-[10px]"
 			style={{ backgroundImage: `url(${image})` }}
 		>
-			<h3 className={classes.title}>{title}</h3>
-			<p className={classes.description}>{description}</p>
-			<span className={classes.blockNumber}>{blockNumber}</span>
+			<h3 className="relative z-[1] text-[30px] font-bold leading-[34.5px] mb-2.5">{title}</h3>
+			<p className="relative z-[1] text-base font-light leading-[19px]">{description}</p>
+			<span className="absolute top-5 right-5 font-black text-[40px] opacity-80 transition-colors duration-300 group-hover:text-primary">
+				{blockNumber}
+			</span>
 		</motion.div>
 	);
 };

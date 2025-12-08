@@ -3,7 +3,6 @@
 import React from 'react';
 import Section from '@/components/Section/Section';
 import Heading from '@/components/Heading/Heading';
-import classes from '@styles/sections/AboutUsSection.module.scss';
 import { motion } from 'framer-motion';
 import { IAboutUsSectionData } from '@/types/cmsTypes';
 import { marked } from 'marked';
@@ -12,7 +11,7 @@ interface IProps {
 	data: IAboutUsSectionData;
 }
 
-const AchievementSection = ({ data }: IProps): JSX.Element | null => {
+const AboutUsSection = ({ data }: IProps): JSX.Element | null => {
 	if (!data) return null;
 
 	const { title, image, content, sectionId } = data;
@@ -44,22 +43,22 @@ const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 	return (
 		<Section id={sectionId}>
 			<Heading title={title} />
-			<div className={classes.wrapper}>
+			<div className="w-full max-w-container flex flex-col md:flex-row md:h-[600px]">
 				<motion.div
 					variants={imageAnimationVariants}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: true }}
-					className={classes.leftSideWrapper}
+					className="mb-[-10px] md:mb-0 md:mr-[-30px] md:py-[30px] md:flex-[0_0_50%]"
 				>
-					<img src={image.url} alt="" />
+					<img src={image.url} alt="" className="relative w-full h-full object-cover z-[1]" />
 				</motion.div>
 				<motion.div
 					variants={contentAnimationVariants}
 					initial="initial"
 					whileInView="animate"
 					viewport={{ once: true }}
-					className={classes.rightSideWrapper}
+					className="flex flex-col justify-center items-center py-10 px-5 md:py-0 md:px-[30px] md:pl-[60px] bg-primary text-white md:flex-[0_0_50%] [&_p]:text-lg [&_p]:font-light [&_p]:leading-5 [&_p]:font-primary [&_p]:mb-5"
 					dangerouslySetInnerHTML={{ __html: marked(content) }}
 				/>
 			</div>
@@ -67,4 +66,4 @@ const AchievementSection = ({ data }: IProps): JSX.Element | null => {
 	);
 };
 
-export default AchievementSection;
+export default AboutUsSection;

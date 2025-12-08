@@ -13,8 +13,8 @@
   --font-primary: var(--fontPrimary), sans-serif;
   --font-secondary: var(--fontSecondary), serif;
 
-  /* Max width */
-  --container-max: 1200px;
+  /* Max width - creates max-w-container class */
+  --max-width-container: 1280px;
 
   /* Heights */
   --height-navigation: 118px;

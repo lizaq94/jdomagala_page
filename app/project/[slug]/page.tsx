@@ -1,5 +1,4 @@
 import Section from '@/components/Section/Section';
-import styles from '@styles/pages/ProjectView.module.scss';
 import Gallery from '@/components/Gallery/Gallery';
 import { getProjectData } from '@/lib/api';
 import { notFound } from 'next/navigation';
@@ -23,25 +22,27 @@ const ProjectView = async ({ params }: any) => {
 	const projectImages = images.map((image) => image.url);
 
 	return (
-		<Section customClass={styles.sectionWrapper}>
-			<div className={styles.contentWrapper}>
-				<h2 className={styles.title}>{title}</h2>
-				<p className={styles.subTitle}>{subtitle}</p>
-				<div className={styles.detailsWrapper}>
+		<Section customClass="min-h-full flex flex-col mt-10 md:flex-row">
+			<div className="w-full px-5 md:px-0">
+				<h2 className="text-[42px] tracking-[2px] md:text-[64px]">{title}</h2>
+				<p className="text-base font-semibold tracking-[2px]">{subtitle}</p>
+				<div className="flex my-[30px] md:my-5 md:mt-10">
 					{projectInformation.map((info) => (
-						<div key={info.id} className={styles.detailsElement}>
-							<span className={styles.elementTitle}>{info.label}</span>
-							<span className={styles.elementDescription}>{info.placeholder}</span>
+						<div key={info.id} className="flex flex-col text-sm border-r border-primary px-[15px] first:border-l first:border-primary last:border-r-0">
+							<span className="mb-2">{info.label}</span>
+							<span className="font-semibold">{info.placeholder}</span>
 						</div>
 					))}
 				</div>
 				<Gallery photos={projectImages} showCarousel={showGalleryCarousel} />
-				<div className={styles.descriptionWrapper}>{description}</div>
-				<div className={styles.scopeOfWorkWrapper}>
-					<h3 className={styles.scopeOfWorkTitle}>{scopeOfWorkTitle}</h3>
-					<ul className={styles.scopeOfWorkList}>
+				<div className="py-[5px] my-[30px] md:my-5 [&_p]:mb-2.5 [&_p]:leading-6 [&_p]:font-light [&_p:last-of-type]:mb-0">
+					{description}
+				</div>
+				<div className="my-[30px] md:my-5">
+					<h3 className="text-xl">{scopeOfWorkTitle}</h3>
+					<ul className="py-5 flex flex-wrap">
 						{scopeOfWorkItems.map((item, index) => (
-							<li key={index} className={styles.listItem}>
+							<li key={index} className="list-none py-2.5 px-[30px] border border-primary m-[5px]">
 								{item}
 							</li>
 						))}

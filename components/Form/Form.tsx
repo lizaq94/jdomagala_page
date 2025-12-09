@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-import classes from '@/styles/components/Form.module.scss';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import { FormValidationSchema } from '@/components/Form/schema/FormValidationSchema';
@@ -67,7 +66,7 @@ const Form = ({ inputs, buttonText }: IProps) => {
 	});
 
 	return (
-		<div className={classes.wrapper}>
+		<div className="w-full mb-[50px] md:my-[50px]">
 			<form onSubmit={handleSubmit}>
 				<Input
 					name="name"
@@ -112,10 +111,10 @@ const Form = ({ inputs, buttonText }: IProps) => {
 					isTouched={touched.message}
 					isTextArea
 				/>
-				<div className={classes.buttonWrapper}>
+				<div className="mt-[30px] flex justify-end items-center pr-[15px]">
 					<Button
 						content={buttonText}
-						customClass={classes.formButton}
+						customClass="w-[87px] h-[42px] mr-0 border-primary"
 						filled
 						clickEffect
 						buttonType="submit"

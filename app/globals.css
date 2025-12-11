@@ -10,8 +10,8 @@
   --color-light-gray: #f8f8f8;
 
   /* Font families */
-  --font-primary: var(--fontPrimary), sans-serif;
-  --font-secondary: var(--fontSecondary), serif;
+  --font-primary: var(--fontPrimary), system-ui, sans-serif;
+  --font-secondary: var(--fontSecondary), system-ui, sans-serif;
 
   /* Max width - creates max-w-container class */
   --max-width-container: 1280px;

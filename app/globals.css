@@ -1,13 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-primary: #007bff;
-  --color-primary-dark: #0056b3;
-  --color-primary-light: #3395ff;
-  --color-background: #f8f5f9;
-  --color-body-font: #0c090d;
-  --color-light-gray: #f8f8f8;
+  /* Colors - nowy system kolorów */
+  --color-primary: #2563eb; /* blue-600 */
+  --color-primary-dark: #1d4ed8; /* blue-700 */
+  --color-primary-light: #3b82f6; /* blue-500 */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a; /* slate-900 */
+  --color-body-font: #0f172a; /* slate-900 */
+
+  /* Slate colors */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+
+  /* Muted colors */
+  --color-muted: #f1f5f9; /* slate-100 */
+  --color-muted-foreground: #64748b; /* slate-500 */
+  --color-light-gray: #f8fafc; /* slate-50 */
+
+  /* Blue colors */
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 1rem;
 
   /* Font families */
   --font-primary: var(--fontPrimary), system-ui, sans-serif;
@@ -17,7 +46,7 @@
   --max-width-container: 1280px;
 
   /* Heights */
-  --height-navigation: 118px;
+  --height-navigation: 80px;
 
   /* Custom spacing */
   --spacing-18: 4.5rem;
@@ -35,7 +64,7 @@
 
   html {
     --swiper-navigation-size: 22px !important;
-    --swiper-pagination-color: #007bff;
+    --swiper-pagination-color: #2563eb;
     --swiper-navigation-color: white;
     --swiper-pagination-bullet-size: 15px;
     --swiper-pagination-bullet-inactive-color: #fff;
@@ -55,7 +84,7 @@
     color: var(--color-body-font);
     font-family: var(--font-primary);
     background-color: white;
-    height: 100dvh;
+    min-height: 100dvh;
     --scroll-behavior: smooth !important;
     scroll-behavior: smooth !important;
     scroll-padding: 50px;

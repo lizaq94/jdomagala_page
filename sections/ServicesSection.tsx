@@ -1,4 +1,3 @@
-import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import ServiceBlock from '@/components/WhatWeDoBlock/ServiceBlock';
@@ -20,7 +19,7 @@ const ServicesSection = async ({ data }: IProps) => {
 	return (
 		<Section id={sectionId}>
 			<Heading title={title} />
-			<FlexBlocks>
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-5 md:px-0">
 				{servicesData?.map((service, index) => {
 					return (
 						<ServiceBlock
@@ -34,7 +33,7 @@ const ServicesSection = async ({ data }: IProps) => {
 						/>
 					);
 				})}
-			</FlexBlocks>
+			</div>
 		</Section>
 	);
 };

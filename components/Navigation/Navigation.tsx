@@ -63,12 +63,9 @@ const Navigation = ({ data }: IProps) => {
 								/>
 							</div>
 						) : (
-							<>
-								<div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-lg flex items-center justify-center">
-									<Building2 className="w-6 h-6 md:w-7 md:h-7 text-white" />
-								</div>
-								<div className="text-lg md:text-xl font-bold text-slate-900">JDOMagala</div>
-							</>
+							<div className="text-lg md:text-3xl font-bold text-slate-900">
+								J<span className="text-primary">DOM</span>agala
+							</div>
 						)}
 					</Link>
 

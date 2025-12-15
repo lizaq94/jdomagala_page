@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 interface IProps {
 	title: string;
@@ -16,8 +17,8 @@ interface IProps {
 const ServiceBlock = (props: IProps) => {
 	const { title, icon, shortDescription, buttonText, index, slug } = props;
 	const fadeInAnimationVariants = {
-		initial: { opacity: 0, x: 100 },
-		animate: (index: number) => ({ opacity: 1, x: 0, transition: { delay: 0.2 * index } }),
+		initial: { opacity: 0, y: 50 },
+		animate: (index: number) => ({ opacity: 1, y: 0, transition: { delay: 0.15 * index } }),
 	};
 
 	return (
@@ -27,18 +28,20 @@ const ServiceBlock = (props: IProps) => {
 			whileInView="animate"
 			viewport={{ once: true }}
 			custom={index}
-			className="relative w-full mb-[50px] flex flex-col justify-center items-center px-5 md:max-w-[calc(100%/3-40px)] md:px-0"
+			className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center"
 		>
-			<span className="mb-5 [&_img]:w-full [&_img]:h-full">
-				<img src={icon} alt="" />
+			<span className="mb-6 w-12 h-12 flex items-center justify-center">
+				<img src={icon} alt="" className="w-full h-full object-contain" />
 			</span>
-			<h3 className="text-base mb-[15px] font-secondary font-normal leading-[1.2]">{title}</h3>
-			<p className="text-[15px] font-normal leading-[1.8] mb-5 text-center text-[#6c757d]">{shortDescription}</p>
-			<motion.div whileHover={{ y: '-2px' }}>
-				<Link href={`/service/${slug}`} className="text-primary text-sm font-bold bg-transparent leading-[1.8] border-none cursor-pointer">
-					{buttonText}
-				</Link>
-			</motion.div>
+			<h3 className="text-2xl font-bold mb-4 font-secondary">{title}</h3>
+			<p className="text-base leading-relaxed mb-6 text-slate-500">{shortDescription}</p>
+			<Link
+				href={`/service/${slug}`}
+				className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+			>
+				{buttonText}
+				<ArrowRight className="w-4 h-4" />
+			</Link>
 		</motion.div>
 	);
 };

@@ -1,31 +1,36 @@
-'use client';
-
 import Section from '@/components/Section/Section';
-import Form from '@/components/Form/Form';
 import Heading from '@/components/Heading/Heading';
 import { IContactSectionData } from '@/types/cmsTypes';
-import Image from 'next/image';
+import { getNavigationAndFooterData } from '@/lib/api';
+import dynamic from 'next/dynamic';
+
+const ContactInfo = dynamic(() => import('@/components/ContactInfo/ContactInfo'), { ssr: false });
+const Form = dynamic(() => import('@/components/Form/Form'), { ssr: false });
 
 interface IProps {
 	data: IContactSectionData;
 }
 
-const ContactUsSection = ({ data }: IProps) => {
+const ContactUsSection = async ({ data }: IProps) => {
 	if (!data) return null;
 
-	const { title, buttonText, nameInput, emailInput, phoneInput, messageInput, sectionId, image } = data;
+	const navData = await getNavigationAndFooterData();
+	const navigationData = navData?.navigationData;
+
+	const { title, buttonText, nameInput, emailInput, phoneInput, messageInput, sectionId } = data;
 
 	const inputsData = { nameInput, emailInput, phoneInput, messageInput };
 
 	return (
-		<Section customClass="md:flex md:mt-[200px]" id={sectionId}>
-			<div className="flex flex-col justify-center items-center px-5 md:px-0 md:pr-[100px] md:py-11 md:flex-[0_0_50%]">
-				<Heading title={title} customClass="md:text-left" />
-				<Form inputs={inputsData} buttonText={buttonText} />
-			</div>
-			<div className="hidden md:block md:flex-[0_0_50%]">
-				<div className="w-full h-full [&_img]:!static [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
-					<Image src={image.url} alt="Contact Image" fill />
+		<Section id={sectionId}>
+			<Heading title={title} />
+			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 px-5 md:px-0 items-start">
+				<ContactInfo
+					email={navigationData?.email}
+					phone={navigationData?.phoneNumber}
+				/>
+				<div className="bg-slate-50 rounded-lg p-8">
+					<Form inputs={inputsData} buttonText={buttonText} />
 				</div>
 			</div>
 		</Section>

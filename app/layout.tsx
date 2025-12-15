@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 			<body>
 				<Navigation data={navigationData} />
 				{children}
-				<Footer data={footerData} navigationLinks={navigationData.navigationLinks} />
+				<Footer data={footerData} navigationLinks={navigationData.navigationLinks} navigationData={navigationData} />
 			</body>
 		</html>
 	);

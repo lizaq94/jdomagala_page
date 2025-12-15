@@ -1,3 +1,5 @@
+'use client';
+
 import { useFormik } from 'formik';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
@@ -111,10 +113,10 @@ const Form = ({ inputs, buttonText }: IProps) => {
 					isTouched={touched.message}
 					isTextArea
 				/>
-				<div className="mt-[30px] flex justify-end items-center pr-[15px]">
+				<div className="mt-6 flex justify-end">
 					<Button
 						content={buttonText}
-						customClass="w-[87px] h-[42px] mr-0 border-primary"
+						customClass="!bg-blue-600 hover:!bg-blue-700 !px-8 !py-3 !mr-0 !rounded-lg !text-base"
 						filled
 						clickEffect
 						buttonType="submit"

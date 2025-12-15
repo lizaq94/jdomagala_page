@@ -33,30 +33,29 @@ const Input = (props: IProps) => {
 
 	const hasError = errorMessage && isTouched;
 
-	const wrapperClasses = 'relative pt-[15px] mt-5 w-full';
+	const wrapperClasses = 'relative mb-5 w-full';
 
 	const fieldClasses = `
-		input-field
-		font-inherit w-full border-0 outline-none
-		text-base text-body-font
-		py-[7px] px-0 bg-transparent
-		transition-[border-color] duration-200
-		border-b-2 border-primary
-		shadow-none
-		${hasError ? 'border-red-500' : ''}
+		w-full px-4 py-3 bg-white
+		text-base text-slate-900
+		border border-slate-300 rounded-lg
+		outline-none transition-colors duration-200
+		focus:border-blue-600 focus:ring-1 focus:ring-blue-600
+		placeholder:text-slate-400
+		${hasError ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}
 	`.replace(/\s+/g, ' ').trim();
 
-	const textareaClasses = `${fieldClasses} overflow-hidden min-h-[150px] resize-none`;
+	const textareaClasses = `${fieldClasses} min-h-[120px] resize-none`;
 
-	const labelClasses = `
-		input-label
-		absolute top-[-5px] block
-		transition-all duration-200
-		text-base text-gray-500
-	`.replace(/\s+/g, ' ').trim();
+	const labelClasses = 'block mb-2 text-sm font-medium text-slate-700';
 
 	return (
 		<div className={wrapperClasses}>
+			{label && (
+				<label htmlFor={name} className={labelClasses}>
+					{label}
+				</label>
+			)}
 			{!isTextArea ? (
 				<input
 					type={type}
@@ -82,12 +81,8 @@ const Input = (props: IProps) => {
 					onBlur={onBlur}
 				/>
 			)}
-
-			<label htmlFor={name} className={labelClasses}>
-				{label}
-			</label>
 			{hasError && (
-				<p className="mt-[5px] text-red-500 text-sm">{errorMessage}</p>
+				<p className="mt-1.5 text-red-500 text-sm">{errorMessage}</p>
 			)}
 		</div>
 	);

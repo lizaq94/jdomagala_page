@@ -12,6 +12,7 @@ const Heading = ({ title, customClass }: IProps): JSX.Element => {
 		font-secondary text-[50px] leading-[48px]
 		md:text-[64px] md:leading-[62px]
 		font-bold text-center uppercase
+		px-5 md:px-0
 		${customClass || ''}
 	`.replace(/\s+/g, ' ').trim();
 

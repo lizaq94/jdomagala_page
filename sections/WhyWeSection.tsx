@@ -1,6 +1,5 @@
 'use client';
 
-import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import Heading from '@/components/Heading/Heading';
 import Section from '@/components/Section/Section';
 import WhyWeBlock from '@/components/WhyWeBlock/WhyWeBlock';
@@ -18,8 +17,8 @@ const WhyWeSection = ({ data }: IProps) => {
 
 	return (
 		<Section id={sectionId}>
-			<Heading title={title}></Heading>
-			<FlexBlocks>
+			<Heading title={title} />
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-5 md:px-0">
 				{blocks.map((block, index) => (
 					<WhyWeBlock
 						title={block.title}
@@ -29,7 +28,7 @@ const WhyWeSection = ({ data }: IProps) => {
 						key={block.id}
 					/>
 				))}
-			</FlexBlocks>
+			</div>
 		</Section>
 	);
 };

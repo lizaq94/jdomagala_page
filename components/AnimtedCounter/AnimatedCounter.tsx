@@ -22,12 +22,12 @@ const AnimatedCounter = ({ from = 0, to, description }: IProps) => {
 	}, [count, inView, to]);
 
 	return (
-		<div className="relative flex flex-col items-center justify-center z-[1] mb-[30px] md:mb-0 md:mr-[70px] md:last:mr-0">
-			<motion.span ref={ref} className="text-5xl font-bold mb-5">
+		<div className="flex flex-col items-center justify-center text-center">
+			<motion.span ref={ref} className="text-6xl md:text-7xl font-bold text-blue-400 mb-4">
 				{rounded}
 			</motion.span>
 			{!!description && (
-				<span className="counter-description relative max-w-[120px] text-sm font-light text-center pt-2.5">
+				<span className="text-base md:text-lg font-light text-white/90 max-w-[200px]">
 					{description}
 				</span>
 			)}

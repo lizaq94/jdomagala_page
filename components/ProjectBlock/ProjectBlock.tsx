@@ -1,35 +1,48 @@
+'use client';
+
 import Link from 'next/link';
 import { ICMSImage } from '@/types/cmsTypes';
+import { motion } from 'framer-motion';
 
 interface IProps {
-	status: string;
 	name: string;
-	subtitle: string;
 	images: ICMSImage[];
 	slug: string;
+	index?: number;
 }
 
 const ProjectBlock = (props: IProps) => {
-	const { status, name, subtitle, images, slug } = props;
+	const { name, images, slug, index = 0 } = props;
 
 	const projectImageUrl = images[0].url;
 
-	const statusClasses = status === 'done'
-		? 'bg-green-500'
-		: status === 'pending'
-		? 'bg-yellow-400'
-		: '';
+	const fadeInAnimationVariants = {
+		initial: { opacity: 0, y: 30 },
+		animate: (index: number) => ({ opacity: 1, y: 0, transition: { delay: 0.1 * index } }),
+	};
 
 	return (
-		<Link
-			href={`/project/${slug}`}
-			className="project-block-overlay relative w-full flex flex-col justify-end min-h-[227px] h-full pl-2.5 bg-cover mb-2.5 md:max-w-[295px]"
-			style={{ backgroundImage: `url(${projectImageUrl})` }}
+		<motion.div
+			variants={fadeInAnimationVariants}
+			initial="initial"
+			whileInView="animate"
+			viewport={{ once: true }}
+			custom={index}
 		>
-			<span className={`absolute w-[15px] h-[15px] top-2.5 left-2.5 rounded-full z-[1] ${statusClasses}`}></span>
-			<span className="text-base font-bold leading-normal z-[1]">{name}</span>
-			<span className="my-[5px] mb-5 text-sm font-light leading-normal z-[1]">{subtitle}</span>
-		</Link>
+			<Link
+				href={`/project/${slug}`}
+				className="group relative block w-full aspect-[4/3] rounded-lg overflow-hidden"
+			>
+				<div
+					className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
+					style={{ backgroundImage: `url(${projectImageUrl})` }}
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+				<div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+					<span className="block text-lg font-bold leading-tight">{name}</span>
+				</div>
+			</Link>
+		</motion.div>
 	);
 };
 

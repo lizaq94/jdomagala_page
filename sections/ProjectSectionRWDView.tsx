@@ -20,9 +20,7 @@ const ProjectSectionRWDView = ({ projects }: IProps) => {
 			{projects.map((project) => (
 				<SwiperSlide key={project.id}>
 					<ProjectBlock
-						status={project.projectStatus}
 						name={project.title}
-						subtitle={project.subtitle}
 						images={project.images}
 						slug={project.slug}
 					/>

@@ -1,6 +1,5 @@
 'use client';
 
-import FlexBlocks from '@/components/FlexBlocks/FlexBlocks';
 import ProjectBlock from '@/components/ProjectBlock/ProjectBlock';
 import Button from '@/components/Button/Button';
 import { IProjectData } from '@/types/cmsTypes';
@@ -32,19 +31,27 @@ const ProjectsSectionDesktopView = (props: IProps) => {
 	const showLoadMoreButton = projects.length > projectsToDisplay.length;
 	return (
 		<>
-			<FlexBlocks additionalClassName="withProjects">
+			<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full">
 				{getProjectsToView(projects).map((project, index) => (
 					<ProjectBlock
 						key={index}
-						status={project.projectStatus}
 						name={project.title}
-						subtitle={project.subtitle}
 						images={project.images}
 						slug={project.slug}
+						index={index}
 					/>
 				))}
-			</FlexBlocks>
-			{showLoadMoreButton && <Button content={buttonText} onClick={loadMoreProjects} filled />}
+			</div>
+			{showLoadMoreButton && (
+				<div className="mt-8">
+					<Button
+						content={buttonText}
+						onClick={loadMoreProjects}
+						filled
+						customClass="!bg-blue-600 hover:!bg-blue-700"
+					/>
+				</div>
+			)}
 		</>
 	);
 };

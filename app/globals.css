@@ -1,241 +1,190 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  /* Colors - nowy system kolorów */
-  --color-primary: #2563eb; /* blue-600 */
-  --color-primary-dark: #1d4ed8; /* blue-700 */
-  --color-primary-light: #3b82f6; /* blue-500 */
-  --color-background: #ffffff;
-  --color-foreground: #0f172a; /* slate-900 */
-  --color-body-font: #0f172a; /* slate-900 */
+	/* Colors - nowy system kolorów */
+	--color-primary: #2563eb; /* blue-600 */
+	--color-primary-dark: #1d4ed8; /* blue-700 */
+	--color-primary-light: #3b82f6; /* blue-500 */
+	--color-background: #ffffff;
+	--color-foreground: #0f172a; /* slate-900 */
+	--color-body-font: #0f172a; /* slate-900 */
 
-  /* Slate colors */
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
+	/* Slate colors */
+	--color-slate-50: #f8fafc;
+	--color-slate-100: #f1f5f9;
+	--color-slate-200: #e2e8f0;
+	--color-slate-300: #cbd5e1;
+	--color-slate-400: #94a3b8;
+	--color-slate-500: #64748b;
+	--color-slate-600: #475569;
+	--color-slate-700: #334155;
+	--color-slate-800: #1e293b;
+	--color-slate-900: #0f172a;
 
-  /* Muted colors */
-  --color-muted: #f1f5f9; /* slate-100 */
-  --color-muted-foreground: #64748b; /* slate-500 */
-  --color-light-gray: #f8fafc; /* slate-50 */
+	/* Muted colors */
+	--color-muted: #f1f5f9; /* slate-100 */
+	--color-muted-foreground: #64748b; /* slate-500 */
+	--color-light-gray: #f8fafc; /* slate-50 */
 
-  /* Blue colors */
-  --color-blue-400: #60a5fa;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
+	/* Blue colors */
+	--color-blue-400: #60a5fa;
+	--color-blue-500: #3b82f6;
+	--color-blue-600: #2563eb;
+	--color-blue-700: #1d4ed8;
 
-  /* Border radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.625rem;
-  --radius-xl: 1rem;
+	/* Border radius */
+	--radius-sm: 0.375rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.625rem;
+	--radius-xl: 1rem;
 
-  /* Font families */
-  --font-primary: var(--fontPrimary), system-ui, sans-serif;
-  --font-secondary: var(--fontSecondary), system-ui, sans-serif;
+	/* Font families */
+	--font-primary: var(--fontPrimary), system-ui, sans-serif;
+	--font-secondary: var(--fontSecondary), system-ui, sans-serif;
 
-  /* Max width - creates max-w-container class */
-  --max-width-container: 1280px;
+	/* Max width - creates max-w-container class */
+	--max-width-container: 1280px;
 
-  /* Heights */
-  --height-navigation: 80px;
+	/* Heights */
+	--height-navigation: 80px;
 
-  /* Custom spacing */
-  --spacing-18: 4.5rem;
-  --spacing-22: 5.5rem;
-  --spacing-26: 6.5rem;
-  --spacing-30: 7.5rem;
+	/* Custom spacing */
+	--spacing-18: 4.5rem;
+	--spacing-22: 5.5rem;
+	--spacing-26: 6.5rem;
+	--spacing-30: 7.5rem;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
+	* {
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
 
-  html {
-    --swiper-navigation-size: 22px !important;
-    --swiper-pagination-color: #2563eb;
-    --swiper-navigation-color: white;
-    --swiper-pagination-bullet-size: 15px;
-    --swiper-pagination-bullet-inactive-color: #fff;
-    --swiper-pagination-bullet-inactive-opacity: 0.4;
-  }
+	html {
+		--swiper-pagination-color: #2563eb;
+		--swiper-pagination-bullet-size: 10px;
+		--swiper-pagination-bullet-inactive-color: #cbd5e1;
+		--swiper-pagination-bullet-inactive-opacity: 1;
+	}
 
-  html,
-  body {
-    max-width: 100vw;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-  }
+	html,
+	body {
+		max-width: 100vw;
+		overflow-x: hidden;
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+	}
 
-  body {
-    color: var(--color-body-font);
-    font-family: var(--font-primary);
-    background-color: white;
-    min-height: 100dvh;
-    --scroll-behavior: smooth !important;
-    scroll-behavior: smooth !important;
-    scroll-padding: 50px;
-  }
+	body {
+		color: var(--color-body-font);
+		font-family: var(--font-primary);
+		background-color: white;
+		min-height: 100dvh;
+		--scroll-behavior: smooth !important;
+		scroll-behavior: smooth !important;
+		scroll-padding: 50px;
+	}
 
-  a {
-    color: white;
-    text-decoration: none;
-  }
+	a {
+		color: white;
+		text-decoration: none;
+	}
 
-  button {
-    font-family: inherit;
-  }
+	button {
+		font-family: inherit;
+	}
 }
 
 @layer components {
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: var(--color-primary);
-  }
+	.hover-border-effect {
+		@apply relative;
+	}
 
-  .swiper-button-prev::after,
-  .swiper-button-next::after {
-    font-size: 15px;
-  }
+	.hover-border-effect::before,
+	.hover-border-effect::after {
+		content: '';
+		@apply absolute w-0 h-0;
+		transition: width 0.5s, height 0.5s;
+	}
 
-  /* Button hover border effect */
-  .hover-border-effect {
-    @apply relative;
-  }
+	.hover-border-effect::after {
+		top: -1px;
+		left: -1px;
+	}
 
-  .hover-border-effect::before,
-  .hover-border-effect::after {
-    content: '';
-    @apply absolute w-0 h-0;
-    transition: width 0.5s, height 0.5s;
-  }
+	.hover-border-effect::before {
+		bottom: -1px;
+		right: -1px;
+	}
 
-  .hover-border-effect::after {
-    top: -1px;
-    left: -1px;
-  }
+	.hover-border-effect:hover::after,
+	.hover-border-effect:hover::before {
+		@apply w-full h-full;
+	}
 
-  .hover-border-effect::before {
-    bottom: -1px;
-    right: -1px;
-  }
+	.hover-border-effect:hover::after {
+		border-top: 2px solid var(--color-primary);
+		border-left: 2px solid var(--color-primary);
+	}
 
-  .hover-border-effect:hover::after,
-  .hover-border-effect:hover::before {
-    @apply w-full h-full;
-  }
+	.hover-border-effect:hover::before {
+		border-bottom: 2px solid var(--color-primary);
+		border-right: 2px solid var(--color-primary);
+	}
 
-  .hover-border-effect:hover::after {
-    border-top: 2px solid var(--color-primary);
-    border-left: 2px solid var(--color-primary);
-  }
+	.input-field::placeholder {
+		color: transparent;
+	}
 
-  .hover-border-effect:hover::before {
-    border-bottom: 2px solid var(--color-primary);
-    border-right: 2px solid var(--color-primary);
-  }
+	.input-field:placeholder-shown ~ .input-label {
+		@apply text-base cursor-text;
+		top: 20px;
+	}
 
-  /* Input floating label styles */
-  .input-field::placeholder {
-    color: transparent;
-  }
+	.input-field:focus ~ .input-label {
+		@apply absolute block text-base font-bold;
+		top: -5px;
+		color: var(--color-primary);
+		transition: 0.2s;
+	}
 
-  .input-field:placeholder-shown ~ .input-label {
-    @apply text-base cursor-text;
-    top: 20px;
-  }
+	.input-field:focus {
+		padding-bottom: 6px;
+		border-width: 3px;
+	}
 
-  .input-field:focus ~ .input-label {
-    @apply absolute block text-base font-bold;
-    top: -5px;
-    color: var(--color-primary);
-    transition: 0.2s;
-  }
-
-  .input-field:focus {
-    padding-bottom: 6px;
-    border-width: 3px;
-  }
-
-  /* Heading span styling */
-  .section-heading span {
-    color: var(--color-primary);
-  }
+	.section-heading span {
+		color: var(--color-primary);
+	}
 }
 
 @layer components {
-  /* AnimatedCounter description line before pseudo-element */
-  .counter-description::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 1px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-  }
-
-  /* ProjectBlock overlay pseudo-element */
-  .project-block-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-  }
-
-  /* ServiceView subtitle line before pseudo-element */
-  .service-subtitle::before {
-    content: '';
-    display: inline-block;
-    width: 100px;
-    height: 1px;
-    background-color: var(--color-primary);
-    margin-right: 5px;
-  }
-
-  /* ServiceView title line before pseudo-element */
-  .service-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: inline-block;
-    width: 35%;
-    height: 1px;
-    background-color: var(--color-primary);
-    margin-right: 5px;
-  }
+	.counter-description::before {
+		content: '';
+		position: absolute;
+		width: 40px;
+		height: 1px;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: white;
+	}
 }
 
 @layer utilities {
-  /* Button loader animation */
-  @keyframes spin-loader {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+	@keyframes spin-loader {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
 
-  .animate-spin-loader {
-    animation: spin-loader 1s linear infinite;
-  }
+	.animate-spin-loader {
+		animation: spin-loader 1s linear infinite;
+	}
 }

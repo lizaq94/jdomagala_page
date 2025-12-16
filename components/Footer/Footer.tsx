@@ -15,10 +15,6 @@ const Footer = ({ data, navigationLinks, navigationData }: IProps) => {
 
 	const currentYear = new Date().getFullYear();
 
-	const socialLinks = [
-		{ icon: Facebook, href: '#', label: 'Facebook' },
-	];
-
 	return (
 		<footer className="bg-slate-900 text-white mt-16 md:mt-24">
 			<div className="w-full max-w-container mx-auto px-5 md:px-8 py-12 md:py-16">
@@ -74,24 +70,19 @@ const Footer = ({ data, navigationLinks, navigationData }: IProps) => {
 					<div>
 						<h4 className="text-lg font-semibold mb-4">Social Media</h4>
 						<div className="flex gap-3">
-							{socialLinks.map((social, index) => (
-								<a
-									key={index}
-									href={social.href}
-									aria-label={social.label}
-									className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
-								>
-									<social.icon className="w-5 h-5" />
-								</a>
-							))}
+							<a
+								href={navigationData?.facebookLink}
+								aria-label="Facebook"
+								className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
+							>
+								<Facebook className="w-5 h-5" />
+							</a>
 						</div>
 					</div>
 				</div>
 
 				<div className="border-t border-slate-800 mt-12 pt-8 text-center">
-					<p className="text-slate-400 text-sm">
-						© {currentYear} JDOMagala. Wszelkie prawa zastrzeżone.
-					</p>
+					<p className="text-slate-400 text-sm">© {currentYear} JDOMagala. Wszelkie prawa zastrzeżone.</p>
 				</div>
 			</div>
 		</footer>
